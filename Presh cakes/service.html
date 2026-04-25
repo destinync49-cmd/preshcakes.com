@@ -1,0 +1,1337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Presh Cakes | Services — Atelier of Artisan Cakes</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0a0705;
+        color: #ece6df;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --charcoal: #0f0c0a;
+        --deep-black: #080604;
+        --gold: #c8a96e;
+        --gold-light: #e2c28b;
+        --cream: #f2ede8;
+        --text-body: #d6cdc2;
+        --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.5);
+        --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.35);
+        --transition-premium: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+      }
+
+      /* ===== TYPOGRAPHY SYSTEM ===== */
+      h1,
+      h2,
+      h3,
+      .serif-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      h2 {
+        font-size: 2.6rem;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--cream);
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        color: var(--gold-light);
+      }
+
+      .body-text,
+      p {
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text-body);
+      }
+
+      .label-gold {
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .btn-text {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
+        h3 {
+          font-size: 1.2rem;
+        }
+        .body-text,
+        p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+        .label-gold {
+          font-size: 0.7rem;
+          letter-spacing: 2px;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a140f;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 10px;
+      }
+
+      /* ===== TOP BANNER ===== */
+      .top-banner {
+        position: relative;
+        width: 100%;
+        background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
+        border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+        padding: 0.6rem 1rem;
+        text-align: center;
+        z-index: 1001;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+      .top-banner.closed {
+        transform: translateY(-100%);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        pointer-events: none;
+      }
+      .banner-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .banner-text {
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
+        color: #e2d4c8;
+      }
+      .banner-link {
+        background: transparent;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 0.25rem 1rem;
+        border-radius: 30px;
+        font-size: 0.65rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+      .banner-link:hover {
+        background: var(--gold);
+        color: #0a0705;
+      }
+      .banner-close {
+        background: transparent;
+        border: none;
+        color: #b8aa99;
+        cursor: pointer;
+        font-size: 0.75rem;
+        transition: 0.2s;
+      }
+      .banner-close:hover {
+        color: var(--gold);
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 6, 4, 0.8);
+        backdrop-filter: blur(14px);
+        z-index: 1000;
+        padding: 1.2rem 2rem;
+        transition: var(--transition-premium);
+        border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      }
+      body.banner-active .navbar {
+        top: 52px;
+      }
+      @media (max-width: 640px) {
+        body.banner-active .navbar {
+          top: 48px;
+        }
+      }
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.2;
+      }
+      .logo-icon {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 4px;
+      }
+      .brand-name {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: var(--cream);
+        font-family: "Inter", sans-serif;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-weight: 400;
+        color: var(--cream);
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        transition: 0.25s;
+        position: relative;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: var(--gold);
+        transition: 0.3s;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        background: transparent;
+        border: 1px solid var(--gold);
+        padding: 0.5rem 1.3rem;
+        border-radius: 40px;
+        transition: 0.25s;
+      }
+      .nav-cta a {
+        color: var(--gold) !important;
+      }
+      .nav-cta:hover {
+        background: rgba(200, 169, 110, 0.15);
+        transform: translateY(-2px);
+      }
+      .hamburger {
+        display: none;
+        font-size: 1.6rem;
+        color: var(--cream);
+        cursor: pointer;
+      }
+      @media (max-width: 880px) {
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 70%;
+          height: calc(100vh - 70px);
+          background: #0a0705e6;
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          transition: 0.3s;
+          z-index: 999;
+        }
+        .nav-links.active {
+          left: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+        .navbar {
+          padding: 0.8rem 1.5rem;
+        }
+        body.banner-active .navbar {
+          top: 48px;
+        }
+        .nav-links a {
+          font-size: 1rem;
+        }
+      }
+
+      /* ===== COMPACT HERO ===== */
+      .services-hero {
+        min-height: 60vh;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(10, 7, 5, 0.85) 0%,
+            rgba(31, 22, 16, 0.7) 100%
+          ),
+          url("./img/Wedding Cakes.jpg");
+        background-size: cover;
+        background-position: center 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        scroll-margin-top: 70px;
+      }
+      .hero-content {
+        max-width: 750px;
+        padding: 2rem;
+      }
+      .hero-content .label-gold {
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+      .hero-content h1 {
+        margin-bottom: 0.75rem;
+      }
+      .hero-content p {
+        margin-bottom: 1.8rem;
+      }
+      .btn-gold {
+        display: inline-block;
+        background: var(--gold);
+        color: #0a0705;
+        padding: 0.8rem 2rem;
+        border-radius: 40px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+      .btn-gold:hover {
+        background: #e2b46a;
+        transform: translateY(-2px);
+      }
+
+      /* ===== SERVICES GRID (STRICT 4-COLUMN) ===== */
+      .services-grid-section {
+        padding: 5rem 5%;
+        background: #0a0705;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .section-header .label-gold {
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+      .service-card {
+        background: #14100c;
+        border-radius: 24px;
+        overflow: hidden;
+        transition: var(--transition-premium);
+        border: 1px solid rgba(200, 169, 110, 0.1);
+      }
+      .service-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(200, 169, 110, 0.5);
+        box-shadow: var(--shadow-soft);
+      }
+      .service-img {
+        width: 100%;
+        aspect-ratio: 1 / 0.9;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      .service-card:hover .service-img {
+        transform: scale(1.03);
+      }
+      .service-info {
+        padding: 1.2rem 1.2rem 1.5rem;
+      }
+      .service-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+      .service-info p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: #bcaea0;
+      }
+      @media (max-width: 1024px) {
+        .services-grid {
+          gap: 1rem;
+        }
+        .service-info h3 {
+          font-size: 1.1rem;
+        }
+        .service-info p {
+          font-size: 0.7rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .services-grid {
+          gap: 0.8rem;
+        }
+        .service-info {
+          padding: 0.8rem;
+        }
+        .service-info h3 {
+          font-size: 0.9rem;
+        }
+        .service-info p {
+          font-size: 0.65rem;
+        }
+      }
+      @media (max-width: 550px) {
+        .services-grid {
+          gap: 0.6rem;
+        }
+        .service-info h3 {
+          font-size: 0.8rem;
+        }
+        .service-info p {
+          display: none;
+        }
+      }
+
+      /* ===== FEATURED SERVICE (SPLIT SECTION) ===== */
+      .featured-split {
+        padding: 4rem 5%;
+        background: #0c0907;
+      }
+      .split-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .featured-img {
+        width: 100%;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--shadow-dark);
+        height: 80vh;
+      }
+      .featured-img img {
+        width: 100%;
+        /* height: auto; */
+        display: block;
+        transition: transform 0.6s ease;
+      }
+      .featured-img:hover img {
+        transform: scale(1.02);
+      }
+      .featured-text .label-gold {
+        margin-bottom: 0.8rem;
+        display: inline-block;
+      }
+      .featured-text h2 {
+        margin-bottom: 1rem;
+      }
+      .featured-text p {
+        margin-bottom: 1.5rem;
+      }
+      .feature-list {
+        list-style: none;
+        margin-top: 1rem;
+      }
+      .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 0.9rem;
+        color: #d6cdc2;
+      }
+      .feature-list li i {
+        color: var(--gold);
+        font-size: 0.8rem;
+      }
+      @media (max-width: 768px) {
+        .split-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+
+      /* ===== PROCESS SECTION (4-STEP HORIZONTAL) ===== */
+      .process-section {
+        padding: 5rem 5%;
+        background: #0a0705;
+      }
+      .process-grid {
+        max-width: 1200px;
+        margin: 3rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .process-step {
+        text-align: center;
+      }
+      .step-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(200, 169, 110, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        font-size: 1.8rem;
+        color: var(--gold);
+        transition: 0.3s;
+      }
+      .process-step:hover .step-icon {
+        background: rgba(200, 169, 110, 0.2);
+        transform: scale(1.03);
+      }
+      .process-step h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+      }
+      .process-step p {
+        font-size: 0.8rem;
+        color: #bcaea0;
+      }
+      @media (max-width: 768px) {
+        .process-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .process-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      /* ===== VALUE SECTION (PREMIUM, NO PRICES) ===== */
+      .value-section {
+        padding: 4rem 5%;
+        background: #0c0907;
+        text-align: center;
+      }
+      .value-grid {
+        max-width: 1000px;
+        margin: 2rem auto 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+      .value-item {
+        text-align: center;
+      }
+      .value-item i {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .value-item h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--gold-light);
+      }
+      .value-item p {
+        font-size: 0.8rem;
+        color: #bcaea0;
+      }
+      @media (max-width: 768px) {
+        .value-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .value-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== TESTIMONIAL PREVIEW ===== */
+      .testimonial-preview {
+        background: radial-gradient(ellipse at 30% 40%, #18110b, #030201);
+        padding: 4rem 5%;
+      }
+      .testimonial-card {
+        background: rgba(15, 12, 10, 0.75);
+        backdrop-filter: blur(16px);
+        border-radius: 48px;
+        border: 1px solid rgba(200, 169, 110, 0.45);
+        padding: 2.8rem 2rem;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .quote-icon {
+        font-size: 2rem;
+        color: var(--gold);
+        opacity: 0.6;
+        margin-bottom: 1rem;
+      }
+      .testimonial-quote {
+        font-size: 1.3rem;
+        font-style: italic;
+        color: #f2e8de;
+        line-height: 1.5;
+        font-family: "Cormorant Garamond", serif;
+        margin-bottom: 1rem;
+      }
+      .stars-gold {
+        color: var(--gold);
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        margin-bottom: 0.8rem;
+      }
+      .client-name {
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+        color: #c9b28b;
+        text-transform: uppercase;
+      }
+
+      /* ===== CTA SECTION ===== */
+      .cta-section {
+        background: linear-gradient(135deg, #1f1712, #0c0805);
+        margin: 0 5% 4rem;
+        padding: 4rem 2rem;
+        border-radius: 48px;
+        text-align: center;
+        border: 1px solid rgba(200, 169, 110, 0.25);
+      }
+      .cta-section h2 {
+        margin-bottom: 1rem;
+      }
+      .cta-section p {
+        margin-bottom: 1.8rem;
+      }
+
+      /* ===== FOOTER ===== */
+      .footer-luxury {
+        background: #050302;
+        padding: 4rem 5% 2rem;
+        border-top: 1px solid rgba(200, 169, 110, 0.2);
+      }
+      .footer-grid-lux {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      .footer-brand-lux {
+        flex: 1.2;
+        min-width: 180px;
+      }
+      .footer-nav-lux,
+      .footer-contact-lux {
+        flex: 1;
+        min-width: 140px;
+      }
+      .footer-nav-lux {
+        text-align: right;
+      }
+      .footer-contact-lux {
+        text-align: right;
+      }
+      .footer-brand-lux .logo-icon-large {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .brand-name-lux {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        font-weight: 500;
+      }
+      .tagline {
+        font-size: 0.7rem;
+        color: #b8aa99;
+        margin-top: 0.5rem;
+      }
+      .social-icons-lux {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+        justify-content: flex-start;
+      }
+      .social-icon-circle {
+        width: 34px;
+        height: 34px;
+        background: rgba(200, 169, 110, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.25s;
+        color: #e2cbaa;
+        text-decoration: none;
+        border: 1px solid rgba(200, 169, 110, 0.3);
+      }
+      .social-icon-circle:hover {
+        background: var(--gold);
+        color: #0a0705;
+        transform: translateY(-2px);
+      }
+      .footer-nav-lux h4,
+      .footer-contact-lux h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: var(--gold);
+      }
+      .footer-nav-lux ul {
+        list-style: none;
+      }
+      .footer-nav-lux li {
+        margin-bottom: 0.6rem;
+      }
+      .footer-nav-lux a {
+        text-decoration: none;
+        color: #d6cdc2;
+        font-size: 0.8rem;
+        transition: 0.2s;
+      }
+      .footer-nav-lux a:hover {
+        color: var(--gold);
+      }
+      .footer-contact-lux p {
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.7rem;
+        color: #cdc0b2;
+        font-size: 0.8rem;
+      }
+      .footer-divider {
+        max-width: 1280px;
+        margin: 2rem auto 1rem;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(200, 169, 110, 0.5),
+          transparent
+        );
+      }
+      .copyright-text {
+        text-align: center;
+        font-size: 0.7rem;
+        color: #7f6e5d;
+      }
+      @media (max-width: 880px) {
+        .footer-grid-lux {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .footer-nav-lux,
+        .footer-contact-lux {
+          text-align: left;
+        }
+        .footer-contact-lux p {
+          justify-content: flex-start;
+        }
+      }
+      @media (max-width: 640px) {
+        .footer-grid-lux {
+          flex-direction: column;
+          gap: 2rem;
+        }
+        .footer-nav-lux,
+        .footer-contact-lux {
+          text-align: left;
+        }
+      }
+
+      [data-aos] {
+        opacity: 0;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .aos-animate {
+        opacity: 1 !important;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 1002;
+        background-color: #25d366;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: 0.25s;
+        text-decoration: none;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.06);
+      }
+      .whatsapp-float i {
+        font-size: 1.7rem;
+        color: white;
+      }
+
+      /* ===== MODAL FOR SERVICE IMAGES ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .modal-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .modal-content {
+        position: relative;
+        background-color: #0a0705;
+        margin: 5% auto;
+        padding: 2rem;
+        border: 1px solid rgba(200, 169, 110, 0.3);
+        border-radius: 24px;
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        color: #d6cdc2;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .modal-close:hover {
+        color: var(--gold);
+      }
+      .modal-content img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        margin-bottom: 1rem;
+      }
+      .modal-content h3 {
+        color: var(--gold-light);
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
+      .modal-content p {
+        color: #d6cdc2;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      @media (max-width: 768px) {
+        .modal-content {
+          margin: 10% auto;
+          padding: 1.5rem;
+          width: 95%;
+        }
+        .modal-content h3 {
+          font-size: 1.3rem;
+        }
+        .modal-content p {
+          font-size: 0.9rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .modal-content {
+          margin: 15% auto;
+          padding: 1rem;
+        }
+        .modal-close {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-banner" id="topBanner">
+      <div class="banner-content">
+        <span class="banner-text"
+          >✦ Limited commissions — Spring/Summer collection now open ✦</span
+        >
+        <a href="#contact" class="banner-link">Inquire</a>
+        <button class="banner-close" id="closeBannerBtn">✕</button>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="brand">
+          <i class="fas fa-crown logo-icon"></i
+          ><span class="brand-name">PRESH CAKES</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./gallery.html">Gallery</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="services-hero">
+      <div class="hero-content" data-aos="fade-up">
+        <div class="label-gold">Our Services</div>
+        <h1>Crafted for Every Occasion</h1>
+        <p>
+          From intimate gatherings to grand celebrations — bespoke creations
+          tailored to your vision.
+        </p>
+        <a href="#contact" class="btn-gold">Book a Consultation</a>
+      </div>
+    </section>
+
+    <!-- SERVICES GRID (4-COLUMN) -->
+    <div class="services-grid-section">
+      <div class="section-header" data-aos="fade-up">
+        <div class="label-gold">What We Offer</div>
+        <h2>Artisan Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-aos="zoom-in">
+          <img
+            src="./img/chocolate.jpg"
+            alt="Custom Cakes"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Custom Cakes</h3>
+            <p>Fully personalized design for any occasion.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="50">
+          <img
+            src="./img/Wedding Cakes.jpg"
+            alt="Wedding Cakes"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Wedding Cakes</h3>
+            <p>Elegant tiers, edible florals, gold leaf.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+          <img
+            src="./img/birthday cake.jpg"
+            alt="Birthday Cakes"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Birthday Cakes</h3>
+            <p>Sculpted dreams & rich textures.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="150">
+          <img
+            src="./img/Event Catering.jpg"
+            alt="Event Catering"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Event Catering</h3>
+            <p>Shawarma, snacks & dessert bars.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+          <img
+            src="./img/snacksbasket.jpg"
+            alt="Dessert Tables"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Dessert Tables</h3>
+            <p>Curated selection of petite indulgences.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="250">
+          <img
+            src="./img/meatpie.jpg"
+            alt="Corporate Orders"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Corporate Orders</h3>
+            <p>Branded cakes & executive gift boxes.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+          <img
+            src="./img/milkydoughnut.jpg"
+            alt="Luxury Gift Boxes"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Luxury Gift Boxes</h3>
+            <p>Artisanal pastries, packaged elegantly.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="zoom-in" data-aos-delay="350">
+          <img
+            src="./img/bakerwithcake.jpg"
+            alt="Private Consultations"
+            class="service-img"
+          />
+          <div class="service-info">
+            <h3>Private Consultations</h3>
+            <p>One-on-one design sessions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED SERVICE (SIGNATURE EXPERIENCE) -->
+    <div class="featured-split">
+      <div class="split-container">
+        <div class="featured-img" data-aos="fade-right">
+          <img src="./img/Wedding Cakes.jpg" alt="Bespoke Wedding Experience" />
+        </div>
+        <div class="featured-text" data-aos="fade-left">
+          <div class="label-gold">Signature Experience</div>
+          <h2>Bespoke Wedding Experience</h2>
+          <p>
+            From the first sketch to the final bite, our wedding cake journey is
+            designed to be seamless, personal, and unforgettable. Each tier
+            reflects your story, crafted with precision and quiet luxury.
+          </p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Private tasting session</li>
+            <li>
+              <i class="fas fa-check-circle"></i> Custom design sketches & mood
+              board
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Premium single-origin
+              ingredients
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> White-glove delivery & setup
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROCESS SECTION -->
+    <div class="process-section">
+      <div class="section-header" data-aos="fade-up">
+        <div class="label-gold">The Presh Method</div>
+        <h2>From Vision to Velvet Crumb</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step" data-aos="fade-up">
+          <div class="step-icon"><i class="fas fa-comments"></i></div>
+          <h3>Consultation</h3>
+          <p>Private tasting & design session</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-icon"><i class="fas fa-pen-fancy"></i></div>
+          <h3>Design</h3>
+          <p>Hand-drawn sketches & mood board</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-icon"><i class="fas fa-oven"></i></div>
+          <h3>Creation</h3>
+          <p>Artisanal techniques, premium ingredients</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-icon"><i class="fas fa-truck"></i></div>
+          <h3>Delivery</h3>
+          <p>White-glove setup nationwide</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUE SECTION (PREMIUM, NO PRICES) -->
+    <div class="value-section">
+      <div class="section-header" data-aos="fade-up">
+        <div class="label-gold">What You're Investing In</div>
+        <h2>Beyond the Cake</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-item" data-aos="fade-up">
+          <i class="fas fa-seedling"></i>
+          <h4>Premium Ingredients</h4>
+          <p>Single-origin chocolate, organic dairy, hand-selected produce</p>
+        </div>
+        <div class="value-item" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-gem"></i>
+          <h4>Custom Craftsmanship</h4>
+          <p>Every detail hand-finished, never mass-produced</p>
+        </div>
+        <div class="value-item" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-concierge-bell"></i>
+          <h4>Personalized Experience</h4>
+          <p>Dedicated consultation from concept to delivery</p>
+        </div>
+        <div class="value-item" data-aos="fade-up" data-aos-delay="300">
+          <i class="fas fa-box"></i>
+          <h4>Luxury Presentation</h4>
+          <p>Elegant packaging & white-glove service</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIAL PREVIEW -->
+    <div class="testimonial-preview">
+      <div class="testimonial-card" data-aos="fade-up">
+        <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+        <div class="testimonial-quote">
+          “Impeccable service and unparalleled artistry. Presh Cakes understands
+          the language of understated luxury.”
+        </div>
+        <div class="stars-gold">★★★★★</div>
+        <div class="client-name">— David & Priya Sharma</div>
+      </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="cta-section" id="contact">
+      <h2>Let's Create Something Exceptional</h2>
+      <p>
+        Whether it's an intimate celebration or a grand event, we approach every
+        order with the same level of care.
+      </p>
+      <a
+        href="#"
+        class="btn-gold"
+        onclick="alert('Start your order | +234 812 345 6789')"
+        >Start Your Order</a
+      >
+    </div>
+
+    <!-- MODAL FOR SERVICE IMAGES -->
+    <div id="serviceModal" class="modal">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal-content">
+        <span class="modal-close" id="closeModal">&times;</span>
+        <img id="modalImage" src="" alt="" />
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-luxury">
+      <div class="footer-grid-lux">
+        <div class="footer-brand-lux">
+          <i class="fas fa-crown logo-icon-large"></i>
+          <div class="brand-name-lux">PRESH CAKES</div>
+          <div class="tagline">Artisanal patisserie • Bespoke creations</div>
+          <div class="social-icons-lux">
+            <a href="#" class="social-icon-circle"
+              ><i class="fab fa-instagram"></i></a
+            ><a href="#" class="social-icon-circle"
+              ><i class="fab fa-facebook-f"></i></a
+            ><a href="#" class="social-icon-circle"
+              ><i class="fab fa-pinterest-p"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-nav-lux">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./services.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-lux">
+          <h4>Atelier</h4>
+          <p><i class="fas fa-map-marker-alt"></i> 72B Luxury Avenue, Dubai</p>
+          <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
+          <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="copyright-text">
+        © 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance
+      </div>
+    </footer>
+
+    <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank"
+      ><i class="fab fa-whatsapp"></i
+    ></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      const topBanner = document.getElementById("topBanner");
+      const closeBtn = document.getElementById("closeBannerBtn");
+      if (localStorage.getItem("bannerClosed") === "true") {
+        topBanner.classList.add("closed");
+        document.body.classList.remove("banner-active");
+      } else document.body.classList.add("banner-active");
+      closeBtn.addEventListener("click", () => {
+        topBanner.classList.add("closed");
+        document.body.classList.remove("banner-active");
+        localStorage.setItem("bannerClosed", "true");
+      });
+
+      const hamburger = document.getElementById("hamburger"),
+        navLinks = document.getElementById("navLinks");
+      hamburger.addEventListener("click", () =>
+        navLinks.classList.toggle("active"),
+      );
+      document
+        .querySelectorAll(".nav-links a")
+        .forEach((l) =>
+          l.addEventListener("click", () =>
+            navLinks.classList.remove("active"),
+          ),
+        );
+
+      // Modal functionality for service images
+      const serviceModal = document.getElementById("serviceModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDescription = document.getElementById("modalDescription");
+      const closeModal = document.getElementById("closeModal");
+      const modalOverlay = document.getElementById("modalOverlay");
+
+      function openModal(src, alt, title, description) {
+        modalImage.src = src;
+        modalImage.alt = alt;
+        modalTitle.textContent = title;
+        modalDescription.textContent = description;
+        serviceModal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+      }
+
+      function closeModalFunc() {
+        serviceModal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Attach click events to service images
+      document.querySelectorAll(".service-img").forEach(img => {
+        img.addEventListener("click", () => {
+          const card = img.closest(".service-card");
+          const title = card.querySelector("h3").textContent;
+          const description = card.querySelector("p").textContent;
+          openModal(img.src, img.alt, title, description);
+        });
+      });
+
+      closeModal.addEventListener("click", closeModalFunc);
+      modalOverlay.addEventListener("click", closeModalFunc);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && serviceModal.style.display === "block") {
+          closeModalFunc();
+        }
+      });
+
+      AOS.init({ duration: 700, once: true, offset: 80 });
+      if (!topBanner.classList.contains("closed"))
+        document.body.classList.add("banner-active");
+    </script>
+  </body>
+</html>
