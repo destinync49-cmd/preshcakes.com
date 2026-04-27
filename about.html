@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Presh Cakes | Our Story — Atelier of Artisan Cakes</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    /* ---------- EXACT SAME DESIGN SYSTEM AS HOMEPAGE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #0a0705;
+      color: #ece6df;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --charcoal: #0f0c0a;
+      --deep-black: #080604;
+      --gold: #c8a96e;
+      --gold-light: #e2c28b;
+      --cream: #f2ede8;
+      --orange-glow: #d97a3c;
+      --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.5);
+      --transition-premium: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1);
+    }
+
+    h1, h2, h3, .serif, .testimonial-quote {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a140f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    /* TOP BANNER (identical) */
+    .top-banner {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      padding: 0.7rem 1rem;
+      text-align: center;
+      z-index: 1001;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .top-banner.closed {
+      transform: translateY(-100%);
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      pointer-events: none;
+    }
+    .banner-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .banner-text {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: #e2d4c8;
+    }
+    .banner-link {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+    .banner-link:hover {
+      background: var(--gold);
+      color: #0a0705;
+    }
+    .banner-close {
+      background: transparent;
+      border: none;
+      color: #b8aa99;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: 0.2s;
+      padding: 0 0.3rem;
+    }
+    .banner-close:hover {
+      color: var(--gold);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(8, 6, 4, 0.8);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      padding: 1.2rem 2rem;
+      transition: var(--transition-premium);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+    }
+    body.banner-active .navbar {
+      top: 52px;
+    }
+    @media (max-width: 640px) {
+      body.banner-active .navbar {
+        top: 48px;
+      }
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.2;
+    }
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--cream);
+      font-family: "Inter", sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 400;
+      color: var(--cream);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: 0.25s;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 0.5rem 1.3rem;
+      border-radius: 40px;
+      transition: 0.25s;
+    }
+    .nav-cta a {
+      color: var(--gold) !important;
+    }
+    .nav-cta:hover {
+      background: rgba(200, 169, 110, 0.15);
+      transform: translateY(-2px);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.6rem;
+      color: var(--cream);
+      cursor: pointer;
+    }
+    @media (max-width: 880px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 70%;
+        height: calc(100vh - 70px);
+        background: #0a0705e6;
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: 0.3s;
+        z-index: 999;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .hamburger {
+        display: block;
+      }
+      .navbar {
+        padding: 0.8rem 1.5rem;
+      }
+    }
+
+    /* SECTION UTILITIES (matching homepage) */
+    .split-section {
+      padding: 4rem 5%;
+      background: var(--deep-black);
+    }
+    .split-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .masked-img {
+      width: 100%;
+      border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
+      overflow: hidden;
+      box-shadow: var(--shadow-dark);
+    }
+    .masked-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #0a0705;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+      border: none;
+      font-size: 0.9rem;
+    }
+    .btn-gold:hover {
+      background: #e2b46a;
+      transform: translateY(-3px);
+    }
+
+    /* Hero about (full-width gradient) */
+    .about-hero {
+      min-height: 70vh;
+      background: linear-gradient(125deg, rgba(10,7,5,0.7) 0%, rgba(31,22,16,0.7) 100%), url('./img/chocolate.jpg');
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      scroll-margin-top: 80px;
+    }
+    .about-hero-content {
+      max-width: 850px;
+      padding: 2rem;
+    }
+    .about-hero-content h1 {
+      font-size: 5rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
+    .about-hero-content p {
+      font-size: 1.2rem;
+      color: #e0d6cd;
+      letter-spacing: 1px;
+    }
+    @media (max-width: 768px) {
+      .about-hero-content h1 { font-size: 3rem; }
+      .about-hero-content p { font-size: 1rem; }
+      .split-grid { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    /* Value cards (reused service-card style) */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 2rem auto;
+    }
+    .value-card {
+      background: #14100c;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: 0.4s;
+      border: 1px solid rgba(200, 169, 110, 0.15);
+      padding: 2rem 1.8rem;
+      text-align: center;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    }
+    .value-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(200, 169, 110, 0.5);
+    }
+    .value-card i {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .value-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.7rem;
+      font-family: "Cormorant Garamond", serif;
+      color: var(--gold-light);
+    }
+    .value-card p {
+      color: #cdc0b2;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Timeline */
+    .timeline-container {
+      max-width: 1000px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .timeline-item {
+      flex: 1;
+      min-width: 180px;
+      background: rgba(20, 16, 12, 0.6);
+      backdrop-filter: blur(4px);
+      padding: 1.5rem 1rem;
+      border-radius: 28px;
+      border: 1px solid rgba(200, 169, 110, 0.2);
+      text-align: center;
+      transition: 0.3s;
+    }
+    .timeline-item:hover {
+      border-color: var(--gold);
+      transform: scale(1.02);
+    }
+    .timeline-year {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--gold);
+      font-family: "Cormorant Garamond", serif;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: #d9cdc0;
+      line-height: 1.4;
+    }
+
+    /* Skills section with elegant labels (progress-like minimal) */
+    .skills-wrapper {
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    .skill-item {
+      margin-bottom: 1.8rem;
+    }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      color: #e2d4c8;
+    }
+    .skill-bar-bg {
+      width: 100%;
+      height: 2px;
+      background: rgba(200, 169, 110, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--gold);
+      transition: width 1.2s cubic-bezier(0.2, 0.9, 0.4, 1);
+    }
+
+    /* testimonial preview (exactly same as homepage style) */
+    .testimonial-preview {
+      background: radial-gradient(ellipse at 30% 40%, #18110b, #030201);
+      padding: 5rem 5%;
+    }
+    .testimonial-preview .testimonial-glass-card {
+      background: rgba(15, 12, 10, 0.75);
+      backdrop-filter: blur(16px);
+      border-radius: 56px;
+      border: 1px solid rgba(200, 169, 110, 0.45);
+      padding: 2.8rem 2rem;
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .quote-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 0.75rem;
+    }
+    .testimonial-quote {
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #f2e8de;
+      line-height: 1.4;
+      font-family: "Cormorant Garamond", serif;
+    }
+    .stars-gold {
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 6px;
+      margin: 1rem 0 0.6rem;
+    }
+    .client-name {
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      color: #c9b28b;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    /* CTA block */
+    .cta-block {
+      background: linear-gradient(135deg, #1f1712, #0c0805);
+      margin: 3rem 5%;
+      padding: 4rem 2rem;
+      border-radius: 48px;
+      text-align: center;
+      border: 1px solid rgba(200, 169, 110, 0.3);
+    }
+
+    /* Footer (exact same) */
+    .footer-luxury {
+      background: #050302;
+      padding: 4rem 5% 2rem;
+      border-top: 1px solid rgba(200, 169, 110, 0.2);
+    }
+    .footer-grid-lux {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .footer-brand-lux {
+      flex: 1.2;
+      min-width: 180px;
+    }
+    .footer-nav-lux, .footer-contact-lux {
+      flex: 1;
+      min-width: 140px;
+    }
+    .footer-nav-lux { text-align: right; }
+    .footer-contact-lux { text-align: right; }
+    .footer-brand-lux .logo-icon-large {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .brand-name-lux {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .tagline {
+      font-size: 0.7rem;
+      color: #b8aa99;
+      margin-top: 0.5rem;
+    }
+    .social-icons-lux {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      justify-content: flex-start;
+    }
+    .social-icon-circle {
+      width: 34px;
+      height: 34px;
+      background: rgba(200, 169, 110, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.25s;
+      color: #e2cbaa;
+      text-decoration: none;
+      border: 1px solid rgba(200, 169, 110, 0.3);
+    }
+    .social-icon-circle:hover {
+      background: var(--gold);
+      color: #0a0705;
+      transform: translateY(-2px);
+    }
+    .footer-nav-lux h4, .footer-contact-lux h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .footer-nav-lux ul {
+      list-style: none;
+    }
+    .footer-nav-lux li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-nav-lux a {
+      text-decoration: none;
+      color: #d6cdc2;
+      font-size: 0.8rem;
+      transition: 0.2s;
+    }
+    .footer-nav-lux a:hover {
+      color: var(--gold);
+    }
+    .footer-contact-lux p {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.7rem;
+      color: #cdc0b2;
+      font-size: 0.8rem;
+    }
+    .footer-divider {
+      max-width: 1280px;
+      margin: 2rem auto 1rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200, 169, 110, 0.5), transparent);
+    }
+    .copyright-text {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #7f6e5d;
+    }
+    @media (max-width: 880px) {
+      .footer-nav-lux, .footer-contact-lux { text-align: left; }
+      .footer-contact-lux p { justify-content: flex-start; }
+    }
+
+    [data-aos] { opacity: 0; transition: opacity 0.8s ease, transform 0.8s ease; }
+    .aos-animate { opacity: 1 !important; }
+
+    /* whatsapp widget */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1002;
+      background-color: #25d366;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    .whatsapp-float i { font-size: 2rem; color: white; }
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: rgba(10,7,5,0.9);
+      backdrop-filter: blur(8px);
+      color: var(--gold-light);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+    @media (max-width: 600px) {
+      .whatsapp-float { width: 48px; height: 48px; bottom: 20px; right: 20px; }
+      .whatsapp-float i { font-size: 1.6rem; }
+      .whatsapp-tooltip { display: none; }
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1003;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+    }
+    .modal-content {
+      background: rgba(15, 12, 10, 0.95);
+      backdrop-filter: blur(16px);
+      margin: 15% auto;
+      padding: 2rem;
+      border: 1px solid var(--gold);
+      width: 80%;
+      max-width: 400px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-dark);
+    }
+    .modal-content h2 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    .modal-content p {
+      color: #e2d4c8;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    .close {
+      color: var(--gold);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .close:hover,
+    .close:focus {
+      color: #e2c28b;
+    }
+  </style>
+</head>
+<body>
+  <!-- TOP BANNER (reuse from homepage, consistency) -->
+  <div class="top-banner" id="topBanner">
+    <div class="banner-content">
+      <span class="banner-text">✦ Now taking custom orders for weddings & events — limited availability this season ✦</span>
+      <a href="#contact" class="banner-link">Book Now</a>
+      <button class="banner-close" id="closeBannerBtn">✕</button>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand"><i class="fas fa-crown logo-icon"></i><span class="brand-name">PRESH CAKES</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html" class="active-nav">About</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./services.html">Services</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+    </div>
+  </nav>
+
+  <!-- 1. HERO SECTION (ABOUT INTRO) - custom text -->
+  <section class="about-hero" id="about-hero">
+    <div class="about-hero-content" data-aos="fade-up">
+      <h1>Our Story</h1>
+      <p>Crafted with precision. Defined by taste. Remembered for detail.</p>
+    </div>
+  </section>
+
+  <!-- 2. BRAND STORY SECTION (split layout) - custom narrative -->
+  <section class="split-section" id="brand-story">
+    <div class="split-grid">
+      <div class="masked-img" data-aos="fade-up">
+        <img src="./img/ssstik.io_1776860865407.webp" alt="Presh Cakes artisan bakery">
+      </div>
+      <div data-aos="fade-left">
+        <div class="section-label">Our Journey</div>
+        <h2 style="font-size: 3rem; margin-bottom: 1rem;">Where passion became a signature</h2>
+        <p style="margin-bottom: 1rem; color: #d9cdc0;">Presh Cakes began with a simple intention — to create desserts that feel as exceptional as the moments they are made for.</p>
+        <p style="margin-bottom: 1rem; color: #d9cdc0;">What started as a quiet pursuit of perfecting recipes has grown into a refined atelier of cake design and event indulgence. Every creation is approached with patience, precision, and a deep respect for both flavor and form.</p>
+        <p style="color: #d9cdc0;">We do not believe in excess. We believe in balance — where texture, taste, and presentation meet effortlessly. From intimate celebrations to large-scale events, each piece is crafted to leave a lasting impression, not just visually, but in experience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PHILOSOPHY / VALUES SECTION (4 cards) - exact text -->
+  <section class="split-section" style="background: #0c0907;">
+    <div class="section-label" style="text-align: center;">Philosophy</div>
+    <h2 style="text-align: center; font-size: 2.8rem;">The pillars of our artistry</h2>
+    <div class="values-grid">
+      <div class="value-card" data-aos="flip-up"><i class="fas fa-gem"></i><h3>Craftsmanship</h3><p>Every cake is carefully designed and executed with attention to the smallest detail, ensuring a finish that feels intentional and refined.</p></div>
+      <div class="value-card" data-aos="flip-up" data-aos-delay="100"><i class="fas fa-leaf"></i><h3>Quality</h3><p>We use only carefully selected ingredients, chosen not for convenience, but for the depth and richness they bring to every bite.</p></div>
+      <div class="value-card" data-aos="flip-up" data-aos-delay="200"><i class="fas fa-palette"></i><h3>Creativity</h3><p>Each design is tailored, never repeated without purpose. We approach every project as a new opportunity to create something distinctive.</p></div>
+      <div class="value-card" data-aos="flip-up" data-aos-delay="300"><i class="fas fa-champagne-glasses"></i><h3>Experience</h3><p>Beyond the product, we focus on the entire experience — from consultation to delivery — ensuring it feels seamless and considered.</p></div>
+    </div>
+  </section>
+
+  <!-- 4. TIMELINE / EXPERIENCE SECTION - custom milestones -->
+  <section class="split-section">
+    <div class="section-label" style="text-align: center;">Milestones</div>
+    <h2 style="text-align: center; font-size: 2.8rem;">The Presh chronicle</h2>
+    <div class="timeline-container">
+      <div class="timeline-item" data-aos="zoom-in"><div class="timeline-year">The Beginning</div><div class="timeline-desc">A foundation built on experimentation, patience, and a desire to do things differently.</div></div>
+      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="100"><div class="timeline-year">Growth</div><div class="timeline-desc">Expanding into bespoke orders, gaining recognition through consistency and detail.</div></div>
+      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="200"><div class="timeline-year">Refinement</div><div class="timeline-desc">Developing a signature style defined by elegance, restraint, and quality.</div></div>
+      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="300"><div class="timeline-year">Today</div><div class="timeline-desc">Presh Cakes stands as a trusted name for those who value thoughtful design and exceptional taste.</div></div>
+    </div>
+  </section>
+
+  <!-- 5. SKILLS / EXPERTISE SECTION - custom expertise labels -->
+  <section class="split-section" style="background: #0c0907;">
+    <div class="section-label" style="text-align: center;">Expertise</div>
+    <h2 style="text-align: center; font-size: 2.8rem;">Mastery in every discipline</h2>
+    <div class="skills-wrapper" data-aos="fade-up">
+      <div class="skill-item"><div class="skill-header"><span>Bespoke Cake Design</span><span>Tailored creations</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">Designed to match the tone and significance of each occasion</div></div>
+      <div class="skill-item"><div class="skill-header"><span>Event Catering</span><span>Curated selection</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">Desserts and small chops crafted to complement any event setting</div></div>
+      <div class="skill-item"><div class="skill-header"><span>Celebration Cakes</span><span>Personal & memorable</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">From birthdays to private gatherings, each cake designed to feel personal</div></div>
+    </div>
+  </section>
+
+  <!-- 6. TESTIMONIAL PREVIEW (refined style) - exact client quote -->
+  <div class="testimonial-preview">
+    <div class="testimonial-glass-card" data-aos="fade-up">
+      <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+      <div class="testimonial-quote">“An exceptional balance of design and flavor. Every detail felt deliberate, and the final result exceeded expectations in the most understated way.”</div>
+      <div class="stars-gold">★★★★★</div>
+      <div class="client-name">— Private Client</div>
+    </div>
+  </div>
+
+  <!-- 7. CALL TO ACTION - exact text -->
+  <section class="cta-block" id="contact">
+    <h2 style="font-size: 2.6rem;">Let's create something truly memorable</h2>
+    <p style="margin: 1rem 0;">Whether it's an intimate celebration or a grand event, we approach every order with the same level of care and precision.</p>
+    <a href="./contact.html" class="btn-gold" onclick="showModal(event)">Contact Us</a>
+  </section>
+
+  <!-- Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contact Information</h2>
+      <p>📞 +234 812 345 6789</p>
+      <p>hello@preshcakes.com</p>
+      <button class="btn-gold" onclick="window.location.href='./contact.html'">Go to Contact Page</button>
+    </div>
+  </div>
+
+  <!-- 8. FOOTER (identical to homepage) -->
+  <footer class="footer-luxury">
+    <div class="footer-grid-lux">
+      <div class="footer-brand-lux">
+        <i class="fas fa-crown logo-icon-large"></i>
+        <div class="brand-name-lux">PRESH CAKES</div>
+        <div class="tagline">Artisanal patisserie • Bespoke creations</div>
+        <div class="social-icons-lux">
+          <a href="#" class="social-icon-circle"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon-circle"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon-circle"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="footer-nav-lux">
+        <h4>Navigation</h4>
+        <ul><li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./index.html#gallery">Gallery</a></li><li><a href="./index.html#services">Services</a></li><li><a href="./contact.html">Contact</a></li></ul>
+      </div>
+      <div class="footer-contact-lux">
+        <h4>Atelier</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 72B Luxury Avenue, Dubai</p>
+        <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
+        <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance</div>
+  </footer>
+
+  <a href="https://wa.me/2348123456789?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20luxury%20cakes" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us</span></a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // banner & localStorage
+    const topBanner = document.getElementById("topBanner");
+    const closeBannerBtn = document.getElementById("closeBannerBtn");
+    if (localStorage.getItem("bannerClosed") === "true") {
+      topBanner.classList.add("closed");
+      document.body.classList.remove("banner-active");
+    } else document.body.classList.add("banner-active");
+    closeBannerBtn.addEventListener("click", () => {
+      topBanner.classList.add("closed");
+      document.body.classList.remove("banner-active");
+      localStorage.setItem("bannerClosed", "true");
+    });
+    AOS.init({ duration: 700, once: true, offset: 80 });
+    // mobile menu
+    const hamburger = document.getElementById("hamburger"), navLinks = document.getElementById("navLinks");
+    hamburger.addEventListener("click", () => navLinks.classList.toggle("active"));
+    document.querySelectorAll(".nav-links a").forEach(l => l.addEventListener("click", () => navLinks.classList.remove("active")));
+    // skills bars animation on scroll
+    const skillBars = document.querySelectorAll(".skill-bar-fill");
+    const animateSkills = () => {
+      skillBars.forEach(bar => {
+        const rect = bar.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100 && !bar.style.width) {
+          const width = bar.getAttribute("data-width");
+          bar.style.width = width + "%";
+        }
+      });
+    };
+    window.addEventListener("scroll", animateSkills);
+    setTimeout(animateSkills, 300);
+    if (!topBanner.classList.contains("closed")) document.body.classList.add("banner-active");
+
+    // Modal functionality
+    function showModal(event) {
+      event.preventDefault();
+      document.getElementById('contactModal').style.display = 'block';
+    }
+    document.querySelector('.close').onclick = function() {
+      document.getElementById('contactModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('contactModal')) {
+        document.getElementById('contactModal').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Presh Cakes | The Gallery — Editorial Archive</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #0a0705;
+      color: #ece6df;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --charcoal: #0f0c0a;
+      --deep-black: #080604;
+      --gold: #c8a96e;
+      --gold-light: #e2c28b;
+      --cream: #f2ede8;
+      --cream-soft: #ece3d9;
+      --text-body: #d6cdc2;
+      --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.5);
+      --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.35);
+      --transition-premium: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+    }
+
+    /* ===== TYPOGRAPHY SYSTEM ===== */
+    h1, h2, h3, .serif-headline {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--cream);
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--gold-light);
+    }
+
+    .body-text, p, .description {
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+
+    .label-gold {
+      font-family: "Inter", sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .btn-text {
+      font-family: "Inter", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 1.8rem; }
+      h3 { font-size: 1.2rem; }
+      .body-text, p, .description { font-size: 0.95rem; line-height: 1.6; }
+      .label-gold { font-size: 0.7rem; letter-spacing: 2px; }
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a140f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    /* ===== TOP BANNER ===== */
+    .top-banner {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+      padding: 0.6rem 1rem;
+      text-align: center;
+      z-index: 1001;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .top-banner.closed {
+      transform: translateY(-100%);
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      pointer-events: none;
+    }
+    .banner-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .banner-text {
+      font-family: "Inter", sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      color: #e2d4c8;
+    }
+    .banner-link {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.25s;
+    }
+    .banner-link:hover {
+      background: var(--gold);
+      color: #0a0705;
+    }
+    .banner-close {
+      background: transparent;
+      border: none;
+      color: #b8aa99;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: 0.2s;
+    }
+    .banner-close:hover {
+      color: var(--gold);
+    }
+
+    /* ===== NAVBAR (MATCHING HOMEPAGE EXACTLY) ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(8, 6, 4, 0.8);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      padding: 1.2rem 2rem;
+      transition: var(--transition-premium);
+      border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+    }
+    body.banner-active .navbar {
+      top: 52px;
+    }
+    @media (max-width: 640px) {
+      body.banner-active .navbar {
+        top: 48px;
+      }
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.2;
+    }
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: var(--cream);
+      font-family: "Inter", sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 400;
+      color: var(--cream);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      transition: 0.25s;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 0.5rem 1.3rem;
+      border-radius: 40px;
+      transition: 0.25s;
+    }
+    .nav-cta a {
+      color: var(--gold) !important;
+    }
+    .nav-cta:hover {
+      background: rgba(200, 169, 110, 0.15);
+      transform: translateY(-2px);
+    }
+    .hamburger {
+      display: none;
+      font-size: 1.6rem;
+      color: var(--cream);
+      cursor: pointer;
+    }
+    /* Mobile menu styles - exactly matching homepage */
+    @media (max-width: 880px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 70%;
+        height: calc(100vh - 70px);
+        background: #0a0705e6;
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: 0.3s;
+        z-index: 999;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .hamburger {
+        display: block;
+      }
+      .navbar {
+        padding: 0.8rem 1.5rem;
+      }
+      body.banner-active .navbar {
+        top: 48px;
+      }
+      .nav-links a {
+        font-size: 1rem;
+      }
+    }
+
+    /* ===== HERO SECTION ===== */
+    .compact-hero {
+      min-height: 55vh;
+      background: linear-gradient(135deg, rgba(10,7,5,0.85) 0%, rgba(31,22,16,0.7) 100%), url('./img/Wedding Cakes.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 0;
+      scroll-margin-top: 70px;
+    }
+    .compact-hero-content {
+      max-width: 850px;
+      padding: 2rem;
+    }
+    @media (max-width: 768px) {
+      .compact-hero { min-height: 45vh; }
+    }
+
+    /* ===== HISTORY TIMELINE (FULLY RESPONSIVE) ===== */
+    .timeline-strip {
+      padding: 5rem 5%;
+      background: #0a0705;
+    }
+    .timeline-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .timeline-card {
+      background: #14100c;
+      border: 1px solid rgba(200, 169, 110, 0.12);
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .timeline-card:hover {
+      border-color: rgba(200, 169, 110, 0.5);
+      transform: translateY(-4px);
+    }
+    .timeline-chapter {
+      font-family: "Inter", sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .timeline-card h3 {
+      margin-bottom: 0.75rem;
+    }
+    .timeline-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      .timeline-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+    }
+    @media (max-width: 550px) {
+      .timeline-strip { padding: 3rem 5%; }
+      .timeline-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .timeline-card { padding: 1.2rem 1rem; }
+      .timeline-card h3 { font-size: 1.2rem; }
+      .timeline-card p { font-size: 0.85rem; }
+    }
+
+    /* ===== 3-COLUMN VIDEO SHOWCASE ===== */
+    .video-showcase {
+      padding: 4rem 5%;
+      background: #0c0907;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header .label-gold {
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .video-three-columns {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .video-column-card {
+      background: #14100c;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: var(--transition-premium);
+      border: 1px solid rgba(200, 169, 110, 0.1);
+    }
+    .video-column-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 169, 110, 0.4);
+      box-shadow: var(--shadow-soft);
+    }
+    .video-wrapper-col {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      cursor: pointer;
+      background: #000;
+    }
+    .video-wrapper-col video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .video-wrapper-col:hover video {
+      transform: scale(1.02);
+    }
+    .play-overlay-col {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      pointer-events: none;
+    }
+    .video-wrapper-col.playing .play-overlay-col {
+      opacity: 0;
+    }
+    .play-btn-small {
+      width: 55px;
+      height: 55px;
+      background: rgba(200,169,110,0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #0a0705;
+      transition: 0.25s;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .play-btn-small:hover {
+      transform: scale(1.08);
+      background: var(--gold);
+    }
+    .video-caption {
+      padding: 1.2rem 1.2rem 1.2rem;
+    }
+    .video-caption h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    .video-caption p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #bcaea0;
+    }
+    @media (max-width: 1024px) {
+      .video-three-columns { gap: 1.2rem; }
+      .video-caption h4 { font-size: 1.1rem; }
+    }
+    @media (max-width: 768px) {
+      .video-three-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .video-caption h4 { font-size: 1.2rem; }
+    }
+
+    /* ===== GALLERY SECTION (STRICT 4-COLUMN) ===== */
+    .gallery-editorial {
+      padding: 5rem 5%;
+      background: #0a0705;
+    }
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .gallery-grid-strict {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1 / 1.1;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #14100c;
+      transition: var(--transition-premium);
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-item:hover {
+      box-shadow: 0 0 0 1px rgba(200,169,110,0.5), 0 12px 24px rgba(0,0,0,0.4);
+    }
+    .item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 100%);
+      opacity: 0;
+      transition: 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+    }
+    .gallery-item:hover .item-overlay {
+      opacity: 1;
+    }
+    .item-overlay h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .item-overlay p {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: #f0e8df;
+    }
+    @media (max-width: 1024px) {
+      .gallery-grid-strict { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .item-overlay h4 { font-size: 1rem; }
+      .item-overlay p { font-size: 0.65rem; }
+    }
+    @media (max-width: 768px) {
+      .gallery-grid-strict { grid-template-columns: 1fr; gap: 0.8rem; }
+      .item-overlay { padding: 0.8rem; }
+      .item-overlay h4 { font-size: 0.85rem; }
+      .item-overlay p { font-size: 0.55rem; }
+    }
+    @media (max-width: 550px) {
+      .gallery-grid-strict { gap: 0.6rem; }
+      .item-overlay h4 { font-size: 0.7rem; }
+      .item-overlay p { display: none; }
+    }
+
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .gallery-modal.open {
+      display: flex;
+    }
+    .gallery-modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+    .gallery-modal-content {
+      position: relative;
+      z-index: 2001;
+      background: linear-gradient(135deg, #18110b 0%, #0f0c0a 100%);
+      border: 1px solid rgba(200, 169, 110, 0.4);
+      border-radius: 40px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 850px;
+      max-height: 85vh;
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.7),
+        0 0 1px rgba(200, 169, 110, 0.1) inset;
+      animation: modalSlideIn 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+      display: flex;
+      flex-direction: row;
+    }
+    .gallery-modal-body {
+      display: flex;
+      width: 100%;
+      max-height: 85vh;
+    }
+    .gallery-modal-image-wrapper {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    .gallery-modal-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-modal-details {
+      flex: 0.9;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+    .gallery-modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: transparent;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2002;
+    }
+    .gallery-modal-close:hover {
+      color: #e2c28b;
+      transform: rotate(90deg);
+    }
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    #galleryModalTitle {
+      font-size: 2rem;
+      color: #f2ede8;
+      margin: 0 0 1rem 0;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+    }
+    .gallery-modal-desc {
+      font-size: 0.95rem;
+      color: #d9cdc0;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .gallery-modal-content {
+        flex-direction: column;
+        max-width: 90vw;
+      }
+      .gallery-modal-body {
+        flex-direction: column;
+      }
+      .gallery-modal-image-wrapper {
+        height: 320px;
+        width: 100%;
+      }
+      .gallery-modal-details {
+        padding: 2rem;
+        flex: none;
+      }
+      #galleryModalTitle {
+        font-size: 1.6rem;
+      }
+      .gallery-modal-desc {
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-modal-details {
+        padding: 1.5rem;
+      }
+      #galleryModalTitle {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* ===== CTA ===== */
+    .cta-compact {
+      background: linear-gradient(135deg, #1f1712, #0c0805);
+      margin: 0 5% 4rem;
+      padding: 4rem 2rem;
+      border-radius: 48px;
+      text-align: center;
+      border: 1px solid rgba(200, 169, 110, 0.25);
+    }
+    .cta-compact h2 {
+      margin-bottom: 1rem;
+    }
+    .btn-gold-minimal {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      font-family: "Inter", sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: 0.25s;
+      margin-top: 0.5rem;
+    }
+    .btn-gold-minimal:hover {
+      background: var(--gold);
+      color: #0a0705;
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER (EXACTLY MATCHING HOMEPAGE) ===== */
+    .footer-luxury {
+      background: #050302;
+      padding: 4rem 5% 2rem;
+      border-top: 1px solid rgba(200, 169, 110, 0.2);
+    }
+    .footer-grid-lux {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+    .footer-brand-lux {
+      flex: 1.2;
+      min-width: 180px;
+    }
+    .footer-nav-lux {
+      flex: 1;
+      text-align: right;
+      min-width: 140px;
+    }
+    .footer-contact-lux {
+      flex: 1;
+      text-align: right;
+      min-width: 180px;
+    }
+    .footer-brand-lux .logo-icon-large {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    .footer-brand-lux .brand-name-lux {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+    .tagline {
+      font-size: 0.7rem;
+      color: #b8aa99;
+      margin-top: 0.5rem;
+      max-width: 220px;
+    }
+    .footer-nav-lux h4,
+    .footer-contact-lux h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+    .footer-nav-lux ul {
+      list-style: none;
+    }
+    .footer-nav-lux li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-nav-lux a {
+      text-decoration: none;
+      color: #d6cdc2;
+      font-size: 0.8rem;
+      transition: 0.2s;
+    }
+    .footer-nav-lux a:hover {
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .footer-contact-lux p {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.7rem;
+      color: #cdc0b2;
+      font-size: 0.8rem;
+    }
+    .social-icons-lux {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      justify-content: flex-start;
+    }
+    .social-icon-circle {
+      width: 34px;
+      height: 34px;
+      background: rgba(200, 169, 110, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.25s;
+      color: #e2cbaa;
+      text-decoration: none;
+      border: 1px solid rgba(200, 169, 110, 0.3);
+    }
+    .social-icon-circle:hover {
+      background: var(--gold);
+      color: #0a0705;
+      transform: translateY(-2px);
+    }
+    .footer-divider {
+      max-width: 1280px;
+      margin: 2rem auto 1rem;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(200, 169, 110, 0.5),
+        transparent
+      );
+    }
+    .copyright-text {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #7f6e5d;
+    }
+    @media (max-width: 880px) {
+      .footer-grid-lux {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .footer-nav-lux,
+      .footer-contact-lux {
+        text-align: left;
+      }
+      .footer-contact-lux p {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Animations */
+    [data-fade] {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.9s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.9s ease;
+    }
+    [data-fade].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1002;
+      background-color: #25d366;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: 0.25s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.06); }
+    .whatsapp-float i { font-size: 1.7rem; color: white; }
+  </style>
+</head>
+<body>
+  <div class="top-banner" id="topBanner">
+    <div class="banner-content">
+      <span class="banner-text">✦ Limited commissions — Spring/Summer collection now open ✦</span>
+      <a href="#contact" class="banner-link">Inquire</a>
+      <button class="banner-close" id="closeBannerBtn">✕</button>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <i class="fas fa-crown logo-icon"></i>
+        <span class="brand-name">PRESH CAKES</span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./service.html">Services</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="compact-hero">
+    <div class="compact-hero-content" data-fade>
+      <h1>Our Craft in Motion</h1>
+    </div>
+  </section>
+
+  <!-- HISTORY TIMELINE -->
+  <div class="timeline-strip">
+    <div class="timeline-grid">
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter I</div><h3>The Beginning</h3><p>A quiet pursuit of precision, flavor, and intention.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter II</div><h3>The Growth</h3><p>Expansion into events, custom commissions, and recognition.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter III</div><h3>The Refinement</h3><p>A signature style defined by elegance and restraint.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter IV</div><h3>Today</h3><p>A trusted name for thoughtful design and exceptional taste.</p></div>
+    </div>
+  </div>
+
+  <!-- 3-COLUMN VIDEO SHOWCASE -->
+  <div class="video-showcase">
+    <div class="section-header" data-fade>
+      <div class="label-gold">Behind the Craft</div>
+      <h2>The Art of Creation</h2>
+    </div>
+    <div class="video-three-columns">
+      <div class="video-column-card" data-fade>
+        <div class="video-wrapper-col" id="video1">
+          <video preload="metadata">
+            <source src="./video/ssstik.io_1776861179867.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay-col"><div class="play-btn-small"><i class="fas fa-play"></i></div></div>
+        </div>
+        <div class="video-caption"><h4>Sculpting Layers</h4><p>Precision in every tier, balance in every bite.</p></div>
+      </div>
+      <div class="video-column-card" data-fade>
+        <div class="video-wrapper-col" id="video2">
+          <video preload="metadata">
+            <source src="./video/ssstik.io_1776861371615.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay-col"><div class="play-btn-small"><i class="fas fa-play"></i></div></div>
+        </div>
+        <div class="video-caption"><h4>The Final Finish</h4><p>Gold leaf, texture, and understated luxury.</p></div>
+      </div>
+      <div class="video-column-card" data-fade>
+        <div class="video-wrapper-col" id="video3">
+          <video preload="metadata">
+            <source src="./video/ssstik.io_@womanking1753_1776861403358.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay-col"><div class="play-btn-small"><i class="fas fa-play"></i></div></div>
+        </div>
+        <div class="video-caption"><h4>Artisan Process</h4><p>From raw ingredients to edible masterpiece.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY GRID 4-COLUMN -->
+  <div class="gallery-editorial">
+    <div class="gallery-header" data-fade>
+      <div class="label-gold">Signature Collection</div>
+      <h2>Visual Archive</h2>
+    </div>
+    <div class="gallery-grid-strict">
+      <div class="gallery-item" data-fade><img src="./img/chocolate.jpg" alt="Midnight Truffle"><div class="item-overlay"><h4>Midnight Truffle</h4><p>Rich chocolate, smooth ganache</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/birthday cake.jpg" alt="Royal Celebration"><div class="item-overlay"><h4>Royal Celebration</h4><p>Refined centerpiece</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/Wedding Cakes.jpg" alt="Gold Signature"><div class="item-overlay"><h4>Gold Signature</h4><p>Delicate gold accents</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/Event Catering.jpg" alt="Velvet Bliss"><div class="item-overlay"><h4>Velvet Bliss</h4><p>Soft layers, smooth cream</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/bakerwithcake.jpg" alt="Vanilla Élégance"><div class="item-overlay"><h4>Vanilla Élégance</h4><p>Timeless simplicity</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/meatpie.jpg" alt="Chocolate Indulgence"><div class="item-overlay"><h4>Chocolate Indulgence</h4><p>Deep, refined layers</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/shawama.jpg" alt="Wedding Tier"><div class="item-overlay"><h4>Wedding Tier</h4><p>Structured elegance</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/milkydoughnut.jpg" alt="Birthday Signature"><div class="item-overlay"><h4>Birthday Signature</h4><p>Modern celebration</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/snacksbasket.jpg" alt="Bespoke Creation"><div class="item-overlay"><h4>Bespoke Creation</h4><p>Tailored to vision</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/cake1.jpg" alt="Artisan Tier"><div class="item-overlay"><h4>Artisan Tier</h4><p>Sculpted poetry</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/birthday cake.jpg" alt="Golden Edition"><div class="item-overlay"><h4>Golden Edition</h4><p>Quiet luxury</p></div></div>
+      <div class="gallery-item" data-fade><img src="./img/chocolate.jpg" alt="Noir Collection"><div class="item-overlay"><h4>Noir Collection</h4><p>Intensity meets crumb</p></div></div>
+    </div>
+  </div>
+
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-modal-overlay" id="galleryModalOverlay"></div>
+    <div class="gallery-modal-content">
+      <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close image modal">✕</button>
+      <div class="gallery-modal-body">
+        <div class="gallery-modal-image-wrapper">
+          <img src="" alt="" id="galleryModalImage" />
+        </div>
+        <div class="gallery-modal-details">
+          <h4 id="galleryModalTitle"></h4>
+          <p class="gallery-modal-desc" id="galleryModalDescription"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-compact" id="contact">
+    <h2>Every creation begins with a vision</h2>
+    <a href="#" class="btn-gold-minimal" onclick="alert('Start your custom order | +234 812 345 6789')">Start Custom Order</a>
+  </div>
+
+  <!-- FOOTER (EXACTLY MATCHING HOMEPAGE) -->
+  <footer class="footer-luxury">
+    <div class="footer-grid-lux">
+      <div class="footer-brand-lux">
+        <i class="fas fa-crown logo-icon-large"></i>
+        <div class="brand-name-lux">PRESH CAKES</div>
+        <div class="tagline">Artisanal patisserie • Bespoke creations</div>
+        <div class="social-icons-lux">
+          <a href="#" class="social-icon-circle"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon-circle"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon-circle"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="footer-nav-lux">
+        <h4>Navigation</h4>
+        <ul><li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./gallery.html">Gallery</a></li><li><a href="./services.html">Services</a></li><li><a href="./contact.html">Contact</a></li></ul>
+      </div>
+      <div class="footer-contact-lux">
+        <h4>Atelier</h4>
+        <p><i class="fas fa-map-marker-alt"></i> 72B Luxury Avenue, Dubai</p>
+        <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
+        <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance</div>
+  </footer>
+
+  <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Banner & navbar adjust
+    const topBanner = document.getElementById("topBanner");
+    const closeBtn = document.getElementById("closeBannerBtn");
+    if (localStorage.getItem("bannerClosed") === "true") {
+      topBanner.classList.add("closed");
+      document.body.classList.remove("banner-active");
+    } else {
+      document.body.classList.add("banner-active");
+    }
+    closeBtn.addEventListener("click", () => {
+      topBanner.classList.add("closed");
+      document.body.classList.remove("banner-active");
+      localStorage.setItem("bannerClosed", "true");
+    });
+
+    // Mobile menu toggle (exactly matching homepage)
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+    
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+    
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Video players for 3 columns
+    function initVideoPlayer(wrapperId) {
+      const wrapper = document.getElementById(wrapperId);
+      if (!wrapper) return;
+      const video = wrapper.querySelector("video");
+      const playBtn = wrapper.querySelector(".play-btn-small");
+      video.setAttribute("playsinline", "");
+      function togglePlay(event) {
+        if (event) event.stopPropagation();
+        if (video.paused) {
+          video.play();
+          wrapper.classList.add("playing");
+        } else {
+          video.pause();
+          wrapper.classList.remove("playing");
+        }
+      }
+      playBtn.addEventListener("click", togglePlay);
+      wrapper.addEventListener("click", togglePlay);
+      video.addEventListener("ended", () => wrapper.classList.remove("playing"));
+    }
+    initVideoPlayer("video1");
+    initVideoPlayer("video2");
+    initVideoPlayer("video3");
+
+    const galleryModal = document.getElementById("galleryModal");
+    const galleryModalImage = document.getElementById("galleryModalImage");
+    const galleryModalTitle = document.getElementById("galleryModalTitle");
+    const galleryModalDescription = document.getElementById("galleryModalDescription");
+    const galleryModalClose = document.getElementById("galleryModalClose");
+
+    function openGalleryModal(src, alt, title, description) {
+      galleryModalImage.src = src;
+      galleryModalImage.alt = alt;
+      galleryModalTitle.textContent = title;
+      galleryModalDescription.textContent = description;
+      galleryModal.classList.add("open");
+      galleryModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeGalleryModal() {
+      galleryModal.classList.remove("open");
+      galleryModal.setAttribute("aria-hidden", "true");
+      galleryModalImage.src = "";
+      galleryModalImage.alt = "";
+    }
+
+    document.querySelectorAll(".gallery-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        const title = item.querySelector(".item-overlay h4")?.textContent || img.alt;
+        const description = item.querySelector(".item-overlay p")?.textContent || "";
+        openGalleryModal(img.src, img.alt, title, description);
+      });
+    });
+
+    galleryModalClose.addEventListener("click", closeGalleryModal);
+    document.getElementById("galleryModalOverlay").addEventListener("click", closeGalleryModal);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && galleryModal.classList.contains("open")) {
+        closeGalleryModal();
+      }
+    });
+
+    // Fade animations
+    const fadeElements = document.querySelectorAll("[data-fade]");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "20px" });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Initialize AOS
+    AOS.init({ duration: 700, once: true, offset: 80 });
+  </script>
+</body>
+</html>

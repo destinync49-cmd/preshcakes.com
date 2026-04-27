@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Presh Cakes | Contact — Private Consultation</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0a0705;
+        color: #ece6df;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --charcoal: #0f0c0a;
+        --deep-black: #080604;
+        --gold: #c8a96e;
+        --gold-light: #e2c28b;
+        --cream: #f2ede8;
+        --text-body: #d6cdc2;
+        --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.5);
+        --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.35);
+        --transition-premium: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+      }
+
+      /* ===== TYPOGRAPHY SYSTEM ===== */
+      h1,
+      h2,
+      h3,
+      .serif-headline {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      h2 {
+        font-size: 2.6rem;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: var(--cream);
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+        color: var(--gold-light);
+      }
+
+      .body-text,
+      p {
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text-body);
+      }
+
+      .label-gold {
+        font-family: "Inter", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+
+      .btn-text {
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.8rem;
+        }
+        h3 {
+          font-size: 1.2rem;
+        }
+        .body-text,
+        p {
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+        .label-gold {
+          font-size: 0.7rem;
+          letter-spacing: 2px;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a140f;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gold);
+        border-radius: 10px;
+      }
+
+      /* ===== TOP BANNER ===== */
+      .top-banner {
+        position: relative;
+        width: 100%;
+        background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
+        border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+        padding: 0.6rem 1rem;
+        text-align: center;
+        z-index: 1001;
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+      .top-banner.closed {
+        transform: translateY(-100%);
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        pointer-events: none;
+      }
+      .banner-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .banner-text {
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 1.5px;
+        color: #e2d4c8;
+      }
+      .banner-link {
+        background: transparent;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        padding: 0.25rem 1rem;
+        border-radius: 30px;
+        font-size: 0.65rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+      .banner-link:hover {
+        background: var(--gold);
+        color: #0a0705;
+      }
+      .banner-close {
+        background: transparent;
+        border: none;
+        color: #b8aa99;
+        cursor: pointer;
+        font-size: 0.75rem;
+        transition: 0.2s;
+      }
+      .banner-close:hover {
+        color: var(--gold);
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 6, 4, 0.8);
+        backdrop-filter: blur(14px);
+        z-index: 1000;
+        padding: 1.2rem 2rem;
+        transition: var(--transition-premium);
+        border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      }
+      body.banner-active .navbar {
+        top: 52px;
+      }
+      @media (max-width: 640px) {
+        body.banner-active .navbar {
+          top: 48px;
+        }
+      }
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.2;
+      }
+      .logo-icon {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 4px;
+      }
+      .brand-name {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: var(--cream);
+        font-family: "Inter", sans-serif;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.2rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        font-weight: 400;
+        color: var(--cream);
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        transition: 0.25s;
+        position: relative;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: var(--gold);
+        transition: 0.3s;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        background: transparent;
+        border: 1px solid var(--gold);
+        padding: 0.5rem 1.3rem;
+        border-radius: 40px;
+        transition: 0.25s;
+      }
+      .nav-cta a {
+        color: var(--gold) !important;
+      }
+      .nav-cta:hover {
+        background: rgba(200, 169, 110, 0.15);
+        transform: translateY(-2px);
+      }
+      .hamburger {
+        display: none;
+        font-size: 1.6rem;
+        color: var(--cream);
+        cursor: pointer;
+      }
+      @media (max-width: 880px) {
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 70%;
+          height: calc(100vh - 70px);
+          background: #0a0705e6;
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          transition: 0.3s;
+          z-index: 999;
+        }
+        .nav-links.active {
+          left: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+        .navbar {
+          padding: 0.8rem 1.5rem;
+        }
+        body.banner-active .navbar {
+          top: 48px;
+        }
+        .nav-links a {
+          font-size: 1rem;
+        }
+      }
+
+      /* ===== HERO SECTION ===== */
+      .contact-hero {
+        min-height: 60vh;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(10, 7, 5, 0.85) 0%,
+            rgba(31, 22, 16, 0.7) 100%
+          ),
+          url("./img/Wedding Cakes.jpg");
+        background-size: cover;
+        background-position: center 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        scroll-margin-top: 70px;
+        position: relative;
+      }
+      .hero-content {
+        max-width: 750px;
+        padding: 2rem;
+      }
+      .hero-content .label-gold {
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+      .hero-content h1 {
+        margin-bottom: 0.75rem;
+      }
+      .hero-content p {
+        margin-bottom: 0;
+      }
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+        cursor: pointer;
+      }
+      .scroll-indicator i {
+        font-size: 1.2rem;
+        color: var(--gold);
+        opacity: 0.7;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+      }
+
+      /* ===== CONTACT EXPERIENCE SECTION ===== */
+      .contact-experience {
+        padding: 5rem 5%;
+        background: #0a0705;
+      }
+      .contact-split {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
+      /* FORM STYLES */
+      .form-container h2 {
+        margin-bottom: 0.5rem;
+      }
+      .form-container .label-gold {
+        margin-bottom: 1.5rem;
+        display: inline-block;
+      }
+      .luxury-form {
+        margin-top: 1.5rem;
+      }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      .form-group label {
+        display: block;
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        background: rgba(20, 16, 12, 0.8);
+        border: 1px solid rgba(200, 169, 110, 0.25);
+        border-radius: 16px;
+        padding: 0.9rem 1.2rem;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        color: var(--cream);
+        transition: all 0.3s ease;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(200, 169, 110, 0.2);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .submit-btn {
+        background: var(--gold);
+        color: #0a0705;
+        border: none;
+        padding: 0.9rem 2rem;
+        border-radius: 40px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+      .submit-btn:hover {
+        background: #e2b46a;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(200, 169, 110, 0.3);
+      }
+      /* RIGHT SIDE CONTACT INFO */
+      .contact-info {
+        padding: 1rem 0;
+      }
+      .contact-info h2 {
+        margin-bottom: 0.5rem;
+      }
+      .info-block {
+        margin: 2rem 0;
+      }
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+      }
+      .info-item i {
+        width: 40px;
+        height: 40px;
+        background: rgba(200, 169, 110, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: var(--gold);
+      }
+      .info-item div p:first-child {
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: var(--gold);
+        margin-bottom: 0.2rem;
+      }
+      .info-item div p:last-child {
+        font-size: 0.9rem;
+        color: var(--text-body);
+      }
+      .social-contact {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .social-contact a {
+        width: 44px;
+        height: 44px;
+        background: rgba(200, 169, 110, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-size: 1.2rem;
+        transition: 0.25s;
+        border: 1px solid rgba(200, 169, 110, 0.2);
+        text-decoration: none;
+      }
+      .social-contact a:hover {
+        background: var(--gold);
+        color: #0a0705;
+        transform: translateY(-2px);
+      }
+      @media (max-width: 900px) {
+        .contact-split {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+      }
+
+      /* ===== QUICK ACTION CARDS ===== */
+      .quick-actions {
+        padding: 2rem 5% 4rem;
+        background: #0c0907;
+      }
+      .quick-grid {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .action-card {
+        background: #14100c;
+        border: 1px solid rgba(200, 169, 110, 0.12);
+        border-radius: 24px;
+        padding: 1.8rem 1.5rem;
+        text-align: center;
+        transition: var(--transition-premium);
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+      }
+      .action-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold);
+        box-shadow: var(--shadow-soft);
+      }
+      .action-card i {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .action-card h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--gold-light);
+        margin-bottom: 0.5rem;
+      }
+      .action-card p {
+        font-size: 0.8rem;
+        color: #bcaea0;
+      }
+      @media (max-width: 768px) {
+        .quick-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+
+      /* ===== MAP SECTION ===== */
+      .map-section {
+        padding: 2rem 5% 4rem;
+        background: #0a0705;
+      }
+      .map-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--shadow-soft);
+      }
+      .map-container iframe {
+        width: 100%;
+        height: 350px;
+        display: block;
+        filter: grayscale(0.3) invert(0.1) brightness(0.8);
+        border: none;
+      }
+      @media (max-width: 768px) {
+        .map-container iframe {
+          height: 250px;
+        }
+      }
+
+      /* ===== FINAL CTA ===== */
+      .final-cta {
+        background: linear-gradient(135deg, #1f1712, #0c0805);
+        margin: 0 5% 4rem;
+        padding: 4rem 2rem;
+        border-radius: 48px;
+        text-align: center;
+        border: 1px solid rgba(200, 169, 110, 0.25);
+      }
+      .final-cta h2 {
+        margin-bottom: 1rem;
+      }
+      .final-cta p {
+        margin-bottom: 1.8rem;
+      }
+      .btn-gold {
+        display: inline-block;
+        background: var(--gold);
+        color: #0a0705;
+        padding: 0.8rem 2rem;
+        border-radius: 40px;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+      .btn-gold:hover {
+        background: #e2b46a;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(200, 169, 110, 0.3);
+      }
+
+      /* ===== FOOTER ===== */
+      .footer-luxury {
+        background: #050302;
+        padding: 4rem 5% 2rem;
+        border-top: 1px solid rgba(200, 169, 110, 0.2);
+      }
+      .footer-grid-lux {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+      .footer-brand-lux {
+        flex: 1.2;
+        min-width: 180px;
+      }
+      .footer-nav-lux,
+      .footer-contact-lux {
+        flex: 1;
+        min-width: 140px;
+      }
+      .footer-nav-lux {
+        text-align: right;
+      }
+      .footer-contact-lux {
+        text-align: right;
+      }
+      .footer-brand-lux .logo-icon-large {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+      .brand-name-lux {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        font-weight: 500;
+      }
+      .tagline {
+        font-size: 0.7rem;
+        color: #b8aa99;
+        margin-top: 0.5rem;
+      }
+      .social-icons-lux {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+        justify-content: flex-start;
+      }
+      .social-icon-circle {
+        width: 34px;
+        height: 34px;
+        background: rgba(200, 169, 110, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.25s;
+        color: #e2cbaa;
+        text-decoration: none;
+        border: 1px solid rgba(200, 169, 110, 0.3);
+      }
+      .social-icon-circle:hover {
+        background: var(--gold);
+        color: #0a0705;
+        transform: translateY(-2px);
+      }
+      .footer-nav-lux h4,
+      .footer-contact-lux h4 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: var(--gold);
+      }
+      .footer-nav-lux ul {
+        list-style: none;
+      }
+      .footer-nav-lux li {
+        margin-bottom: 0.6rem;
+      }
+      .footer-nav-lux a {
+        text-decoration: none;
+        color: #d6cdc2;
+        font-size: 0.8rem;
+        transition: 0.2s;
+      }
+      .footer-nav-lux a:hover {
+        color: var(--gold);
+      }
+      .footer-contact-lux p {
+        margin-bottom: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.7rem;
+        color: #cdc0b2;
+        font-size: 0.8rem;
+      }
+      .footer-divider {
+        max-width: 1280px;
+        margin: 2rem auto 1rem;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(200, 169, 110, 0.5),
+          transparent
+        );
+      }
+      .copyright-text {
+        text-align: center;
+        font-size: 0.7rem;
+        color: #7f6e5d;
+      }
+      @media (max-width: 880px) {
+        .footer-grid-lux {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .footer-nav-lux,
+        .footer-contact-lux {
+          text-align: left;
+        }
+        .footer-contact-lux p {
+          justify-content: flex-start;
+        }
+      }
+      @media (max-width: 640px) {
+        .footer-grid-lux {
+          flex-direction: column;
+          gap: 2rem;
+        }
+        .footer-nav-lux,
+        .footer-contact-lux {
+          text-align: left;
+        }
+      }
+
+      [data-aos] {
+        opacity: 0;
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .aos-animate {
+        opacity: 1 !important;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 1002;
+        background-color: #25d366;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: 0.25s;
+        text-decoration: none;
+      }
+      .whatsapp-float:hover {
+        transform: scale(1.06);
+      }
+      .whatsapp-float i {
+        font-size: 1.7rem;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-banner" id="topBanner">
+      <div class="banner-content">
+        <span class="banner-text"
+          >✦ Limited commissions — Spring/Summer collection now open ✦</span
+        >
+        <a href="#contact" class="banner-link">Inquire</a>
+        <button class="banner-close" id="closeBannerBtn">✕</button>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="brand">
+          <i class="fas fa-crown logo-icon"></i
+          ><span class="brand-name">PRESH CAKES</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./gallery.html">Gallery</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="contact-hero">
+      <div class="hero-content" data-aos="fade-up">
+        <div class="label-gold">Contact</div>
+        <h1>Let's Create Something Exceptional</h1>
+        <p>Begin your journey with a private consultation.</p>
+      </div>
+      <div
+        class="scroll-indicator"
+        onclick="
+          document
+            .getElementById('contact-section')
+            .scrollIntoView({ behavior: 'smooth' })
+        "
+      >
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- CONTACT EXPERIENCE SECTION (FORM + INFO) -->
+    <div class="contact-experience" id="contact-section">
+      <div class="contact-split">
+        <!-- LEFT: FORM -->
+        <div class="form-container" data-aos="fade-right">
+          <div class="label-gold">Inquiry Form</div>
+          <h2>Share Your Vision</h2>
+          <form
+            class="luxury-form"
+            id="contactForm"
+            action="mailto:graciemerlin5@gmail.com?subject=Presh Cakes Inquiry"
+            method="post"
+            enctype="text/plain"
+          >
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="Full Name" required />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="Email Address" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="Phone Number" required />
+            </div>
+            <div class="form-group">
+              <label>Event Type</label>
+              <select name="Event Type">
+                <option value="">Select an option</option>
+                <option>Wedding</option>
+                <option>Birthday</option>
+                <option>Event Catering</option>
+                <option>Custom Order</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Event Date</label>
+              <input type="date" name="Event Date" />
+            </div>
+            <div class="form-group">
+              <label>Message / Details</label>
+              <textarea name="Message / Details" placeholder="Tell us about your vision..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+          </form>
+        </div>
+
+        <!-- RIGHT: CONTACT INFO -->
+        <div class="contact-info" data-aos="fade-left">
+          <div class="label-gold">Atelier</div>
+          <h2>Connect Directly</h2>
+          <div class="info-block">
+            <div class="info-item">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <p>Phone</p>
+                <p>+234 812 345 6789</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <p>Email</p>
+                <p>concierge@preshcakes.com</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <p>Location</p>
+                <p>Awka, Anambra State, Nigeria</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <p>Working Hours</p>
+                <p>Mon–Sat: 10am – 7pm | Sun: Closed</p>
+              </div>
+            </div>
+          </div>
+          <div class="label-gold">Connect</div>
+          <div class="social-contact">
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="WhatsApp"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTION CARDS -->
+    <div class="quick-actions">
+      <div class="quick-grid">
+        <a
+          href="#"
+          class="action-card"
+          data-aos="fade-up"
+          onclick="
+            alert('Start your custom cake order');
+            return false;
+          "
+          ><i class="fas fa-cake-candles"></i>
+          <h4>Start a Custom Cake Order</h4>
+          <p>Personalized design from concept to finish</p></a
+        >
+        <a
+          href="#"
+          class="action-card"
+          data-aos="fade-up"
+          data-aos-delay="100"
+          onclick="
+            alert('Book your wedding consultation');
+            return false;
+          "
+          ><i class="fas fa-ring"></i>
+          <h4>Book Wedding Consultation</h4>
+          <p>Private tasting & design session</p></a
+        >
+        <a
+          href="#"
+          class="action-card"
+          data-aos="fade-up"
+          data-aos-delay="200"
+          onclick="
+            alert('Event catering inquiry');
+            return false;
+          "
+          ><i class="fas fa-champagne-glasses"></i>
+          <h4>Event Catering Inquiry</h4>
+          <p>Shawarma, snacks & dessert tables</p></a
+        >
+      </div>
+    </div>
+
+    <!-- MAP SECTION (DARK STYLED) -->
+    <div class="map-section">
+      <div class="map-container" data-aos="fade-up">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000000!2d7.0700!3d6.2100!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAnambra+State,+Nigeria!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="final-cta">
+      <h2>Your Vision, Our Craft</h2>
+      <p>
+        Every creation begins with a conversation. Let's bring yours to life.
+      </p>
+      <a
+        href="#"
+        class="btn-gold"
+        onclick="
+          document
+            .querySelector('.submit-btn')
+            .scrollIntoView({ behavior: 'smooth' });
+          return false;
+        "
+        >Begin Your Order</a
+      >
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-luxury">
+      <div class="footer-grid-lux">
+        <div class="footer-brand-lux">
+          <i class="fas fa-crown logo-icon-large"></i>
+          <div class="brand-name-lux">PRESH CAKES</div>
+          <div class="tagline">Artisanal patisserie • Bespoke creations</div>
+          <div class="social-icons-lux">
+            <a href="#" class="social-icon-circle"
+              ><i class="fab fa-instagram"></i></a
+            ><a href="#" class="social-icon-circle"
+              ><i class="fab fa-facebook-f"></i></a
+            ><a href="#" class="social-icon-circle"
+              ><i class="fab fa-pinterest-p"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-nav-lux">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./gallery.html">Gallery</a></li>
+            <li><a href="./service.html">Services</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact-lux">
+          <h4>Atelier</h4>
+          <p><i class="fas fa-map-marker-alt"></i> Awka, Anambra State, Nigeria</p>
+          <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
+          <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="copyright-text">
+        © 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance
+      </div>
+    </footer>
+
+    <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank"
+      ><i class="fab fa-whatsapp"></i
+    ></a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      const topBanner = document.getElementById("topBanner");
+      const closeBtn = document.getElementById("closeBannerBtn");
+      if (localStorage.getItem("bannerClosed") === "true") {
+        topBanner.classList.add("closed");
+        document.body.classList.remove("banner-active");
+      } else document.body.classList.add("banner-active");
+      closeBtn.addEventListener("click", () => {
+        topBanner.classList.add("closed");
+        document.body.classList.remove("banner-active");
+        localStorage.setItem("bannerClosed", "true");
+      });
+
+      const hamburger = document.getElementById("hamburger"),
+        navLinks = document.getElementById("navLinks");
+      hamburger.addEventListener("click", () =>
+        navLinks.classList.toggle("active"),
+      );
+      document
+        .querySelectorAll(".nav-links a")
+        .forEach((l) =>
+          l.addEventListener("click", () =>
+            navLinks.classList.remove("active"),
+          ),
+        );
+
+      AOS.init({ duration: 700, once: true, offset: 80 });
+      if (!topBanner.classList.contains("closed"))
+        document.body.classList.add("banner-active");
+    </script>
+  </body>
+</html>
