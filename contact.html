@@ -610,6 +610,23 @@
           height: 250px;
         }
       }
+      @media (max-width: 480px) {
+        .hero-section-contact {
+          padding: 4rem 3% 3rem;
+        }
+        .contact-form-section {
+          padding: 3rem 3%;
+        }
+        .map-section {
+          padding: 2rem 3% 4rem;
+        }
+        .info-section {
+          padding: 2rem 3% 4rem;
+        }
+        .footer-luxury {
+          padding: 2rem 3% 1rem;
+        }
+      }
 
       /* ===== FINAL CTA ===== */
       .final-cta {
@@ -779,11 +796,21 @@
       @media (max-width: 640px) {
         .footer-grid-lux {
           flex-direction: column;
-          gap: 2rem;
+          text-align: center;
+          gap: 1.5rem;
         }
+        .footer-brand-lux,
         .footer-nav-lux,
         .footer-contact-lux {
-          text-align: left;
+          min-width: unset;
+          flex: none;
+          text-align: center;
+        }
+        .footer-contact-lux p {
+          justify-content: center;
+        }
+        .social-icons-lux {
+          justify-content: center;
         }
       }
 
@@ -843,7 +870,7 @@
           <li><a href="./index.html">Home</a></li>
           <li><a href="./about.html">About</a></li>
           <li><a href="./gallery.html">Gallery</a></li>
-          <li><a href="./services.html">Services</a></li>
+          <li><a href="./service.html">Services</a></li>
           <li><a href="./contact.html">Contact</a></li>
           <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
         </ul>

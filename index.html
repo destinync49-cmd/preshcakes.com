@@ -24,7 +24,7 @@
         padding: 0;
         box-sizing: border-box;
       }
-
+ 
       body {
         font-family: "Inter", sans-serif;
         background-color: #0a0705;
@@ -471,6 +471,15 @@
           height: 38px;
         }
       }
+      @media (max-width: 480px) {
+        .hero-left-slider h1 {
+          font-size: 2.2rem;
+        }
+        .hero-content-wrapper {
+          padding: 4rem 3% 3rem;
+          min-height: 80vh;
+        }
+      }
 
       /* Story Section */
       .split-section {
@@ -578,7 +587,30 @@
         font-size: 0.8rem;
         color: #e0d6cd;
       }
+      .gallery-note {
+        text-align: center;
+        color: #d6cdc2;
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        opacity: 0.85;
+      }
       @media (max-width: 768px) {
+        .gallery-card .card-overlay {
+          opacity: 1;
+        }
+        .card-overlay {
+          background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.85) 0%,
+            rgba(0, 0, 0, 0.35) 100%
+          );
+        }
+        .card-overlay h4 {
+          font-size: 1.2rem;
+        }
+        .card-overlay p {
+          font-size: 0.85rem;
+        }
         .split-grid {
           grid-template-columns: 1fr;
           text-align: center;
@@ -590,6 +622,20 @@
       @media (max-width: 550px) {
         .gallery-grid {
           grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .split-section {
+          padding: 2rem 3%;
+        }
+        .gallery-section {
+          padding: 3rem 3%;
+        }
+        .testimonial-luxury {
+          padding: 3rem 3%;
+        }
+        .footer-luxury {
+          padding: 2rem 3% 1rem;
         }
       }
 
@@ -662,6 +708,19 @@
       .step:hover .icon-circle {
         background: rgba(200, 169, 110, 0.2);
         transform: scale(1.03);
+      }
+      @media (max-width: 640px) {
+        .process-steps {
+          gap: 1rem;
+        }
+        .step {
+          min-width: 120px;
+        }
+        .icon-circle {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+        }
       }
 
       /* ========== REFINED TESTIMONIAL SECTION - PROPERLY STYLED ========== */
@@ -948,6 +1007,26 @@
         }
         .footer-contact-lux p {
           justify-content: flex-start;
+        }
+      }
+      @media (max-width: 640px) {
+        .footer-grid-lux {
+          flex-direction: column;
+          text-align: center;
+          gap: 1.5rem;
+        }
+        .footer-brand-lux,
+        .footer-nav-lux,
+        .footer-contact-lux {
+          min-width: unset;
+          flex: none;
+          text-align: center;
+        }
+        .footer-contact-lux p {
+          justify-content: center;
+        }
+        .social-icons-lux {
+          justify-content: center;
         }
       }
 
@@ -1538,7 +1617,7 @@
           <li><a href="./index.html">Home</a></li>
           <li><a href="./about.html">About</a></li>
           <li><a href="./gallery.html">Gallery</a></li>
-          <li><a href="./services.html">Services</a></li>
+          <li><a href="./service.html">Services</a></li>
           <li><a href="./contact.html">Contact</a></li>
           <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
         </ul>
@@ -1616,9 +1695,10 @@
       <div class="section-label" style="text-align: center">
         Artisan Collection
       </div>
-      <h2 style="text-align: center; font-size: 2.8rem; margin-bottom: 2rem">
+      <h2 style="text-align: center; font-size: 2.8rem; margin-bottom: 1rem">
         Signature Cakes & Confections
       </h2>
+      <p class="gallery-note">Click to view details</p>
       <div class="gallery-grid">
         <div class="gallery-card" data-aos="zoom-in" onclick="openImageModal(this)" data-title="Midnight Truffle" data-description="Decadent dark chocolate ganache with single-origin cocoa, adorned with edible gold leaf and crystallized rose petals." data-price="$85" data-image="./img/chocolate.jpg">
           <img src="./img/chocolate.jpg" alt="Luxury chocolate cake" />
@@ -1839,13 +1919,13 @@
         <div class="footer-contact-lux">
           <h4>Atelier</h4>
           <p><i class="fas fa-map-marker-alt"></i> 72B Luxury Avenue, Dubai</p>
-          <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
+          <p><i class="fas fa-phone-alt"></i> +234</p>
           <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
         </div>
       </div>
       <div class="footer-divider"></div>
       <div class="copyright-text">
-        © 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance
+        © 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance|Built by DevDes
       </div>
     </footer>
 

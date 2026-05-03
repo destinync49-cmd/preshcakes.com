@@ -556,21 +556,51 @@
       line-height: 1.4;
       color: #f0e8df;
     }
+    .gallery-note {
+      text-align: center;
+      color: #d6cdc2;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
     @media (max-width: 1024px) {
       .gallery-grid-strict { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
       .item-overlay h4 { font-size: 1rem; }
       .item-overlay p { font-size: 0.65rem; }
     }
     @media (max-width: 768px) {
-      .gallery-grid-strict { grid-template-columns: 1fr; gap: 0.8rem; }
-      .item-overlay { padding: 0.8rem; }
+      .gallery-item .item-overlay {
+        opacity: 1;
+      }
+      .item-overlay {
+        background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 100%);
+        padding: 0.8rem;
+      }
       .item-overlay h4 { font-size: 0.85rem; }
-      .item-overlay p { font-size: 0.55rem; }
+      .item-overlay p { font-size: 0.65rem; }
+      .gallery-grid-strict { grid-template-columns: 1fr; gap: 0.8rem; }
     }
     @media (max-width: 550px) {
       .gallery-grid-strict { gap: 0.6rem; }
       .item-overlay h4 { font-size: 0.7rem; }
-      .item-overlay p { display: none; }
+      .item-overlay p { font-size: 0.6rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-section-gallery {
+        padding: 4rem 3% 3rem;
+      }
+      .timeline-strip {
+        padding: 2rem 3%;
+      }
+      .video-showcase {
+        padding: 3rem 3%;
+      }
+      .gallery-editorial {
+        padding: 3rem 3%;
+      }
+      .footer-luxury {
+        padding: 2rem 3% 1rem;
+      }
     }
 
     .gallery-modal {
@@ -878,6 +908,26 @@
         justify-content: flex-start;
       }
     }
+    @media (max-width: 640px) {
+      .footer-grid-lux {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      .footer-brand-lux,
+      .footer-nav-lux,
+      .footer-contact-lux {
+        min-width: unset;
+        flex: none;
+        text-align: center;
+      }
+      .footer-contact-lux p {
+        justify-content: center;
+      }
+      .social-icons-lux {
+        justify-content: center;
+      }
+    }
 
     /* Animations */
     [data-fade] {
@@ -998,6 +1048,7 @@
     <div class="gallery-header" data-fade>
       <div class="label-gold">Signature Collection</div>
       <h2>Visual Archive</h2>
+      <p class="gallery-note">Click to view details</p>
     </div>
     <div class="gallery-grid-strict">
       <div class="gallery-item" data-fade><img src="./img/chocolate.jpg" alt="Midnight Truffle"><div class="item-overlay"><h4>Midnight Truffle</h4><p>Rich chocolate, smooth ganache</p></div></div>
@@ -1108,6 +1159,16 @@
       function togglePlay(event) {
         if (event) event.stopPropagation();
         if (video.paused) {
+          // Stop all other videos
+          document.querySelectorAll(".video-wrapper-col").forEach(otherWrapper => {
+            if (otherWrapper !== wrapper) {
+              const otherVideo = otherWrapper.querySelector("video");
+              if (otherVideo) {
+                otherVideo.pause();
+                otherWrapper.classList.remove("playing");
+              }
+            }
+          });
           video.play();
           wrapper.classList.add("playing");
         } else {
