@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes" />
   <title>Presh Cakes | The Gallery — Editorial Archive</title>
   <!-- Google Fonts + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
@@ -15,12 +15,20 @@
       box-sizing: border-box;
     }
 
+    /* FIX: Root-level overflow guard */
+    html {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
     body {
       font-family: "Inter", sans-serif;
       background-color: #0a0705;
       color: #ece6df;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      max-width: 100vw;
+      position: relative;
     }
 
     :root {
@@ -41,10 +49,13 @@
       font-family: "Cormorant Garamond", serif;
       font-weight: 600;
       letter-spacing: -0.02em;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
 
     h1 {
-      font-size: 4rem;
+      font-size: clamp(2.5rem, 8vw, 4rem);
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.02em;
@@ -55,7 +66,7 @@
     }
 
     h2 {
-      font-size: 2.6rem;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
       font-weight: 600;
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -63,7 +74,7 @@
     }
 
     h3 {
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 3.5vw, 1.4rem);
       font-weight: 600;
       line-height: 1.3;
       letter-spacing: -0.01em;
@@ -72,19 +83,22 @@
 
     .body-text, p, .description {
       font-family: "Inter", sans-serif;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
       font-weight: 400;
       line-height: 1.7;
       color: var(--text-body);
+      max-width: 100%;
+      overflow-wrap: break-word;
     }
 
     .label-gold {
       font-family: "Inter", sans-serif;
-      font-size: 0.75rem;
+      font-size: clamp(0.7rem, 2vw, 0.75rem);
       font-weight: 500;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
+      max-width: 100%;
     }
 
     .btn-text {
@@ -92,14 +106,6 @@
       font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 1px;
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 1.8rem; }
-      h3 { font-size: 1.2rem; }
-      .body-text, p, .description { font-size: 0.95rem; line-height: 1.6; }
-      .label-gold { font-size: 0.7rem; letter-spacing: 2px; }
     }
 
     ::-webkit-scrollbar {
@@ -117,12 +123,14 @@
     .top-banner {
       position: relative;
       width: 100%;
+      max-width: 100vw;
       background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
       border-bottom: 1px solid rgba(200, 169, 110, 0.2);
       padding: 0.6rem 1rem;
       text-align: center;
       z-index: 1001;
       transition: transform 0.4s ease, opacity 0.4s ease;
+      overflow: hidden;
     }
     .top-banner.closed {
       transform: translateY(-100%);
@@ -137,12 +145,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
+      padding: 0 0.5rem;
     }
     .banner-text {
       font-family: "Inter", sans-serif;
-      font-size: 0.7rem;
+      font-size: clamp(0.65rem, 2vw, 0.7rem);
       letter-spacing: 1.5px;
       color: #e2d4c8;
     }
@@ -156,6 +165,7 @@
       font-weight: 500;
       text-decoration: none;
       transition: 0.25s;
+      white-space: nowrap;
     }
     .banner-link:hover {
       background: var(--gold);
@@ -173,12 +183,13 @@
       color: var(--gold);
     }
 
-    /* ===== NAVBAR (MATCHING HOMEPAGE EXACTLY) ===== */
+    /* ===== NAVBAR ===== */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      max-width: 100vw;
       background: rgba(8, 6, 4, 0.8);
       backdrop-filter: blur(14px);
       z-index: 1000;
@@ -193,6 +204,9 @@
       body.banner-active .navbar {
         top: 48px;
       }
+      .navbar {
+        padding: 0.8rem 1rem;
+      }
     }
     .nav-container {
       max-width: 1400px;
@@ -201,20 +215,22 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      width: 100%;
     }
     .brand {
       display: flex;
       flex-direction: column;
       align-items: center;
       line-height: 1.2;
+      max-width: 100%;
     }
     .logo-icon {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--gold);
       margin-bottom: 4px;
     }
     .brand-name {
-      font-size: 1rem;
+      font-size: clamp(0.8rem, 3vw, 1rem);
       font-weight: 500;
       letter-spacing: 2px;
       color: var(--cream);
@@ -225,6 +241,7 @@
       gap: 2.2rem;
       list-style: none;
       align-items: center;
+      max-width: 100%;
     }
     .nav-links a {
       text-decoration: none;
@@ -234,6 +251,7 @@
       letter-spacing: 1px;
       transition: 0.25s;
       position: relative;
+      white-space: nowrap;
     }
     .nav-links a:hover {
       color: var(--gold);
@@ -271,7 +289,6 @@
       color: var(--cream);
       cursor: pointer;
     }
-    /* Mobile menu styles - exactly matching homepage */
     @media (max-width: 880px) {
       .nav-links {
         position: fixed;
@@ -287,6 +304,7 @@
         gap: 2rem;
         transition: 0.3s;
         z-index: 999;
+        max-width: 80vw;
       }
       .nav-links.active {
         left: 0;
@@ -317,33 +335,41 @@
       text-align: center;
       margin-top: 0;
       scroll-margin-top: 70px;
+      max-width: 100vw;
+      overflow: hidden;
     }
     .compact-hero-content {
       max-width: 850px;
       padding: 2rem;
+      width: 100%;
+      box-sizing: border-box;
     }
     @media (max-width: 768px) {
       .compact-hero { min-height: 45vh; }
     }
 
-    /* ===== HISTORY TIMELINE (FULLY RESPONSIVE) ===== */
+    /* ===== HISTORY TIMELINE ===== */
     .timeline-strip {
       padding: 5rem 5%;
       background: #0a0705;
+      max-width: 100vw;
+      overflow: hidden;
     }
     .timeline-grid {
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
+      width: 100%;
     }
     .timeline-card {
       background: #14100c;
       border: 1px solid rgba(200, 169, 110, 0.12);
       border-radius: 24px;
-      padding: 2rem 1.5rem;
+      padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
       transition: all 0.3s ease;
+      max-width: 100%;
     }
     .timeline-card:hover {
       border-color: rgba(200, 169, 110, 0.5);
@@ -362,30 +388,20 @@
       margin-bottom: 0.75rem;
     }
     .timeline-card p {
-      font-size: 0.95rem;
+      font-size: clamp(0.85rem, 2vw, 0.95rem);
       line-height: 1.6;
-    }
-    @media (max-width: 900px) {
-      .timeline-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
-      }
     }
     @media (max-width: 550px) {
       .timeline-strip { padding: 3rem 5%; }
-      .timeline-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .timeline-card { padding: 1.2rem 1rem; }
-      .timeline-card h3 { font-size: 1.2rem; }
-      .timeline-card p { font-size: 0.85rem; }
+      .timeline-grid { gap: 1rem; }
     }
 
     /* ===== 3-COLUMN VIDEO SHOWCASE ===== */
     .video-showcase {
       padding: 4rem 5%;
       background: #0c0907;
+      max-width: 100vw;
+      overflow: hidden;
     }
     .section-header {
       text-align: center;
@@ -399,8 +415,9 @@
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.2rem, 3vw, 2rem);
+      width: 100%;
     }
     .video-column-card {
       background: #14100c;
@@ -408,6 +425,7 @@
       overflow: hidden;
       transition: var(--transition-premium);
       border: 1px solid rgba(200, 169, 110, 0.1);
+      max-width: 100%;
     }
     .video-column-card:hover {
       transform: translateY(-6px);
@@ -467,11 +485,11 @@
       background: var(--gold);
     }
     .video-caption {
-      padding: 1.2rem 1.2rem 1.2rem;
+      padding: 1.2rem;
     }
     .video-caption h4 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.3rem;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
       font-weight: 600;
       color: var(--gold-light);
       margin-bottom: 0.5rem;
@@ -481,22 +499,13 @@
       line-height: 1.5;
       color: #bcaea0;
     }
-    @media (max-width: 1024px) {
-      .video-three-columns { gap: 1.2rem; }
-      .video-caption h4 { font-size: 1.1rem; }
-    }
-    @media (max-width: 768px) {
-      .video-three-columns {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .video-caption h4 { font-size: 1.2rem; }
-    }
 
-    /* ===== GALLERY SECTION (STRICT 4-COLUMN) ===== */
+    /* ===== GALLERY SECTION (FULLY FLUID) ===== */
     .gallery-editorial {
       padding: 5rem 5%;
       background: #0a0705;
+      max-width: 100vw;
+      overflow: hidden;
     }
     .gallery-header {
       text-align: center;
@@ -504,10 +513,11 @@
     }
     .gallery-grid-strict {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: clamp(0.8rem, 2vw, 1.2rem);
       max-width: 1440px;
       margin: 0 auto;
+      width: 100%;
     }
     .gallery-item {
       position: relative;
@@ -517,6 +527,7 @@
       background: #14100c;
       transition: var(--transition-premium);
       cursor: pointer;
+      max-width: 100%;
     }
     .gallery-item img {
       width: 100%;
@@ -539,20 +550,20 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 1.2rem;
+      padding: clamp(0.8rem, 2.5vw, 1.2rem);
     }
     .gallery-item:hover .item-overlay {
       opacity: 1;
     }
     .item-overlay h4 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.2rem;
+      font-size: clamp(0.85rem, 2.5vw, 1.2rem);
       font-weight: 700;
       color: var(--gold);
       margin-bottom: 0.3rem;
     }
     .item-overlay p {
-      font-size: 0.75rem;
+      font-size: clamp(0.65rem, 1.8vw, 0.75rem);
       line-height: 1.4;
       color: #f0e8df;
     }
@@ -563,27 +574,14 @@
       margin-bottom: 2rem;
       opacity: 0.85;
     }
-    @media (max-width: 1024px) {
-      .gallery-grid-strict { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .item-overlay h4 { font-size: 1rem; }
-      .item-overlay p { font-size: 0.65rem; }
-    }
+    /* FIX: Mobile overlay always visible for touch devices */
     @media (max-width: 768px) {
       .gallery-item .item-overlay {
         opacity: 1;
       }
       .item-overlay {
         background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 100%);
-        padding: 0.8rem;
       }
-      .item-overlay h4 { font-size: 0.85rem; }
-      .item-overlay p { font-size: 0.65rem; }
-      .gallery-grid-strict { grid-template-columns: 1fr; gap: 0.8rem; }
-    }
-    @media (max-width: 550px) {
-      .gallery-grid-strict { gap: 0.6rem; }
-      .item-overlay h4 { font-size: 0.7rem; }
-      .item-overlay p { font-size: 0.6rem; }
     }
     @media (max-width: 480px) {
       .hero-section-gallery {
@@ -603,6 +601,7 @@
       }
     }
 
+    /* ===== GALLERY MODAL ===== */
     .gallery-modal {
       display: none;
       position: fixed;
@@ -611,6 +610,8 @@
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      max-width: 100vw;
+      overflow: hidden;
     }
     .gallery-modal.open {
       display: flex;
@@ -627,7 +628,7 @@
       z-index: 2001;
       background: linear-gradient(135deg, #18110b 0%, #0f0c0a 100%);
       border: 1px solid rgba(200, 169, 110, 0.4);
-      border-radius: 40px;
+      border-radius: clamp(20px, 5vw, 40px);
       overflow: hidden;
       width: 100%;
       max-width: 850px;
@@ -661,7 +662,7 @@
     }
     .gallery-modal-details {
       flex: 0.9;
-      padding: 2.5rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -699,17 +700,18 @@
       }
     }
     #galleryModalTitle {
-      font-size: 2rem;
+      font-size: clamp(1.4rem, 4vw, 2rem);
       color: #f2ede8;
       margin: 0 0 1rem 0;
       font-family: "Cormorant Garamond", serif;
       font-weight: 600;
     }
     .gallery-modal-desc {
-      font-size: 0.95rem;
+      font-size: clamp(0.85rem, 2.5vw, 0.95rem);
       color: #d9cdc0;
       line-height: 1.7;
       margin-bottom: 1.5rem;
+      max-width: 100%;
     }
     @media (max-width: 768px) {
       .gallery-modal-content {
@@ -720,26 +722,12 @@
         flex-direction: column;
       }
       .gallery-modal-image-wrapper {
-        height: 320px;
+        height: 280px;
         width: 100%;
       }
       .gallery-modal-details {
-        padding: 2rem;
-        flex: none;
-      }
-      #galleryModalTitle {
-        font-size: 1.6rem;
-      }
-      .gallery-modal-desc {
-        font-size: 0.9rem;
-      }
-    }
-    @media (max-width: 480px) {
-      .gallery-modal-details {
         padding: 1.5rem;
-      }
-      #galleryModalTitle {
-        font-size: 1.4rem;
+        flex: none;
       }
     }
 
@@ -747,10 +735,12 @@
     .cta-compact {
       background: linear-gradient(135deg, #1f1712, #0c0805);
       margin: 0 5% 4rem;
-      padding: 4rem 2rem;
+      padding: clamp(2.5rem, 8vw, 4rem) clamp(1.5rem, 4vw, 2rem);
       border-radius: 48px;
       text-align: center;
       border: 1px solid rgba(200, 169, 110, 0.25);
+      max-width: 90vw;
+      box-sizing: border-box;
     }
     .cta-compact h2 {
       margin-bottom: 1rem;
@@ -769,6 +759,8 @@
       text-decoration: none;
       transition: 0.25s;
       margin-top: 0.5rem;
+      white-space: nowrap;
+      max-width: 100%;
     }
     .btn-gold-minimal:hover {
       background: var(--gold);
@@ -776,34 +768,31 @@
       transform: translateY(-2px);
     }
 
-    /* ===== FOOTER (EXACTLY MATCHING HOMEPAGE) ===== */
+    /* ===== FOOTER (FIXED: 3-col desktop, 2-col tablet, brand|nav + contact full-width mobile) ===== */
     .footer-luxury {
       background: #050302;
       padding: 4rem 5% 2rem;
       border-top: 1px solid rgba(200, 169, 110, 0.2);
+      max-width: 100vw;
+      overflow: hidden;
     }
     .footer-grid-lux {
       max-width: 1280px;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
       gap: 2rem;
+      align-items: start;
+      width: 100%;
     }
     .footer-brand-lux {
-      flex: 1.2;
-      min-width: 180px;
+      text-align: left;
     }
     .footer-nav-lux {
-      flex: 1;
-      text-align: right;
-      min-width: 140px;
+      text-align: center;
     }
     .footer-contact-lux {
-      flex: 1;
       text-align: right;
-      min-width: 180px;
     }
     .footer-brand-lux .logo-icon-large {
       font-size: 2rem;
@@ -853,12 +842,16 @@
       gap: 0.7rem;
       color: #cdc0b2;
       font-size: 0.8rem;
+      flex-wrap: wrap;
+      max-width: 100%;
     }
     .social-icons-lux {
       display: flex;
       gap: 0.8rem;
       margin-top: 1.2rem;
       justify-content: flex-start;
+      flex-wrap: wrap;
+      max-width: 100%;
     }
     .social-icon-circle {
       width: 34px;
@@ -872,6 +865,7 @@
       color: #e2cbaa;
       text-decoration: none;
       border: 1px solid rgba(200, 169, 110, 0.3);
+      flex-shrink: 0;
     }
     .social-icon-circle:hover {
       background: var(--gold);
@@ -893,40 +887,73 @@
       text-align: center;
       font-size: 0.7rem;
       color: #7f6e5d;
+      max-width: 100%;
     }
+
+    /* Tablet: 2-column with navigation left-aligned */
     @media (max-width: 880px) {
       .footer-grid-lux {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
       }
-      .footer-nav-lux,
+      .footer-brand-lux {
+        grid-column: 1;
+        text-align: left;
+      }
+      .footer-nav-lux {
+        grid-column: 2;
+        text-align: left;
+      }
       .footer-contact-lux {
+        grid-column: span 2;
         text-align: left;
       }
       .footer-contact-lux p {
         justify-content: flex-start;
       }
+      .tagline {
+        max-width: 100%;
+      }
     }
+
+    /* Mobile: brand | nav, contact full-width below */
     @media (max-width: 640px) {
       .footer-grid-lux {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
       }
-      .footer-brand-lux,
-      .footer-nav-lux,
+      .footer-brand-lux {
+        grid-column: 1;
+        text-align: left;
+      }
+      .footer-nav-lux {
+        grid-column: 2;
+        text-align: right;
+      }
       .footer-contact-lux {
-        min-width: unset;
-        flex: none;
-        text-align: center;
+        grid-column: span 2;
+        text-align: left;
       }
       .footer-contact-lux p {
-        justify-content: center;
+        justify-content: flex-start;
       }
       .social-icons-lux {
-        justify-content: center;
+        justify-content: flex-start;
       }
+      .footer-luxury {
+        padding: 2rem 1rem 1rem;
+      }
+    }
+
+    /* FIX: All images constrained */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* FIX: General section safety */
+    section, div, header, footer, nav {
+      max-width: 100vw;
     }
 
     /* Animations */
@@ -955,6 +982,7 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: 0.25s;
       text-decoration: none;
+      max-width: 100vw;
     }
     .whatsapp-float:hover { transform: scale(1.06); }
     .whatsapp-float i { font-size: 1.7rem; color: white; }
@@ -1043,7 +1071,7 @@
     </div>
   </div>
 
-  <!-- GALLERY GRID 4-COLUMN -->
+  <!-- GALLERY GRID FULLY FLUID -->
   <div class="gallery-editorial">
     <div class="gallery-header" data-fade>
       <div class="label-gold">Signature Collection</div>
@@ -1085,10 +1113,10 @@
   <!-- CTA -->
   <div class="cta-compact" id="contact">
     <h2>Every creation begins with a vision</h2>
-    <a href="#" class="btn-gold-minimal" onclick="alert('Start your custom order | +234 812 345 6789')">Start Custom Order</a>
+    <a href="#" class="btn-gold-minimal" onclick="alert('Start your custom order | +2347075849051')">Start Custom Order</a>
   </div>
 
-  <!-- FOOTER (EXACTLY MATCHING HOMEPAGE) -->
+  <!-- FOOTER -->
   <footer class="footer-luxury">
     <div class="footer-grid-lux">
       <div class="footer-brand-lux">
@@ -1107,16 +1135,16 @@
       </div>
       <div class="footer-contact-lux">
         <h4>Atelier</h4>
-        <p><i class="fas fa-map-marker-alt"></i> 72B Luxury Avenue, Dubai</p>
-        <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
-        <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Ihiala, Anambra State, Nigeria</p>
+        <p><i class="fas fa-phone-alt"></i> +2347075849051</p>
+        <p><i class="fas fa-envelope"></i> hello@preshcakes.com</p>
       </div>
     </div>
     <div class="footer-divider"></div>
-    <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance</div>
+    <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance|Built by DevDes</div>
   </footer>
 
-  <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://wa.me/2347075849051" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -1159,7 +1187,6 @@
       function togglePlay(event) {
         if (event) event.stopPropagation();
         if (video.paused) {
-          // Stop all other videos
           document.querySelectorAll(".video-wrapper-col").forEach(otherWrapper => {
             if (otherWrapper !== wrapper) {
               const otherVideo = otherWrapper.querySelector("video");
