@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes" />
   <title>Presh Cakes | Our Story — Atelier of Artisan Cakes</title>
   <!-- Google Fonts + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
@@ -22,6 +22,7 @@
       color: #ece6df;
       overflow-x: hidden;
       scroll-behavior: smooth;
+      max-width: 100vw;
     }
 
     :root {
@@ -62,6 +63,7 @@
       text-align: center;
       z-index: 1001;
       transition: transform 0.4s ease, opacity 0.4s ease;
+      overflow: hidden;
     }
     .top-banner.closed {
       transform: translateY(-100%);
@@ -76,11 +78,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
+      padding: 0 0.5rem;
     }
     .banner-text {
-      font-size: 0.75rem;
+      font-size: clamp(0.65rem, 2vw, 0.75rem);
       letter-spacing: 1px;
       color: #e2d4c8;
     }
@@ -94,6 +97,7 @@
       font-weight: 500;
       text-decoration: none;
       transition: 0.25s;
+      white-space: nowrap;
     }
     .banner-link:hover {
       background: var(--gold);
@@ -124,6 +128,7 @@
       padding: 1.2rem 2rem;
       transition: var(--transition-premium);
       border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      max-width: 100vw;
     }
     body.banner-active .navbar {
       top: 52px;
@@ -131,6 +136,9 @@
     @media (max-width: 640px) {
       body.banner-active .navbar {
         top: 48px;
+      }
+      .navbar {
+        padding: 0.8rem 1rem;
       }
     }
     .nav-container {
@@ -148,12 +156,12 @@
       line-height: 1.2;
     }
     .logo-icon {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       color: var(--gold);
       margin-bottom: 4px;
     }
     .brand-name {
-      font-size: 1rem;
+      font-size: clamp(0.8rem, 3vw, 1rem);
       font-weight: 500;
       letter-spacing: 2px;
       color: var(--cream);
@@ -225,6 +233,7 @@
         gap: 2rem;
         transition: 0.3s;
         z-index: 999;
+        max-width: 80vw;
       }
       .nav-links.active {
         left: 0;
@@ -247,7 +256,7 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
     }
     .masked-img {
@@ -264,20 +273,24 @@
       display: block;
     }
     .section-label {
-      font-size: 0.7rem;
+      font-size: clamp(0.65rem, 2vw, 0.7rem);
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 1rem;
     }
-    @media (max-width: 1024px) {
-      .masked-img {
-        max-height: 800px;
+
+    /* 🔧 FIX: Switch to single column earlier (around 900px) to prevent cramped layout */
+    @media (max-width: 900px) {
+      .split-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
       }
-    }
-    @media (max-width: 768px) {
       .masked-img {
         max-height: 650px;
+        max-width: 500px;
+        margin: 0 auto;
       }
     }
     @media (max-width: 550px) {
@@ -296,13 +309,14 @@
       transition: 0.3s;
       border: none;
       font-size: 0.9rem;
+      white-space: nowrap;
     }
     .btn-gold:hover {
       background: #e2b46a;
       transform: translateY(-3px);
     }
 
-    /* Hero about (full-width gradient) */
+    /* 🔧 FIX: Hero about — responsive typography with clamp() */
     .about-hero {
       min-height: 70vh;
       background: linear-gradient(125deg, rgba(10,7,5,0.7) 0%, rgba(31,22,16,0.7) 100%), url('./img/chocolate.jpg');
@@ -319,45 +333,29 @@
     .about-hero-content {
       max-width: 850px;
       padding: 2rem;
+      width: 100%;
+      box-sizing: border-box;
     }
     .about-hero-content h1 {
-      font-size: 5rem;
+      font-size: clamp(2.8rem, 10vw, 5rem);
       font-weight: 600;
       background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 1rem;
+      word-break: break-word;
     }
     .about-hero-content p {
-      font-size: 1.2rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
       color: #e0d6cd;
       letter-spacing: 1px;
-    }
-    @media (max-width: 768px) {
-      .about-hero-content h1 { font-size: 3rem; }
-      .about-hero-content p { font-size: 1rem; }
-      .split-grid { grid-template-columns: 1fr; text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .split-section {
-        padding: 2rem 3%;
-      }
-      .about-hero-section {
-        padding: 4rem 3% 3rem;
-      }
-      .values-section {
-        padding: 3rem 3%;
-      }
-      .footer-luxury {
-        padding: 2rem 3% 1rem;
-      }
     }
 
     /* Value cards (reused service-card style) */
     .values-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       max-width: 1280px;
       margin: 2rem auto;
@@ -368,7 +366,7 @@
       overflow: hidden;
       transition: 0.4s;
       border: 1px solid rgba(200, 169, 110, 0.15);
-      padding: 2rem 1.8rem;
+      padding: clamp(1.5rem, 4vw, 2rem) clamp(1.2rem, 3vw, 1.8rem);
       text-align: center;
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
@@ -377,34 +375,35 @@
       border-color: rgba(200, 169, 110, 0.5);
     }
     .value-card i {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 5vw, 2.5rem);
       color: var(--gold);
       margin-bottom: 1rem;
     }
     .value-card h3 {
-      font-size: 1.6rem;
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
       margin-bottom: 0.7rem;
       font-family: "Cormorant Garamond", serif;
       color: var(--gold-light);
     }
     .value-card p {
       color: #cdc0b2;
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
       line-height: 1.5;
     }
 
-    /* Timeline */
+    /* 🔧 FIX: Timeline — improved wrapping with flex/grid for clean mobile alignment */
     .timeline-container {
       max-width: 1000px;
       margin: 3rem auto 0;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: center;
       gap: 1.5rem;
     }
     .timeline-item {
-      flex: 1;
+      flex: 1 1 200px;
       min-width: 180px;
+      max-width: 240px;
       background: rgba(20, 16, 12, 0.6);
       backdrop-filter: blur(4px);
       padding: 1.5rem 1rem;
@@ -418,22 +417,33 @@
       transform: scale(1.02);
     }
     .timeline-year {
-      font-size: 1.6rem;
+      font-size: clamp(1.3rem, 4vw, 1.6rem);
       font-weight: 600;
       color: var(--gold);
       font-family: "Cormorant Garamond", serif;
       margin-bottom: 0.5rem;
     }
     .timeline-desc {
-      font-size: 0.85rem;
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
       color: #d9cdc0;
       line-height: 1.4;
+    }
+    @media (max-width: 600px) {
+      .timeline-container {
+        gap: 1rem;
+      }
+      .timeline-item {
+        flex: 1 1 140px;
+        min-width: 140px;
+        padding: 1.2rem 0.8rem;
+      }
     }
 
     /* Skills section with elegant labels (progress-like minimal) */
     .skills-wrapper {
       max-width: 800px;
       margin: 2rem auto;
+      padding: 0 1rem;
     }
     .skill-item {
       margin-bottom: 1.8rem;
@@ -442,9 +452,11 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 0.5rem;
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
       letter-spacing: 1px;
       color: #e2d4c8;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     .skill-bar-bg {
       width: 100%;
@@ -468,21 +480,21 @@
     .testimonial-preview .testimonial-glass-card {
       background: rgba(15, 12, 10, 0.75);
       backdrop-filter: blur(16px);
-      border-radius: 56px;
+      border-radius: clamp(32px, 8vw, 56px);
       border: 1px solid rgba(200, 169, 110, 0.45);
-      padding: 2.8rem 2rem;
+      padding: clamp(1.8rem, 5vw, 2.8rem) clamp(1.5rem, 4vw, 2rem);
       text-align: center;
       max-width: 750px;
       margin: 0 auto;
     }
     .quote-icon {
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem);
       color: var(--gold);
       opacity: 0.6;
       margin-bottom: 0.75rem;
     }
     .testimonial-quote {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 3.5vw, 1.5rem);
       font-style: italic;
       color: #f2e8de;
       line-height: 1.4;
@@ -490,7 +502,7 @@
     }
     .stars-gold {
       color: var(--gold);
-      font-size: 1rem;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
       letter-spacing: 6px;
       margin: 1rem 0 0.6rem;
     }
@@ -507,10 +519,13 @@
     .cta-block {
       background: linear-gradient(135deg, #1f1712, #0c0805);
       margin: 3rem 5%;
-      padding: 4rem 2rem;
+      padding: clamp(2.5rem, 8vw, 4rem) clamp(1.5rem, 4vw, 2rem);
       border-radius: 48px;
       text-align: center;
       border: 1px solid rgba(200, 169, 110, 0.3);
+    }
+    .cta-block h2 {
+      font-size: clamp(1.8rem, 6vw, 2.6rem);
     }
 
     /* Footer (exact same) */
@@ -553,12 +568,14 @@
       font-size: 0.7rem;
       color: #b8aa99;
       margin-top: 0.5rem;
+      max-width: 220px;
     }
     .social-icons-lux {
       display: flex;
       gap: 0.8rem;
       margin-top: 1.2rem;
       justify-content: flex-start;
+      flex-wrap: wrap;
     }
     .social-icon-circle {
       width: 34px;
@@ -607,6 +624,7 @@
       gap: 0.7rem;
       color: #cdc0b2;
       font-size: 0.8rem;
+      flex-wrap: wrap;
     }
     .footer-divider {
       max-width: 1280px;
@@ -619,28 +637,43 @@
       font-size: 0.7rem;
       color: #7f6e5d;
     }
-    @media (max-width: 880px) {
-      .footer-nav-lux, .footer-contact-lux { text-align: left; }
-      .footer-contact-lux p { justify-content: flex-start; }
-    }
-    @media (max-width: 640px) {
+
+    /* 🔧 FIX: Footer mobile — 2-column grid with contact full width below */
+    @media (max-width: 768px) {
       .footer-grid-lux {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1.5rem;
+        align-items: start;
       }
-      .footer-brand-lux,
-      .footer-nav-lux,
+      .footer-brand-lux {
+        grid-column: 1;
+        text-align: left;
+        min-width: 0;
+      }
+      .footer-nav-lux {
+        grid-column: 2;
+        text-align: right;
+        min-width: 0;
+      }
       .footer-contact-lux {
-        min-width: unset;
-        flex: none;
-        text-align: center;
+        grid-column: span 2;
+        text-align: left;
+        min-width: 0;
       }
       .footer-contact-lux p {
-        justify-content: center;
+        justify-content: flex-start;
       }
-      .social-icons-lux {
-        justify-content: center;
+      .tagline {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      .footer-grid-lux {
+        gap: 1.8rem 1rem;
+      }
+      .footer-luxury {
+        padding: 2rem 1rem 1rem;
       }
     }
 
@@ -679,6 +712,7 @@
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
+      border: 1px solid rgba(200, 169, 110, 0.3);
     }
     .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
     @media (max-width: 600px) {
@@ -687,7 +721,7 @@
       .whatsapp-tooltip { display: none; }
     }
 
-    /* Modal styles */
+    /* 🔧 FIX: Modal — flexbox centering instead of large margins */
     .modal {
       display: none;
       position: fixed;
@@ -698,53 +732,72 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    /* Override inline display when active via JS — keep flex centering */
+    .modal[style*="display: block"] {
+      display: flex !important;
     }
     .modal-content {
       background: rgba(15, 12, 10, 0.95);
       backdrop-filter: blur(16px);
-      margin: 15% auto;
-      padding: 2rem;
+      margin: 0;
+      padding: clamp(1.5rem, 5vw, 2rem);
       border: 1px solid var(--gold);
-      width: 80%;
+      width: 90%;
       max-width: 400px;
       border-radius: 20px;
       text-align: center;
       box-shadow: var(--shadow-dark);
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
     }
     .modal-content h2 {
       color: var(--gold);
       margin-bottom: 1rem;
-      font-size: 1.8rem;
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
     }
     .modal-content p {
       color: #e2d4c8;
       margin-bottom: 0.5rem;
-      font-size: 1rem;
-    }
-    @media (max-width: 480px) {
-      .modal-content {
-        width: 95%;
-        margin: 10% auto;
-        padding: 1.5rem;
-      }
-      .modal-content h2 {
-        font-size: 1.5rem;
-      }
-      .modal-content p {
-        font-size: 0.95rem;
-      }
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      word-break: break-word;
     }
     .close {
       color: var(--gold);
-      float: right;
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
       font-size: 28px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s;
+      line-height: 1;
     }
     .close:hover,
     .close:focus {
       color: #e2c28b;
+    }
+
+    /* General mobile padding refinements */
+    @media (max-width: 480px) {
+      .split-section {
+        padding: 2rem 1rem;
+      }
+      .testimonial-preview {
+        padding: 3rem 1rem;
+      }
+      .cta-block {
+        margin: 2rem 1rem;
+        padding: 2.5rem 1.2rem;
+      }
+      .skills-wrapper {
+        padding: 0 0.5rem;
+      }
     }
   </style>
 </head>
@@ -789,7 +842,7 @@
       </div>
       <div data-aos="fade-left">
         <div class="section-label">Our Journey</div>
-        <h2 style="font-size: 3rem; margin-bottom: 1rem;">Where passion became a signature</h2>
+        <h2 style="font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1rem;">Where passion became a signature</h2>
         <p style="margin-bottom: 1rem; color: #d9cdc0;">Presh Cakes began with a simple intention — to create desserts that feel as exceptional as the moments they are made for.</p>
         <p style="margin-bottom: 1rem; color: #d9cdc0;">What started as a quiet pursuit of perfecting recipes has grown into a refined atelier of cake design and event indulgence. Every creation is approached with patience, precision, and a deep respect for both flavor and form.</p>
         <p style="color: #d9cdc0;">We do not believe in excess. We believe in balance — where texture, taste, and presentation meet effortlessly. From intimate celebrations to large-scale events, each piece is crafted to leave a lasting impression, not just visually, but in experience.</p>
@@ -800,7 +853,7 @@
   <!-- 3. PHILOSOPHY / VALUES SECTION (4 cards) - exact text -->
   <section class="split-section" style="background: #0c0907;">
     <div class="section-label" style="text-align: center;">Philosophy</div>
-    <h2 style="text-align: center; font-size: 2.8rem;">The pillars of our artistry</h2>
+    <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">The pillars of our artistry</h2>
     <div class="values-grid">
       <div class="value-card" data-aos="flip-up"><i class="fas fa-gem"></i><h3>Craftsmanship</h3><p>Every cake is carefully designed and executed with attention to the smallest detail, ensuring a finish that feels intentional and refined.</p></div>
       <div class="value-card" data-aos="flip-up" data-aos-delay="100"><i class="fas fa-leaf"></i><h3>Quality</h3><p>We use only carefully selected ingredients, chosen not for convenience, but for the depth and richness they bring to every bite.</p></div>
@@ -812,7 +865,7 @@
   <!-- 4. TIMELINE / EXPERIENCE SECTION - custom milestones -->
   <section class="split-section">
     <div class="section-label" style="text-align: center;">Milestones</div>
-    <h2 style="text-align: center; font-size: 2.8rem;">The Presh chronicle</h2>
+    <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">The Presh chronicle</h2>
     <div class="timeline-container">
       <div class="timeline-item" data-aos="zoom-in"><div class="timeline-year">The Beginning</div><div class="timeline-desc">A foundation built on experimentation, patience, and a desire to do things differently.</div></div>
       <div class="timeline-item" data-aos="zoom-in" data-aos-delay="100"><div class="timeline-year">Growth</div><div class="timeline-desc">Expanding into bespoke orders, gaining recognition through consistency and detail.</div></div>
@@ -824,7 +877,7 @@
   <!-- 5. SKILLS / EXPERTISE SECTION - custom expertise labels -->
   <section class="split-section" style="background: #0c0907;">
     <div class="section-label" style="text-align: center;">Expertise</div>
-    <h2 style="text-align: center; font-size: 2.8rem;">Mastery in every discipline</h2>
+    <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">Mastery in every discipline</h2>
     <div class="skills-wrapper" data-aos="fade-up">
       <div class="skill-item"><div class="skill-header"><span>Bespoke Cake Design</span><span>Tailored creations</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">Designed to match the tone and significance of each occasion</div></div>
       <div class="skill-item"><div class="skill-header"><span>Event Catering</span><span>Curated selection</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">Desserts and small chops crafted to complement any event setting</div></div>
@@ -844,17 +897,17 @@
 
   <!-- 7. CALL TO ACTION - exact text -->
   <section class="cta-block" id="contact">
-    <h2 style="font-size: 2.6rem;">Let's create something truly memorable</h2>
+    <h2>Let's create something truly memorable</h2>
     <p style="margin: 1rem 0;">Whether it's an intimate celebration or a grand event, we approach every order with the same level of care and precision.</p>
     <a href="./contact.html" class="btn-gold" onclick="showModal(event)">Contact Us</a>
   </section>
 
-  <!-- Modal -->
+  <!-- 🔧 FIX: Modal stays in HTML, CSS updated for flex centering -->
   <div id="contactModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Contact Information</h2>
-      <p>📞 +234 812 345 6789</p>
+      <p>📞 +2347075849051</p>
       <p>hello@preshcakes.com</p>
       <button class="btn-gold" onclick="window.location.href='./contact.html'">Go to Contact Page</button>
     </div>
@@ -879,16 +932,16 @@
       </div>
       <div class="footer-contact-lux">
         <h4>Atelier</h4>
-        <p><i class="fas fa-map-marker-alt"></i> 72B Luxury Avenue, Dubai</p>
-        <p><i class="fas fa-phone-alt"></i> +234 812 345 6789</p>
-        <p><i class="fas fa-envelope"></i> concierge@preshcakes.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> Ihiala, Anambra State, Nigeria</p>
+        <p><i class="fas fa-phone-alt"></i> +2347075849051</p>
+        <p><i class="fas fa-envelope"></i> hello@preshcakes.com</p>
       </div>
     </div>
     <div class="footer-divider"></div>
     <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance</div>
   </footer>
 
-  <a href="https://wa.me/2348123456789?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20luxury%20cakes" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us</span></a>
+  <a href="https://wa.me/2347075849051?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20luxury%20cakes" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us</span></a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -924,10 +977,11 @@
     setTimeout(animateSkills, 300);
     if (!topBanner.classList.contains("closed")) document.body.classList.add("banner-active");
 
-    // Modal functionality
+    // 🔧 FIX: Modal functionality — updated to use flex display properly
     function showModal(event) {
       event.preventDefault();
-      document.getElementById('contactModal').style.display = 'block';
+      const modal = document.getElementById('contactModal');
+      modal.style.display = 'flex';
     }
     document.querySelector('.close').onclick = function() {
       document.getElementById('contactModal').style.display = 'none';
@@ -937,6 +991,12 @@
         document.getElementById('contactModal').style.display = 'none';
       }
     }
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('contactModal').style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
