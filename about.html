@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden; max-width: 100vw;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes" />
@@ -16,6 +16,12 @@
       box-sizing: border-box;
     }
 
+    /* FIX: Ensure html and body never exceed viewport width */
+    html {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
     body {
       font-family: "Inter", sans-serif;
       background-color: #0a0705;
@@ -23,6 +29,7 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
       max-width: 100vw;
+      position: relative;
     }
 
     :root {
@@ -40,6 +47,9 @@
       font-family: "Cormorant Garamond", serif;
       font-weight: 500;
       letter-spacing: -0.02em;
+      max-width: 100%; /* FIX: prevent long text from breaking layout */
+      overflow-wrap: break-word; /* FIX: wrap gracefully */
+      word-wrap: break-word;
     }
 
     ::-webkit-scrollbar {
@@ -57,6 +67,7 @@
     .top-banner {
       position: relative;
       width: 100%;
+      max-width: 100vw; /* FIX: explicit max-width */
       background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
       border-bottom: 1px solid rgba(200, 169, 110, 0.25);
       padding: 0.7rem 1rem;
@@ -86,6 +97,7 @@
       font-size: clamp(0.65rem, 2vw, 0.75rem);
       letter-spacing: 1px;
       color: #e2d4c8;
+      max-width: 100%;
     }
     .banner-link {
       background: transparent;
@@ -122,13 +134,13 @@
       top: 0;
       left: 0;
       width: 100%;
+      max-width: 100vw; /* FIX: prevent navbar overflow */
       background: rgba(8, 6, 4, 0.8);
       backdrop-filter: blur(14px);
       z-index: 1000;
       padding: 1.2rem 2rem;
       transition: var(--transition-premium);
       border-bottom: 1px solid rgba(200, 169, 110, 0.25);
-      max-width: 100vw;
     }
     body.banner-active .navbar {
       top: 52px;
@@ -148,12 +160,14 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+      width: 100%; /* FIX: respect parent */
     }
     .brand {
       display: flex;
       flex-direction: column;
       align-items: center;
       line-height: 1.2;
+      max-width: 100%;
     }
     .logo-icon {
       font-size: clamp(1.5rem, 4vw, 2rem);
@@ -172,6 +186,7 @@
       gap: 2.2rem;
       list-style: none;
       align-items: center;
+      max-width: 100%;
     }
     .nav-links a {
       text-decoration: none;
@@ -181,6 +196,7 @@
       letter-spacing: 1px;
       transition: 0.25s;
       position: relative;
+      white-space: nowrap; /* FIX: prevent wrapping issues */
     }
     .nav-links a:hover {
       color: var(--gold);
@@ -250,6 +266,8 @@
     .split-section {
       padding: 4rem 5%;
       background: var(--deep-black);
+      max-width: 100vw; /* FIX: section containment */
+      overflow: hidden; /* FIX: guard against internal overflow */
     }
     .split-grid {
       max-width: 1280px;
@@ -258,9 +276,11 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
+      width: 100%; /* FIX: ensure grid respects container */
     }
     .masked-img {
       width: 100%;
+      max-width: 100%; /* FIX: prevent image overflow */
       max-height: 900px;
       border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
       overflow: hidden;
@@ -269,6 +289,7 @@
     .masked-img img {
       width: 100%;
       height: 100%;
+      max-width: 100%; /* FIX: image containment */
       object-fit: cover;
       display: block;
     }
@@ -278,6 +299,7 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 1rem;
+      max-width: 100%;
     }
 
     /* 🔧 FIX: Switch to single column earlier (around 900px) to prevent cramped layout */
@@ -310,6 +332,7 @@
       border: none;
       font-size: 0.9rem;
       white-space: nowrap;
+      max-width: 100%; /* FIX: button containment */
     }
     .btn-gold:hover {
       background: #e2b46a;
@@ -329,6 +352,8 @@
       text-align: center;
       position: relative;
       scroll-margin-top: 80px;
+      max-width: 100vw; /* FIX: hero containment */
+      overflow: hidden;
     }
     .about-hero-content {
       max-width: 850px;
@@ -345,11 +370,13 @@
       color: transparent;
       margin-bottom: 1rem;
       word-break: break-word;
+      max-width: 100%;
     }
     .about-hero-content p {
       font-size: clamp(0.95rem, 2.5vw, 1.2rem);
       color: #e0d6cd;
       letter-spacing: 1px;
+      max-width: 100%;
     }
 
     /* Value cards (reused service-card style) */
@@ -359,6 +386,7 @@
       gap: 2rem;
       max-width: 1280px;
       margin: 2rem auto;
+      width: 100%; /* FIX: grid containment */
     }
     .value-card {
       background: #14100c;
@@ -369,6 +397,7 @@
       padding: clamp(1.5rem, 4vw, 2rem) clamp(1.2rem, 3vw, 1.8rem);
       text-align: center;
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+      max-width: 100%; /* FIX: card containment */
     }
     .value-card:hover {
       transform: translateY(-10px);
@@ -384,11 +413,14 @@
       margin-bottom: 0.7rem;
       font-family: "Cormorant Garamond", serif;
       color: var(--gold-light);
+      max-width: 100%;
     }
     .value-card p {
       color: #cdc0b2;
       font-size: clamp(0.8rem, 2vw, 0.9rem);
       line-height: 1.5;
+      max-width: 100%;
+      word-wrap: break-word;
     }
 
     /* 🔧 FIX: Timeline — improved wrapping with flex/grid for clean mobile alignment */
@@ -399,6 +431,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
+      width: 100%; /* FIX: container containment */
     }
     .timeline-item {
       flex: 1 1 200px;
@@ -422,11 +455,13 @@
       color: var(--gold);
       font-family: "Cormorant Garamond", serif;
       margin-bottom: 0.5rem;
+      max-width: 100%;
     }
     .timeline-desc {
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       color: #d9cdc0;
       line-height: 1.4;
+      max-width: 100%;
     }
     @media (max-width: 600px) {
       .timeline-container {
@@ -444,9 +479,11 @@
       max-width: 800px;
       margin: 2rem auto;
       padding: 0 1rem;
+      width: 100%; /* FIX: wrapper containment */
     }
     .skill-item {
       margin-bottom: 1.8rem;
+      max-width: 100%;
     }
     .skill-header {
       display: flex;
@@ -457,6 +494,7 @@
       color: #e2d4c8;
       flex-wrap: wrap;
       gap: 0.5rem;
+      max-width: 100%;
     }
     .skill-bar-bg {
       width: 100%;
@@ -476,6 +514,8 @@
     .testimonial-preview {
       background: radial-gradient(ellipse at 30% 40%, #18110b, #030201);
       padding: 5rem 5%;
+      max-width: 100vw; /* FIX: section containment */
+      overflow: hidden;
     }
     .testimonial-preview .testimonial-glass-card {
       background: rgba(15, 12, 10, 0.75);
@@ -486,6 +526,7 @@
       text-align: center;
       max-width: 750px;
       margin: 0 auto;
+      width: 100%; /* FIX: card containment */
     }
     .quote-icon {
       font-size: clamp(1.5rem, 5vw, 2rem);
@@ -499,6 +540,7 @@
       color: #f2e8de;
       line-height: 1.4;
       font-family: "Cormorant Garamond", serif;
+      max-width: 100%;
     }
     .stars-gold {
       color: var(--gold);
@@ -513,6 +555,7 @@
       color: #c9b28b;
       font-size: 0.8rem;
       text-transform: uppercase;
+      max-width: 100%;
     }
 
     /* CTA block */
@@ -523,9 +566,12 @@
       border-radius: 48px;
       text-align: center;
       border: 1px solid rgba(200, 169, 110, 0.3);
+      max-width: 90vw; /* FIX: cta block containment */
+      box-sizing: border-box;
     }
     .cta-block h2 {
       font-size: clamp(1.8rem, 6vw, 2.6rem);
+      max-width: 100%;
     }
 
     /* Footer (exact same) */
@@ -533,6 +579,8 @@
       background: #050302;
       padding: 4rem 5% 2rem;
       border-top: 1px solid rgba(200, 169, 110, 0.2);
+      max-width: 100vw; /* FIX: footer containment */
+      overflow: hidden;
     }
     .footer-grid-lux {
       max-width: 1280px;
@@ -542,14 +590,17 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 2rem;
+      width: 100%;
     }
     .footer-brand-lux {
       flex: 1.2;
       min-width: 180px;
+      max-width: 100%;
     }
     .footer-nav-lux, .footer-contact-lux {
       flex: 1;
       min-width: 140px;
+      max-width: 100%;
     }
     .footer-nav-lux { text-align: right; }
     .footer-contact-lux { text-align: right; }
@@ -576,6 +627,7 @@
       margin-top: 1.2rem;
       justify-content: flex-start;
       flex-wrap: wrap;
+      max-width: 100%;
     }
     .social-icon-circle {
       width: 34px;
@@ -589,6 +641,7 @@
       color: #e2cbaa;
       text-decoration: none;
       border: 1px solid rgba(200, 169, 110, 0.3);
+      flex-shrink: 0;
     }
     .social-icon-circle:hover {
       background: var(--gold);
@@ -625,6 +678,7 @@
       color: #cdc0b2;
       font-size: 0.8rem;
       flex-wrap: wrap;
+      max-width: 100%;
     }
     .footer-divider {
       max-width: 1280px;
@@ -636,6 +690,7 @@
       text-align: center;
       font-size: 0.7rem;
       color: #7f6e5d;
+      max-width: 100%;
     }
 
     /* 🔧 FIX: Footer mobile — 2-column grid with contact full width below */
@@ -645,21 +700,25 @@
         grid-template-columns: 1fr 1fr;
         gap: 2rem 1.5rem;
         align-items: start;
+        width: 100%;
       }
       .footer-brand-lux {
         grid-column: 1;
         text-align: left;
         min-width: 0;
+        max-width: 100%;
       }
       .footer-nav-lux {
         grid-column: 2;
         text-align: right;
         min-width: 0;
+        max-width: 100%;
       }
       .footer-contact-lux {
         grid-column: span 2;
         text-align: left;
         min-width: 0;
+        max-width: 100%;
       }
       .footer-contact-lux p {
         justify-content: flex-start;
@@ -696,6 +755,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
       text-decoration: none;
+      max-width: 100vw; /* FIX: widget containment */
     }
     .whatsapp-float:hover { transform: scale(1.08); }
     .whatsapp-float i { font-size: 2rem; color: white; }
@@ -736,6 +796,8 @@
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      max-width: 100vw; /* FIX: modal containment */
+      overflow: hidden;
     }
     /* Override inline display when active via JS — keep flex centering */
     .modal[style*="display: block"] {
@@ -760,12 +822,14 @@
       color: var(--gold);
       margin-bottom: 1rem;
       font-size: clamp(1.4rem, 5vw, 1.8rem);
+      max-width: 100%;
     }
     .modal-content p {
       color: #e2d4c8;
       margin-bottom: 0.5rem;
       font-size: clamp(0.9rem, 2.5vw, 1rem);
       word-break: break-word;
+      max-width: 100%;
     }
     .close {
       color: var(--gold);
@@ -798,6 +862,17 @@
       .skills-wrapper {
         padding: 0 0.5rem;
       }
+    }
+
+    /* FIX: Ensure all images never overflow */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* FIX: General container safety */
+    section, div, header, footer, nav {
+      max-width: 100vw;
     }
   </style>
 </head>
