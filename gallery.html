@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes" />
-  <title>Presh Cakes | The Gallery — Editorial Archive</title>
+  <title>TESSY'S BAKERY BLISS | Gallery</title>
   <!-- Google Fonts + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -15,7 +15,6 @@
       box-sizing: border-box;
     }
 
-    /* FIX: Root-level overflow guard */
     html {
       overflow-x: hidden;
       max-width: 100vw;
@@ -23,8 +22,8 @@
 
     body {
       font-family: "Inter", sans-serif;
-      background-color: #0a0705;
-      color: #ece6df;
+      background-color: #0B1F3A;
+      color: #F8F8F6;
       overflow-x: hidden;
       scroll-behavior: smooth;
       max-width: 100vw;
@@ -32,19 +31,19 @@
     }
 
     :root {
-      --charcoal: #0f0c0a;
-      --deep-black: #080604;
-      --gold: #c8a96e;
-      --gold-light: #e2c28b;
-      --cream: #f2ede8;
-      --cream-soft: #ece3d9;
-      --text-body: #d6cdc2;
+      --charcoal: #0B1F3A;
+      --deep-black: #081526;
+      --gold: #F4C542;
+      --gold-light: #FFD95A;
+      --cream: #F8F8F6;
+      --crimson-accent: #C62828;
       --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.5);
       --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.35);
       --transition-premium: all 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
+      --primary-dark: #0B1F3A;
+      --secondary-blue: #123D7A;
     }
 
-    /* ===== TYPOGRAPHY SYSTEM ===== */
     h1, h2, h3, .serif-headline {
       font-family: "Cormorant Garamond", serif;
       font-weight: 600;
@@ -59,7 +58,7 @@
       font-weight: 700;
       line-height: 1.1;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
+      background: linear-gradient(135deg, #F8F8F6 0%, #F4C542 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -81,12 +80,12 @@
       color: var(--gold-light);
     }
 
-    .body-text, p, .description {
+    p, .description {
       font-family: "Inter", sans-serif;
       font-size: clamp(0.9rem, 2vw, 1rem);
       font-weight: 400;
       line-height: 1.7;
-      color: var(--text-body);
+      color: #C5D0E0;
       max-width: 100%;
       overflow-wrap: break-word;
     }
@@ -101,32 +100,25 @@
       max-width: 100%;
     }
 
-    .btn-text {
-      font-family: "Inter", sans-serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
     ::-webkit-scrollbar {
       width: 4px;
     }
     ::-webkit-scrollbar-track {
-      background: #1a140f;
+      background: #0A1A30;
     }
     ::-webkit-scrollbar-thumb {
       background: var(--gold);
       border-radius: 10px;
     }
 
-    /* ===== TOP BANNER ===== */
+    /* TOP BANNER */
     .top-banner {
       position: relative;
       width: 100%;
       max-width: 100vw;
-      background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
-      border-bottom: 1px solid rgba(200, 169, 110, 0.2);
-      padding: 0.6rem 1rem;
+      background: linear-gradient(95deg, #0A1A30 0%, #123D7A 100%);
+      border-bottom: 1px solid rgba(244, 197, 66, 0.3);
+      padding: 0.7rem 1rem;
       text-align: center;
       z-index: 1001;
       transition: transform 0.4s ease, opacity 0.4s ease;
@@ -151,9 +143,9 @@
     }
     .banner-text {
       font-family: "Inter", sans-serif;
-      font-size: clamp(0.65rem, 2vw, 0.7rem);
+      font-size: clamp(0.65rem, 2vw, 0.75rem);
       letter-spacing: 1.5px;
-      color: #e2d4c8;
+      color: #F8F8F6;
     }
     .banner-link {
       background: transparent;
@@ -161,7 +153,7 @@
       color: var(--gold);
       padding: 0.25rem 1rem;
       border-radius: 30px;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       font-weight: 500;
       text-decoration: none;
       transition: 0.25s;
@@ -169,33 +161,34 @@
     }
     .banner-link:hover {
       background: var(--gold);
-      color: #0a0705;
+      color: #0B1F3A;
     }
     .banner-close {
       background: transparent;
       border: none;
-      color: #b8aa99;
+      color: #C5D0E0;
       cursor: pointer;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       transition: 0.2s;
     }
     .banner-close:hover {
       color: var(--gold);
     }
 
-    /* ===== NAVBAR ===== */
+    /* NAVBAR */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       max-width: 100vw;
-      background: rgba(8, 6, 4, 0.8);
+      background: linear-gradient(135deg, #0B1F3A, #123D7A);
       backdrop-filter: blur(14px);
       z-index: 1000;
       padding: 1.2rem 2rem;
       transition: var(--transition-premium);
-      border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      border-bottom: 1px solid rgba(244, 197, 66, 0.25);
+      overflow-x: visible !important;
     }
     body.banner-active .navbar {
       top: 52px;
@@ -206,6 +199,7 @@
       }
       .navbar {
         padding: 0.8rem 1rem;
+        overflow-x: visible !important;
       }
     }
     .nav-container {
@@ -216,32 +210,47 @@
       justify-content: space-between;
       flex-wrap: wrap;
       width: 100%;
+      position: relative;
     }
     .brand {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 0.75rem;
       line-height: 1.2;
+      max-width: 65%;
+      z-index: 1001;
+    }
+    .brand-logo {
+      display: block;
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      object-position: left center;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 2px 6px rgba(244, 197, 66, 0.4));
       max-width: 100%;
+      flex-shrink: 0;
     }
-    .logo-icon {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      color: var(--gold);
-      margin-bottom: 4px;
+    @media (max-width: 480px) {
+      .brand-logo {
+        height: 34px;
+      }
     }
-    .brand-name {
+    .brand-text {
       font-size: clamp(0.8rem, 3vw, 1rem);
       font-weight: 500;
       letter-spacing: 2px;
       color: var(--cream);
       font-family: "Inter", sans-serif;
+      white-space: nowrap;
+      line-height: 1.3;
+      display: block;
     }
     .nav-links {
       display: flex;
       gap: 2.2rem;
       list-style: none;
       align-items: center;
-      max-width: 100%;
     }
     .nav-links a {
       text-decoration: none;
@@ -251,6 +260,7 @@
       letter-spacing: 1px;
       transition: 0.25s;
       position: relative;
+      display: inline-block;
       white-space: nowrap;
     }
     .nav-links a:hover {
@@ -269,6 +279,12 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+    .nav-links a.active-nav {
+      color: var(--gold);
+    }
+    .nav-links a.active-nav::after {
+      width: 100%;
+    }
     .nav-cta {
       background: transparent;
       border: 1px solid var(--gold);
@@ -280,7 +296,7 @@
       color: var(--gold) !important;
     }
     .nav-cta:hover {
-      background: rgba(200, 169, 110, 0.15);
+      background: rgba(244, 197, 66, 0.2);
       transform: translateY(-2px);
     }
     .hamburger {
@@ -288,45 +304,87 @@
       font-size: 1.6rem;
       color: var(--cream);
       cursor: pointer;
+      z-index: 1001;
+      position: relative;
+      padding: 0.5rem;
     }
+
+    /* MOBILE NAVIGATION */
     @media (max-width: 880px) {
       .nav-links {
         position: fixed;
-        top: 70px;
+        top: 65px;
         left: -100%;
-        width: 70%;
-        height: calc(100vh - 70px);
-        background: #0a0705e6;
+        width: 65%;
+        max-width: 280px;
+        height: auto;
+        max-height: 80vh;
+        background: rgba(11, 31, 58, 0.75);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: 0.3s;
-        z-index: 999;
-        max-width: 80vw;
+        justify-content: flex-start;
+        gap: 1.8rem;
+        z-index: 1002;
+        opacity: 1;
+        visibility: visible;
+        transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        padding: 2rem 1.5rem;
+        border: 1px solid rgba(244, 197, 66, 0.2);
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        overflow-y: auto;
       }
       .nav-links.active {
-        left: 0;
+        left: 1rem !important;
+      }
+      .nav-links li {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        text-align: center;
+      }
+      .nav-links a {
+        font-size: 0.95rem;
+        display: block;
+        padding: 0.5rem;
       }
       .hamburger {
         display: block;
       }
       .navbar {
         padding: 0.8rem 1.5rem;
+        overflow-x: visible !important;
       }
       body.banner-active .navbar {
         top: 48px;
       }
+      body.banner-active .nav-links {
+        top: 48px;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-links {
+        width: 75%;
+        max-width: 260px;
+        top: 60px;
+        gap: 1.5rem;
+        padding: 1.8rem 1.2rem;
+      }
+      .nav-links.active {
+        left: 0.5rem !important;
+      }
       .nav-links a {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
     }
 
-    /* ===== HERO SECTION ===== */
+    /* HERO SECTION */
     .compact-hero {
       min-height: 55vh;
-      background: linear-gradient(135deg, rgba(10,7,5,0.85) 0%, rgba(31,22,16,0.7) 100%), url('./img/Wedding Cakes.jpg');
+      background: linear-gradient(135deg, rgba(11,31,58,0.85) 0%, rgba(18,61,122,0.7) 100%), url('./img/Wedding Cakes.jpg');
       background-size: cover;
       background-position: center 30%;
       display: flex;
@@ -348,10 +406,10 @@
       .compact-hero { min-height: 45vh; }
     }
 
-    /* ===== HISTORY TIMELINE ===== */
+    /* TIMELINE */
     .timeline-strip {
       padding: 5rem 5%;
-      background: #0a0705;
+      background: #081526;
       max-width: 100vw;
       overflow: hidden;
     }
@@ -364,15 +422,15 @@
       width: 100%;
     }
     .timeline-card {
-      background: #14100c;
-      border: 1px solid rgba(200, 169, 110, 0.12);
+      background: #0A1A30;
+      border: 1px solid rgba(244, 197, 66, 0.15);
       border-radius: 24px;
       padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
       transition: all 0.3s ease;
       max-width: 100%;
     }
     .timeline-card:hover {
-      border-color: rgba(200, 169, 110, 0.5);
+      border-color: rgba(244, 197, 66, 0.5);
       transform: translateY(-4px);
     }
     .timeline-chapter {
@@ -396,10 +454,10 @@
       .timeline-grid { gap: 1rem; }
     }
 
-    /* ===== 3-COLUMN VIDEO SHOWCASE ===== */
+    /* VIDEO SHOWCASE */
     .video-showcase {
       padding: 4rem 5%;
-      background: #0c0907;
+      background: #0B1F3A;
       max-width: 100vw;
       overflow: hidden;
     }
@@ -420,16 +478,16 @@
       width: 100%;
     }
     .video-column-card {
-      background: #14100c;
+      background: #0A1A30;
       border-radius: 24px;
       overflow: hidden;
       transition: var(--transition-premium);
-      border: 1px solid rgba(200, 169, 110, 0.1);
+      border: 1px solid rgba(244, 197, 66, 0.15);
       max-width: 100%;
     }
     .video-column-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(200, 169, 110, 0.4);
+      border-color: rgba(244, 197, 66, 0.4);
       box-shadow: var(--shadow-soft);
     }
     .video-wrapper-col {
@@ -468,14 +526,14 @@
     .play-btn-small {
       width: 55px;
       height: 55px;
-      background: rgba(200,169,110,0.85);
+      background: rgba(244,197,66,0.85);
       backdrop-filter: blur(4px);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.4rem;
-      color: #0a0705;
+      color: #0B1F3A;
       transition: 0.25s;
       pointer-events: auto;
       cursor: pointer;
@@ -497,13 +555,12 @@
     .video-caption p {
       font-size: 0.85rem;
       line-height: 1.5;
-      color: #bcaea0;
     }
 
-    /* ===== GALLERY SECTION (FULLY FLUID) ===== */
+    /* GALLERY SECTION */
     .gallery-editorial {
       padding: 5rem 5%;
-      background: #0a0705;
+      background: #081526;
       max-width: 100vw;
       overflow: hidden;
     }
@@ -524,7 +581,7 @@
       aspect-ratio: 1 / 1.1;
       overflow: hidden;
       border-radius: 24px;
-      background: #14100c;
+      background: #0A1A30;
       transition: var(--transition-premium);
       cursor: pointer;
       max-width: 100%;
@@ -539,12 +596,12 @@
       transform: scale(1.05);
     }
     .gallery-item:hover {
-      box-shadow: 0 0 0 1px rgba(200,169,110,0.5), 0 12px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 0 0 1px rgba(244,197,66,0.5), 0 12px 24px rgba(0,0,0,0.4);
     }
     .item-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 100%);
+      background: linear-gradient(0deg, rgba(11,31,58,0.8) 0%, rgba(11,31,58,0.2) 100%);
       opacity: 0;
       transition: 0.35s ease;
       display: flex;
@@ -565,43 +622,31 @@
     .item-overlay p {
       font-size: clamp(0.65rem, 1.8vw, 0.75rem);
       line-height: 1.4;
-      color: #f0e8df;
+      color: #F8F8F6;
     }
     .gallery-note {
       text-align: center;
-      color: #d6cdc2;
+      color: #C5D0E0;
       font-size: 0.95rem;
       margin-bottom: 2rem;
       opacity: 0.85;
     }
-    /* FIX: Mobile overlay always visible for touch devices */
     @media (max-width: 768px) {
       .gallery-item .item-overlay {
         opacity: 1;
       }
       .item-overlay {
-        background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.35) 100%);
+        background: linear-gradient(0deg, rgba(11,31,58,0.9) 0%, rgba(11,31,58,0.45) 100%);
       }
     }
     @media (max-width: 480px) {
-      .hero-section-gallery {
-        padding: 4rem 3% 3rem;
-      }
-      .timeline-strip {
-        padding: 2rem 3%;
-      }
-      .video-showcase {
-        padding: 3rem 3%;
-      }
-      .gallery-editorial {
-        padding: 3rem 3%;
-      }
-      .footer-luxury {
-        padding: 2rem 3% 1rem;
-      }
+      .timeline-strip { padding: 2rem 3%; }
+      .video-showcase { padding: 3rem 3%; }
+      .gallery-editorial { padding: 3rem 3%; }
+      .footer-luxury { padding: 2rem 3% 1rem; }
     }
 
-    /* ===== GALLERY MODAL ===== */
+    /* GALLERY MODAL */
     .gallery-modal {
       display: none;
       position: fixed;
@@ -619,23 +664,21 @@
     .gallery-modal-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(8, 21, 38, 0.85);
       backdrop-filter: blur(10px);
       cursor: pointer;
     }
     .gallery-modal-content {
       position: relative;
       z-index: 2001;
-      background: linear-gradient(135deg, #18110b 0%, #0f0c0a 100%);
-      border: 1px solid rgba(200, 169, 110, 0.4);
+      background: linear-gradient(135deg, #0B1F3A 0%, #123D7A 100%);
+      border: 1px solid rgba(244, 197, 66, 0.5);
       border-radius: clamp(20px, 5vw, 40px);
       overflow: hidden;
       width: 100%;
       max-width: 850px;
       max-height: 85vh;
-      box-shadow:
-        0 40px 80px rgba(0, 0, 0, 0.7),
-        0 0 1px rgba(200, 169, 110, 0.1) inset;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 1px rgba(244, 197, 66, 0.1) inset;
       animation: modalSlideIn 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
       display: flex;
       flex-direction: row;
@@ -651,7 +694,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.3);
+      background: rgba(11, 31, 58, 0.5);
       overflow: hidden;
     }
     .gallery-modal-image-wrapper img {
@@ -686,7 +729,7 @@
       z-index: 2002;
     }
     .gallery-modal-close:hover {
-      color: #e2c28b;
+      color: #FFD95A;
       transform: rotate(90deg);
     }
     @keyframes modalSlideIn {
@@ -701,14 +744,14 @@
     }
     #galleryModalTitle {
       font-size: clamp(1.4rem, 4vw, 2rem);
-      color: #f2ede8;
+      color: #F8F8F6;
       margin: 0 0 1rem 0;
       font-family: "Cormorant Garamond", serif;
       font-weight: 600;
     }
     .gallery-modal-desc {
       font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-      color: #d9cdc0;
+      color: #C5D0E0;
       line-height: 1.7;
       margin-bottom: 1.5rem;
       max-width: 100%;
@@ -731,14 +774,14 @@
       }
     }
 
-    /* ===== CTA ===== */
+    /* CTA */
     .cta-compact {
-      background: linear-gradient(135deg, #1f1712, #0c0805);
+      background: linear-gradient(135deg, #123D7A, #0B1F3A);
       margin: 0 5% 4rem;
       padding: clamp(2.5rem, 8vw, 4rem) clamp(1.5rem, 4vw, 2rem);
       border-radius: 48px;
       text-align: center;
-      border: 1px solid rgba(200, 169, 110, 0.25);
+      border: 1px solid rgba(244, 197, 66, 0.4);
       max-width: 90vw;
       box-sizing: border-box;
     }
@@ -764,15 +807,15 @@
     }
     .btn-gold-minimal:hover {
       background: var(--gold);
-      color: #0a0705;
+      color: #0B1F3A;
       transform: translateY(-2px);
     }
 
-    /* ===== FOOTER (FIXED: 3-col desktop, 2-col tablet, brand|nav + contact full-width mobile) ===== */
+    /* FOOTER */
     .footer-luxury {
-      background: #050302;
+      background: linear-gradient(180deg, #081526, #0B1F3A);
       padding: 4rem 5% 2rem;
-      border-top: 1px solid rgba(200, 169, 110, 0.2);
+      border-top: 1px solid rgba(244, 197, 66, 0.25);
       max-width: 100vw;
       overflow: hidden;
     }
@@ -794,20 +837,27 @@
     .footer-contact-lux {
       text-align: right;
     }
-    .footer-brand-lux .logo-icon-large {
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-      display: inline-block;
+    .footer-logo {
+      display: block;
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 0.7rem;
+      filter: drop-shadow(0 2px 6px rgba(244, 197, 66, 0.3));
+      transition: opacity 0.3s ease;
     }
-    .footer-brand-lux .brand-name-lux {
+    .footer-brand-text {
       font-size: 1.2rem;
       letter-spacing: 2px;
       font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.7rem;
+      font-family: "Inter", sans-serif;
+      display: block;
     }
     .tagline {
       font-size: 0.7rem;
-      color: #b8aa99;
+      color: #AAB8C8;
       margin-top: 0.5rem;
       max-width: 220px;
     }
@@ -826,7 +876,7 @@
     }
     .footer-nav-lux a {
       text-decoration: none;
-      color: #d6cdc2;
+      color: #C5D0E0;
       font-size: 0.8rem;
       transition: 0.2s;
     }
@@ -840,7 +890,7 @@
       align-items: center;
       justify-content: flex-end;
       gap: 0.7rem;
-      color: #cdc0b2;
+      color: #C5D0E0;
       font-size: 0.8rem;
       flex-wrap: wrap;
       max-width: 100%;
@@ -856,57 +906,68 @@
     .social-icon-circle {
       width: 34px;
       height: 34px;
-      background: rgba(200, 169, 110, 0.1);
+      background: rgba(244, 197, 66, 0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: 0.25s;
-      color: #e2cbaa;
+      color: #F4C542;
       text-decoration: none;
-      border: 1px solid rgba(200, 169, 110, 0.3);
+      border: 1px solid rgba(244, 197, 66, 0.4);
       flex-shrink: 0;
     }
     .social-icon-circle:hover {
       background: var(--gold);
-      color: #0a0705;
+      color: #0B1F3A;
       transform: translateY(-2px);
     }
     .footer-divider {
       max-width: 1280px;
       margin: 2rem auto 1rem;
       height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(200, 169, 110, 0.5),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(244, 197, 66, 0.5), transparent);
     }
     .copyright-text {
       text-align: center;
       font-size: 0.7rem;
-      color: #7f6e5d;
+      color: #8A9BB0;
       max-width: 100%;
     }
 
-    /* Tablet: 2-column with navigation left-aligned */
-    @media (max-width: 880px) {
+    /* FOOTER MOBILE */
+    @media (max-width: 768px) {
       .footer-grid-lux {
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem 1.5rem;
+        gap: 2rem 1.8rem;
+        align-items: start;
+        padding: 0 0.8rem;
+        width: 100%;
       }
       .footer-brand-lux {
         grid-column: 1;
         text-align: left;
+        min-width: 0;
+        max-width: 100%;
+        padding-left: 0.3rem;
       }
       .footer-nav-lux {
         grid-column: 2;
         text-align: left;
+        min-width: 0;
+        max-width: 100%;
+        padding-right: 0.3rem;
+      }
+      .footer-nav-lux ul {
+        padding-left: 0;
       }
       .footer-contact-lux {
         grid-column: span 2;
         text-align: left;
+        min-width: 0;
+        max-width: 100%;
+        padding: 0 0.3rem;
       }
       .footer-contact-lux p {
         justify-content: flex-start;
@@ -914,49 +975,34 @@
       .tagline {
         max-width: 100%;
       }
+      .footer-logo {
+        height: 42px;
+      }
     }
-
-    /* Mobile: brand | nav, contact full-width below */
-    @media (max-width: 640px) {
+    @media (max-width: 480px) {
       .footer-grid-lux {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem 1.5rem;
+        gap: 1.8rem 1.4rem;
+        padding: 0 0.5rem;
       }
-      .footer-brand-lux {
-        grid-column: 1;
-        text-align: left;
+      .footer-brand-lux, .footer-nav-lux, .footer-contact-lux {
+        padding: 0 0.2rem;
       }
-      .footer-nav-lux {
-        grid-column: 2;
-        text-align: right;
-      }
-      .footer-contact-lux {
-        grid-column: span 2;
-        text-align: left;
-      }
-      .footer-contact-lux p {
-        justify-content: flex-start;
-      }
-      .social-icons-lux {
-        justify-content: flex-start;
+      .footer-logo {
+        height: 38px;
       }
       .footer-luxury {
         padding: 2rem 1rem 1rem;
       }
     }
 
-    /* FIX: All images constrained */
     img {
       max-width: 100%;
       height: auto;
     }
-
-    /* FIX: General section safety */
     section, div, header, footer, nav {
       max-width: 100vw;
     }
 
-    /* Animations */
     [data-fade] {
       opacity: 0;
       transform: translateY(12px);
@@ -969,51 +1015,73 @@
 
     .whatsapp-float {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 30px;
+      right: 30px;
       z-index: 1002;
       background-color: #25d366;
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: 0.25s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
       text-decoration: none;
-      max-width: 100vw;
+      max-width: 56px;
+      max-height: 56px;
     }
-    .whatsapp-float:hover { transform: scale(1.06); }
-    .whatsapp-float i { font-size: 1.7rem; color: white; }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    .whatsapp-float i { font-size: 2rem; color: white; }
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: rgba(11,31,58,0.95);
+      backdrop-filter: blur(8px);
+      color: var(--gold-light);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      border: 1px solid rgba(244, 197, 66, 0.4);
+    }
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+    @media (max-width: 600px) {
+      .whatsapp-float { width: 48px; height: 48px; bottom: 20px; right: 20px; max-width: 48px; max-height: 48px; }
+      .whatsapp-float i { font-size: 1.6rem; }
+      .whatsapp-tooltip { display: none; }
+    }
   </style>
 </head>
 <body>
+  <!-- TOP BANNER -->
   <div class="top-banner" id="topBanner">
     <div class="banner-content">
-      <span class="banner-text">✦ Limited commissions — Spring/Summer collection now open ✦</span>
-      <a href="#contact" class="banner-link">Inquire</a>
+      <span class="banner-text">✦ Now taking custom orders for weddings & events — limited availability this season ✦</span>
+      <a href="./contact.html" class="banner-link">Book Now</a>
       <button class="banner-close" id="closeBannerBtn">✕</button>
     </div>
   </div>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="brand">
-        <i class="fas fa-crown logo-icon"></i>
-        <span class="brand-name">PRESH CAKES</span>
+        <img src="./img/logo-1.png" alt="Tessy's Bakery Bliss Logo" class="brand-logo">
+        <span class="brand-text">TESSY'S BAKERY BLISS</span>
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="./index.html">Home</a></li>
         <li><a href="./about.html">About</a></li>
-        <li><a href="./gallery.html">Gallery</a></li>
+        <li><a href="./gallery.html" class="active-nav">Gallery</a></li>
         <li><a href="./service.html">Services</a></li>
         <li><a href="./contact.html">Contact</a></li>
         <li class="nav-cta"><a href="./contact.html">Order Now</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-        <i class="fas fa-bars"></i>
-      </div>
+      <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
     </div>
   </nav>
 
@@ -1021,24 +1089,25 @@
   <section class="compact-hero">
     <div class="compact-hero-content" data-fade>
       <h1>Our Craft in Motion</h1>
+      <p style="color: #E6ECF2; font-size: 1.1rem; margin-top: 1rem;">A visual journey through Tessy's Bakery Bliss signature creations</p>
     </div>
   </section>
 
-  <!-- HISTORY TIMELINE -->
+  <!-- TIMELINE -->
   <div class="timeline-strip">
     <div class="timeline-grid">
-      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter I</div><h3>The Beginning</h3><p>A quiet pursuit of precision, flavor, and intention.</p></div>
-      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter II</div><h3>The Growth</h3><p>Expansion into events, custom commissions, and recognition.</p></div>
-      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter III</div><h3>The Refinement</h3><p>A signature style defined by elegance and restraint.</p></div>
-      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter IV</div><h3>Today</h3><p>A trusted name for thoughtful design and exceptional taste.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter I</div><h3>The Beginning</h3><p>A quiet pursuit of precision, flavor, and intention — the foundation of Tessy's Bakery Bliss.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter II</div><h3>The Growth</h3><p>Expansion into bespoke events, custom cake commissions, and growing recognition.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter III</div><h3>The Refinement</h3><p>A signature style defined by elegance, restraint, and uncompromising quality.</p></div>
+      <div class="timeline-card" data-fade><div class="timeline-chapter">Chapter IV</div><h3>Today</h3><p>Tessy's Bakery Bliss — a trusted name for thoughtful design and exceptional taste.</p></div>
     </div>
   </div>
 
-  <!-- 3-COLUMN VIDEO SHOWCASE -->
+  <!-- VIDEO SHOWCASE -->
   <div class="video-showcase">
     <div class="section-header" data-fade>
       <div class="label-gold">Behind the Craft</div>
-      <h2>The Art of Creation</h2>
+      <h2>The Art of Creation at Tessy's Bakery Bliss</h2>
     </div>
     <div class="video-three-columns">
       <div class="video-column-card" data-fade>
@@ -1071,39 +1140,64 @@
     </div>
   </div>
 
-  <!-- GALLERY GRID FULLY FLUID -->
+  <!-- GALLERY GRID -->
   <div class="gallery-editorial">
     <div class="gallery-header" data-fade>
       <div class="label-gold">Signature Collection</div>
-      <h2>Visual Archive</h2>
-      <p class="gallery-note">Click to view details</p>
+      <h2>Visual Archive of Tessy's Bakery Bliss</h2>
+      <p class="gallery-note">Click any image to view details</p>
     </div>
     <div class="gallery-grid-strict">
-      <div class="gallery-item" data-fade><img src="./img/chocolate.jpg" alt="Midnight Truffle"><div class="item-overlay"><h4>Midnight Truffle</h4><p>Rich chocolate, smooth ganache</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/birthday cake.jpg" alt="Royal Celebration"><div class="item-overlay"><h4>Royal Celebration</h4><p>Refined centerpiece</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/Wedding Cakes.jpg" alt="Gold Signature"><div class="item-overlay"><h4>Gold Signature</h4><p>Delicate gold accents</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/Event Catering.jpg" alt="Velvet Bliss"><div class="item-overlay"><h4>Velvet Bliss</h4><p>Soft layers, smooth cream</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/bakerwithcake.jpg" alt="Vanilla Élégance"><div class="item-overlay"><h4>Vanilla Élégance</h4><p>Timeless simplicity</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/meatpie.jpg" alt="Chocolate Indulgence"><div class="item-overlay"><h4>Chocolate Indulgence</h4><p>Deep, refined layers</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/shawama.jpg" alt="Wedding Tier"><div class="item-overlay"><h4>Wedding Tier</h4><p>Structured elegance</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/milkydoughnut.jpg" alt="Birthday Signature"><div class="item-overlay"><h4>Birthday Signature</h4><p>Modern celebration</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/snacksbasket.jpg" alt="Bespoke Creation"><div class="item-overlay"><h4>Bespoke Creation</h4><p>Tailored to vision</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/cake1.jpg" alt="Artisan Tier"><div class="item-overlay"><h4>Artisan Tier</h4><p>Sculpted poetry</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/birthday cake.jpg" alt="Golden Edition"><div class="item-overlay"><h4>Golden Edition</h4><p>Quiet luxury</p></div></div>
-      <div class="gallery-item" data-fade><img src="./img/chocolate.jpg" alt="Noir Collection"><div class="item-overlay"><h4>Noir Collection</h4><p>Intensity meets crumb</p></div></div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/mr&mrs.jpeg', 'Anniversary Cake', 'Anniversary Cake', 'A stunning multi-tiered anniversary cake adorned with delicate floral details and elegant gold accents, crafted to celebrate enduring love.')">
+        <img src="./img/mr&mrs.jpeg" alt="Anniversary Cake by Tessy's Bakery Bliss"><div class="item-overlay"><h4>Anniversary Cake</h4><p>Elegant tiered celebration</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/traditional 3.jpeg', 'Royal Celebration Cake', 'Royal Celebration Cake', 'A magnificent traditional celebration cake with intricate piping, regal gold details, and layered richness fit for royalty.')">
+        <img src="./img/traditional 3.jpeg" alt="Royal Celebration Cake"><div class="item-overlay"><h4>Royal Celebration</h4><p>Refined centerpiece</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/chops2.jpeg', 'Gold Signature Small Chops', 'Gold Signature Small Chops', 'Artisanal small chops selection featuring golden-brown pastries, perfectly portioned for sophisticated event catering.')">
+        <img src="./img/chops2.jpeg" alt="Gold Signature Small Chops"><div class="item-overlay"><h4>Gold Signature</h4><p>Delicate gold accents</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/chinchin.jpeg', 'Velvet Bliss Chin Chin', 'Velvet Bliss Chin Chin', 'Crunchy, golden chin chin bites prepared with premium ingredients for a satisfying artisanal snack experience.')">
+        <img src="./img/chinchin.jpeg" alt="Velvet Bliss Chin Chin"><div class="item-overlay"><h4>Velvet Bliss</h4><p>Crunchy artisanal snack</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/birthday cake.jpeg', 'Vanilla Élégance Birthday Cake', 'Vanilla Élégance Birthday Cake', 'A timeless vanilla birthday cake with smooth buttercream finish, delicate piping, and charming celebratory details.')">
+        <img src="./img/birthday cake.jpeg" alt="Vanilla Élégance Birthday Cake"><div class="item-overlay"><h4>Vanilla Élégance</h4><p>Timeless simplicity</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/rapped Shawama.jpeg', 'Gourmet Wrapped Shawarma', 'Gourmet Wrapped Shawarma', 'Expertly wrapped gourmet shawarma with spiced filling, fresh vegetables, and signature sauce — a savory masterpiece.')">
+        <img src="./img/rapped Shawama.jpeg" alt="Gourmet Wrapped Shawarma"><div class="item-overlay"><h4>Gourmet Shawarma</h4><p>Savory wrapped perfection</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/open meal.jpeg', 'Open Gourmet Platter', 'Open Gourmet Platter', 'A beautifully presented open meal platter featuring premium shawarma, sides, and artisanal accompaniments.')">
+        <img src="./img/open meal.jpeg" alt="Open Gourmet Platter"><div class="item-overlay"><h4>Gourmet Platter</h4><p>Elegant open presentation</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/cup cake.jpeg', 'Red Velvet Cupcakes', 'Red Velvet Cupcakes', 'Handcrafted red velvet cupcakes topped with silky cream cheese frosting — a modern celebration essential.')">
+        <img src="./img/cup cake.jpeg" alt="Red Velvet Cupcakes"><div class="item-overlay"><h4>Red Velvet Cupcakes</h4><p>Modern celebration treats</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/snacksbasket.jpg', 'Bespoke Snack Basket', 'Bespoke Snack Basket', 'A curated basket of premium snacks and treats, tailored to your event vision and crafted with artisanal care.')">
+        <img src="./img/snacksbasket.jpg" alt="Bespoke Snack Basket"><div class="item-overlay"><h4>Bespoke Basket</h4><p>Tailored to your vision</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/bitcoin cake.jpeg', 'Artisan Bitcoin Theme Cake', 'Artisan Bitcoin Theme Cake', 'A creatively sculpted Bitcoin-themed cake combining modern design with premium baking artistry.')">
+        <img src="./img/bitcoin cake.jpeg" alt="Artisan Bitcoin Theme Cake"><div class="item-overlay"><h4>Artisan Tier</h4><p>Sculpted creativity</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/chocolate cake.jpeg', 'Decadent Chocolate Cake', 'Decadent Chocolate Cake', 'Rich, velvety chocolate cake layered with smooth ganache — an indulgence of quiet luxury and deep flavor.')">
+        <img src="./img/chocolate cake.jpeg" alt="Decadent Chocolate Cake"><div class="item-overlay"><h4>Chocolate Indulgence</h4><p>Rich quiet luxury</p></div>
+      </div>
+      <div class="gallery-item" data-fade onclick="openGalleryModal('./img/trad caker2.jpeg', 'Traditional Noir Collection', 'Traditional Noir Collection', 'A sophisticated traditional cake from the Noir Collection, where intensity meets delicate crumb in perfect harmony.')">
+        <img src="./img/trad caker2.jpeg" alt="Traditional Noir Collection"><div class="item-overlay"><h4>Noir Collection</h4><p>Intensity meets crumb</p></div>
+      </div>
     </div>
   </div>
 
+  <!-- GALLERY MODAL -->
   <div class="gallery-modal" id="galleryModal" aria-hidden="true">
-    <div class="gallery-modal-overlay" id="galleryModalOverlay"></div>
+    <div class="gallery-modal-overlay" onclick="closeGalleryModal()"></div>
     <div class="gallery-modal-content">
-      <button class="gallery-modal-close" id="galleryModalClose" aria-label="Close image modal">✕</button>
+      <button class="gallery-modal-close" onclick="closeGalleryModal()" aria-label="Close image modal">✕</button>
       <div class="gallery-modal-body">
         <div class="gallery-modal-image-wrapper">
           <img src="" alt="" id="galleryModalImage" />
         </div>
         <div class="gallery-modal-details">
-          <h4 id="galleryModalTitle"></h4>
+          <h2 id="galleryModalTitle"></h2>
           <p class="gallery-modal-desc" id="galleryModalDescription"></p>
         </div>
       </div>
@@ -1113,15 +1207,16 @@
   <!-- CTA -->
   <div class="cta-compact" id="contact">
     <h2>Every creation begins with a vision</h2>
-    <a href="#" class="btn-gold-minimal" onclick="alert('Start your custom order | +2347075849051')">Start Custom Order</a>
+    <p style="color: #C5D0E0; margin-bottom: 1.5rem;">Let Tessy's Bakery Bliss bring your celebration to life</p>
+    <a href="./contact.html" class="btn-gold-minimal">Start Custom Order</a>
   </div>
 
   <!-- FOOTER -->
   <footer class="footer-luxury">
     <div class="footer-grid-lux">
       <div class="footer-brand-lux">
-        <i class="fas fa-crown logo-icon-large"></i>
-        <div class="brand-name-lux">PRESH CAKES</div>
+        <img src="./img/logo-1.png" alt="Tessy's Bakery Bliss Logo" class="footer-logo">
+        <span class="footer-brand-text">TESSY'S BAKERY BLISS</span>
         <div class="tagline">Artisanal patisserie • Bespoke creations</div>
         <div class="social-icons-lux">
           <a href="#" class="social-icon-circle"><i class="fab fa-instagram"></i></a>
@@ -1131,24 +1226,25 @@
       </div>
       <div class="footer-nav-lux">
         <h4>Navigation</h4>
-        <ul><li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./gallery.html">Gallery</a></li><li><a href="./services.html">Services</a></li><li><a href="./contact.html">Contact</a></li></ul>
+        <ul><li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./gallery.html">Gallery</a></li><li><a href="./service.html">Services</a></li><li><a href="./contact.html">Contact</a></li></ul>
       </div>
       <div class="footer-contact-lux">
         <h4>Atelier</h4>
-        <p><i class="fas fa-map-marker-alt"></i> Ihiala, Anambra State, Nigeria</p>
+        <p><i class="fas fa-map-marker-alt"></i> Amansea, Awka North L.G.A, Anambra State, Nigeria.</p>
         <p><i class="fas fa-phone-alt"></i> +2347075849051</p>
-        <p><i class="fas fa-envelope"></i> hello@preshcakes.com</p>
+        <p><i class="fas fa-envelope"></i> bluries2000@gmail.com</p>
       </div>
     </div>
     <div class="footer-divider"></div>
-    <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance|Built by DevDes</div>
+    <div class="copyright-text">© 2025 Tessy's Bakery Bliss — Where Every Crumb Tells a Story of Elegance | Built by DevDes</div>
   </footer>
 
-  <a href="https://wa.me/2347075849051" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <!-- WHATSAPP -->
+  <a href="https://wa.me/2347075849051?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20luxury%20cakes" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us</span></a>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Banner & navbar adjust
+    // Banner
     const topBanner = document.getElementById("topBanner");
     const closeBtn = document.getElementById("closeBannerBtn");
     if (localStorage.getItem("bannerClosed") === "true") {
@@ -1163,21 +1259,25 @@
       localStorage.setItem("bannerClosed", "true");
     });
 
-    // Mobile menu toggle (exactly matching homepage)
+    // Mobile menu
     const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-    
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-    
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
+    const navLinksEl = document.getElementById("navLinks");
+    if (hamburger && navLinksEl) {
+      hamburger.addEventListener("click", function(e) {
+        e.stopPropagation();
+        navLinksEl.classList.toggle("active");
       });
-    });
+      document.querySelectorAll(".nav-links a").forEach((l) =>
+        l.addEventListener("click", () => navLinksEl.classList.remove("active"))
+      );
+      document.addEventListener("click", function(e) {
+        if (!navLinksEl.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinksEl.classList.remove("active");
+        }
+      });
+    }
 
-    // Video players for 3 columns
+    // Video players
     function initVideoPlayer(wrapperId) {
       const wrapper = document.getElementById(wrapperId);
       if (!wrapper) return;
@@ -1211,11 +1311,11 @@
     initVideoPlayer("video2");
     initVideoPlayer("video3");
 
+    // Gallery Modal
     const galleryModal = document.getElementById("galleryModal");
     const galleryModalImage = document.getElementById("galleryModalImage");
     const galleryModalTitle = document.getElementById("galleryModalTitle");
     const galleryModalDescription = document.getElementById("galleryModalDescription");
-    const galleryModalClose = document.getElementById("galleryModalClose");
 
     function openGalleryModal(src, alt, title, description) {
       galleryModalImage.src = src;
@@ -1233,20 +1333,8 @@
       galleryModalImage.alt = "";
     }
 
-    document.querySelectorAll(".gallery-item").forEach(item => {
-      item.addEventListener("click", () => {
-        const img = item.querySelector("img");
-        const title = item.querySelector(".item-overlay h4")?.textContent || img.alt;
-        const description = item.querySelector(".item-overlay p")?.textContent || "";
-        openGalleryModal(img.src, img.alt, title, description);
-      });
-    });
-
-    galleryModalClose.addEventListener("click", closeGalleryModal);
-    document.getElementById("galleryModalOverlay").addEventListener("click", closeGalleryModal);
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && galleryModal.classList.contains("open")) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && galleryModal.classList.contains("open")) {
         closeGalleryModal();
       }
     });
@@ -1263,8 +1351,12 @@
     }, { threshold: 0.1, rootMargin: "20px" });
     fadeElements.forEach(el => observer.observe(el));
 
-    // Initialize AOS
+    // AOS
     AOS.init({ duration: 700, once: true, offset: 80 });
+
+    if (window.location.hash === "" || window.location.hash === "#home") {
+      window.scrollTo(0, 0);
+    }
   </script>
 </body>
 </html>

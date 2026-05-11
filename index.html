@@ -236,6 +236,7 @@
         color: var(--gold);
       }
 
+      /* NAVBAR */
       .navbar {
         position: fixed;
         top: 0;
@@ -248,7 +249,7 @@
         transition: var(--transition-premium);
         border-bottom: 1px solid rgba(244, 197, 66, 0.25);
         max-width: 100vw;
-        overflow-x: hidden;
+        overflow-x: visible !important;
       }
       body.banner-active .navbar {
         top: 52px;
@@ -259,6 +260,7 @@
         }
         .navbar {
           padding: 0.8rem 1rem;
+          overflow-x: visible !important;
         }
       }
 
@@ -270,6 +272,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
         width: 100%;
+        position: relative;
       }
       .brand {
         display: flex;
@@ -277,6 +280,7 @@
         gap: 0.75rem;
         line-height: 1.2;
         max-width: 65%;
+        z-index: 1001;
       }
       .brand-logo {
         display: block;
@@ -316,6 +320,8 @@
         color: var(--cream);
         font-family: "Inter", sans-serif;
       }
+
+      /* DESKTOP NAV LINKS */
       .nav-links {
         display: flex;
         gap: 2.2rem;
@@ -330,6 +336,7 @@
         letter-spacing: 1px;
         transition: 0.25s;
         position: relative;
+        display: inline-block;
       }
       .nav-links a:hover {
         color: var(--gold);
@@ -366,35 +373,87 @@
         font-size: 1.6rem;
         color: var(--cream);
         cursor: pointer;
+        z-index: 1001;
+        position: relative;
+        padding: 0.5rem;
       }
+
+      /* MOBILE NAVIGATION - TRANSPARENT COMPACT */
       @media (max-width: 880px) {
         .nav-links {
           position: fixed;
-          top: 70px;
+          top: 65px;
           left: -100%;
-          width: 70%;
-          height: calc(100vh - 70px);
-          background: rgba(11, 31, 58, 0.95);
+          width: 65%;
+          max-width: 280px;
+          height: auto;
+          max-height: 80vh;
+          background: rgba(11, 31, 58, 0.75);
           backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           flex-direction: column;
           align-items: center;
-          justify-content: center;
-          gap: 2rem;
-          transition: 0.3s;
-          z-index: 999;
-          max-width: 80vw;
+          justify-content: flex-start;
+          gap: 1.8rem;
+          z-index: 1002;
+          opacity: 1;
+          visibility: visible;
+          transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          padding: 2rem 1.5rem;
+          border: 1px solid rgba(244, 197, 66, 0.2);
+          border-top: none;
+          border-radius: 0 0 20px 20px;
+          box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+          overflow-y: auto;
         }
         .nav-links.active {
-          left: 0;
+          left: 1rem !important;
+        }
+        .nav-links li {
+          opacity: 1;
+          visibility: visible;
+          width: 100%;
+          text-align: center;
+        }
+        .nav-links a {
+          font-size: 0.95rem;
+          display: block;
+          padding: 0.5rem;
+        }
+        .nav-links .nav-cta {
+          margin-top: 0.5rem;
+          border: 1px solid var(--gold);
+          padding: 0.5rem 1.3rem;
+          border-radius: 40px;
         }
         .hamburger {
           display: block;
         }
         .navbar {
           padding: 0.8rem 1.5rem;
+          overflow-x: visible !important;
         }
         body.banner-active .navbar {
           top: 48px;
+        }
+        body.banner-active .nav-links {
+          top: 48px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-links {
+          width: 75%;
+          max-width: 260px;
+          top: 60px;
+          gap: 1.5rem;
+          padding: 1.8rem 1.2rem;
+        }
+        .nav-links.active {
+          left: 0.5rem !important;
+        }
+        .nav-links a {
+          font-size: 0.9rem;
         }
       }
 
@@ -1888,9 +1947,9 @@
               <div class="testimonial-item-lux">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                 <div class="testimonial-quote">
-                  “An exceptional creation, both visually and in taste. Every
+                  "An exceptional creation, both visually and in taste. Every
                   detail felt intentional, from the delicate crumb to the subtle
-                  gold finish.”
+                  gold finish."
                 </div>
                 <div class="stars-gold">★★★★★</div>
                 <div class="client-name">Isabella Rossellini</div>
@@ -1899,8 +1958,8 @@
               <div class="testimonial-item-lux">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                 <div class="testimonial-quote">
-                  “A masterclass in flavor architecture. The shawarma and
-                  accompanying pastries elevated our event beyond expectation.”
+                  "A masterclass in flavor architecture. The shawarma and
+                  accompanying pastries elevated our event beyond expectation."
                 </div>
                 <div class="stars-gold">★★★★★</div>
                 <div class="client-name">Jonathan Ashford</div>
@@ -1909,9 +1968,9 @@
               <div class="testimonial-item-lux">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                 <div class="testimonial-quote">
-                  “Utterly refined. The wedding cake was not merely dessert — it
+                  "Utterly refined. The wedding cake was not merely dessert — it
                   was a centerpiece of quiet sophistication that guests still
-                  recall.”
+                  recall."
                 </div>
                 <div class="stars-gold">★★★★★</div>
                 <div class="client-name">Victoria Chen</div>
@@ -1920,8 +1979,8 @@
               <div class="testimonial-item-lux">
                 <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
                 <div class="testimonial-quote">
-                  “Impeccable service and unparalleled artistry. Presh Cakes
-                  understands the language of understated luxury.”
+                  "Impeccable service and unparalleled artistry. Presh Cakes
+                  understands the language of understated luxury."
                 </div>
                 <div class="stars-gold">★★★★★</div>
                 <div class="client-name">David & Priya Sharma</div>
@@ -2146,18 +2205,27 @@
       AOS.init({ duration: 700, once: true, offset: 80 });
 
       // Mobile menu
-      const hamburger = document.getElementById("hamburger"),
-        navLinksEl = document.getElementById("navLinks");
-      hamburger.addEventListener("click", () =>
-        navLinksEl.classList.toggle("active"),
-      );
-      document
-        .querySelectorAll(".nav-links a")
-        .forEach((l) =>
+      const hamburger = document.getElementById("hamburger");
+      const navLinksEl = document.getElementById("navLinks");
+      
+      if (hamburger && navLinksEl) {
+        hamburger.addEventListener("click", function(e) {
+          e.stopPropagation();
+          navLinksEl.classList.toggle("active");
+        });
+        
+        document.querySelectorAll(".nav-links a").forEach((l) =>
           l.addEventListener("click", () =>
             navLinksEl.classList.remove("active"),
           ),
         );
+
+        document.addEventListener("click", function(e) {
+          if (!navLinksEl.contains(e.target) && !hamburger.contains(e.target)) {
+            navLinksEl.classList.remove("active");
+          }
+        });
+      }
 
       // Hero slider
       const slides = document.querySelectorAll(".slide");

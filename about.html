@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" style="overflow-x: hidden; max-width: 100vw;">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=yes" />
-  <title>Presh Cakes | Our Story — Atelier of Artisan Cakes</title>
+  <title>TESSY'S BAKERY BLISS | Our Story</title>
   <!-- Google Fonts + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    /* ---------- EXACT SAME DESIGN SYSTEM AS HOMEPAGE ---------- */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* FIX: Ensure html and body never exceed viewport width */
     html {
       overflow-x: hidden;
       max-width: 100vw;
@@ -24,8 +22,8 @@
 
     body {
       font-family: "Inter", sans-serif;
-      background-color: #0a0705;
-      color: #ece6df;
+      background-color: #0B1F3A;
+      color: #F8F8F6;
       overflow-x: hidden;
       scroll-behavior: smooth;
       max-width: 100vw;
@@ -33,22 +31,24 @@
     }
 
     :root {
-      --charcoal: #0f0c0a;
-      --deep-black: #080604;
-      --gold: #c8a96e;
-      --gold-light: #e2c28b;
-      --cream: #f2ede8;
-      --orange-glow: #d97a3c;
+      --charcoal: #0B1F3A;
+      --deep-black: #081526;
+      --gold: #F4C542;
+      --gold-light: #FFD95A;
+      --cream: #F8F8F6;
+      --crimson-accent: #C62828;
       --shadow-dark: 0 20px 35px rgba(0, 0, 0, 0.5);
       --transition-premium: all 0.5s cubic-bezier(0.2, 0.95, 0.4, 1);
+      --primary-dark: #0B1F3A;
+      --secondary-blue: #123D7A;
     }
 
     h1, h2, h3, .serif, .testimonial-quote {
       font-family: "Cormorant Garamond", serif;
       font-weight: 500;
       letter-spacing: -0.02em;
-      max-width: 100%; /* FIX: prevent long text from breaking layout */
-      overflow-wrap: break-word; /* FIX: wrap gracefully */
+      max-width: 100%;
+      overflow-wrap: break-word;
       word-wrap: break-word;
     }
 
@@ -56,20 +56,20 @@
       width: 5px;
     }
     ::-webkit-scrollbar-track {
-      background: #1a140f;
+      background: #0A1A30;
     }
     ::-webkit-scrollbar-thumb {
       background: var(--gold);
       border-radius: 10px;
     }
 
-    /* TOP BANNER (identical) */
+    /* TOP BANNER */
     .top-banner {
       position: relative;
       width: 100%;
-      max-width: 100vw; /* FIX: explicit max-width */
-      background: linear-gradient(95deg, #1a130c 0%, #2a1f17 100%);
-      border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      max-width: 100vw;
+      background: linear-gradient(95deg, #0A1A30 0%, #123D7A 100%);
+      border-bottom: 1px solid rgba(244, 197, 66, 0.3);
       padding: 0.7rem 1rem;
       text-align: center;
       z-index: 1001;
@@ -96,7 +96,7 @@
     .banner-text {
       font-size: clamp(0.65rem, 2vw, 0.75rem);
       letter-spacing: 1px;
-      color: #e2d4c8;
+      color: #F8F8F6;
       max-width: 100%;
     }
     .banner-link {
@@ -113,12 +113,12 @@
     }
     .banner-link:hover {
       background: var(--gold);
-      color: #0a0705;
+      color: #0B1F3A;
     }
     .banner-close {
       background: transparent;
       border: none;
-      color: #b8aa99;
+      color: #C5D0E0;
       cursor: pointer;
       font-size: 0.8rem;
       transition: 0.2s;
@@ -134,13 +134,14 @@
       top: 0;
       left: 0;
       width: 100%;
-      max-width: 100vw; /* FIX: prevent navbar overflow */
-      background: rgba(8, 6, 4, 0.8);
+      max-width: 100vw;
+      background: linear-gradient(135deg, #0B1F3A, #123D7A);
       backdrop-filter: blur(14px);
       z-index: 1000;
       padding: 1.2rem 2rem;
       transition: var(--transition-premium);
-      border-bottom: 1px solid rgba(200, 169, 110, 0.25);
+      border-bottom: 1px solid rgba(244, 197, 66, 0.25);
+      overflow-x: visible !important;
     }
     body.banner-active .navbar {
       top: 52px;
@@ -151,6 +152,7 @@
       }
       .navbar {
         padding: 0.8rem 1rem;
+        overflow-x: visible !important;
       }
     }
     .nav-container {
@@ -160,33 +162,48 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      width: 100%; /* FIX: respect parent */
+      width: 100%;
+      position: relative;
     }
     .brand {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 0.75rem;
       line-height: 1.2;
+      max-width: 65%;
+      z-index: 1001;
+    }
+    .brand-logo {
+      display: block;
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      object-position: left center;
+      transition: opacity 0.3s ease, filter 0.3s ease;
+      filter: drop-shadow(0 2px 6px rgba(244, 197, 66, 0.4));
       max-width: 100%;
+      flex-shrink: 0;
     }
-    .logo-icon {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      color: var(--gold);
-      margin-bottom: 4px;
+    @media (max-width: 480px) {
+      .brand-logo {
+        height: 34px;
+      }
     }
-    .brand-name {
+    .brand-text {
       font-size: clamp(0.8rem, 3vw, 1rem);
       font-weight: 500;
       letter-spacing: 2px;
       color: var(--cream);
       font-family: "Inter", sans-serif;
+      white-space: nowrap;
+      line-height: 1.3;
+      display: block;
     }
     .nav-links {
       display: flex;
       gap: 2.2rem;
       list-style: none;
       align-items: center;
-      max-width: 100%;
     }
     .nav-links a {
       text-decoration: none;
@@ -196,7 +213,8 @@
       letter-spacing: 1px;
       transition: 0.25s;
       position: relative;
-      white-space: nowrap; /* FIX: prevent wrapping issues */
+      display: inline-block;
+      white-space: nowrap;
     }
     .nav-links a:hover {
       color: var(--gold);
@@ -214,6 +232,12 @@
     .nav-links a:hover::after {
       width: 100%;
     }
+    .nav-links a.active-nav {
+      color: var(--gold);
+    }
+    .nav-links a.active-nav::after {
+      width: 100%;
+    }
     .nav-cta {
       background: transparent;
       border: 1px solid var(--gold);
@@ -225,7 +249,7 @@
       color: var(--gold) !important;
     }
     .nav-cta:hover {
-      background: rgba(200, 169, 110, 0.15);
+      background: rgba(244, 197, 66, 0.2);
       transform: translateY(-2px);
     }
     .hamburger {
@@ -233,41 +257,135 @@
       font-size: 1.6rem;
       color: var(--cream);
       cursor: pointer;
+      z-index: 1001;
+      position: relative;
+      padding: 0.5rem;
     }
+
+    /* MOBILE NAVIGATION */
     @media (max-width: 880px) {
       .nav-links {
         position: fixed;
-        top: 70px;
+        top: 65px;
         left: -100%;
-        width: 70%;
-        height: calc(100vh - 70px);
-        background: #0a0705e6;
+        width: 65%;
+        max-width: 280px;
+        height: auto;
+        max-height: 80vh;
+        background: rgba(11, 31, 58, 0.75);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: 0.3s;
-        z-index: 999;
-        max-width: 80vw;
+        justify-content: flex-start;
+        gap: 1.8rem;
+        z-index: 1002;
+        opacity: 1;
+        visibility: visible;
+        transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        padding: 2rem 1.5rem;
+        border: 1px solid rgba(244, 197, 66, 0.2);
+        border-top: none;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        overflow-y: auto;
       }
       .nav-links.active {
-        left: 0;
+        left: 1rem !important;
+      }
+      .nav-links li {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        text-align: center;
+      }
+      .nav-links a {
+        font-size: 0.95rem;
+        display: block;
+        padding: 0.5rem;
+      }
+      .nav-links .nav-cta {
+        margin-top: 0.5rem;
+        border: 1px solid var(--gold);
+        padding: 0.5rem 1.3rem;
+        border-radius: 40px;
       }
       .hamburger {
         display: block;
       }
       .navbar {
         padding: 0.8rem 1.5rem;
+        overflow-x: visible !important;
+      }
+      body.banner-active .navbar {
+        top: 48px;
+      }
+      body.banner-active .nav-links {
+        top: 48px;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-links {
+        width: 75%;
+        max-width: 260px;
+        top: 60px;
+        gap: 1.5rem;
+        padding: 1.8rem 1.2rem;
+      }
+      .nav-links.active {
+        left: 0.5rem !important;
+      }
+      .nav-links a {
+        font-size: 0.9rem;
       }
     }
 
-    /* SECTION UTILITIES (matching homepage) */
+    /* HERO */
+    .about-hero {
+      min-height: 70vh;
+      background: linear-gradient(125deg, rgba(11,31,58,0.7) 0%, rgba(18,61,122,0.7) 100%), url('./img/ssstik.io_1776860865407.webp');
+      background-blend-mode: overlay;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      scroll-margin-top: 80px;
+      max-width: 100vw;
+      overflow: hidden;
+    }
+    .about-hero-content {
+      max-width: 850px;
+      padding: 2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .about-hero-content h1 {
+      font-size: clamp(2.8rem, 10vw, 5rem);
+      font-weight: 600;
+      background: linear-gradient(135deg, #F8F8F6 0%, #F4C542 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      word-break: break-word;
+      max-width: 100%;
+    }
+    .about-hero-content p {
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      color: #E6ECF2;
+      letter-spacing: 1px;
+      max-width: 100%;
+    }
+
+    /* SECTION UTILITIES */
     .split-section {
       padding: 4rem 5%;
       background: var(--deep-black);
-      max-width: 100vw; /* FIX: section containment */
-      overflow: hidden; /* FIX: guard against internal overflow */
+      max-width: 100vw;
+      overflow: hidden;
     }
     .split-grid {
       max-width: 1280px;
@@ -276,11 +394,11 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(2rem, 5vw, 4rem);
       align-items: center;
-      width: 100%; /* FIX: ensure grid respects container */
+      width: 100%;
     }
     .masked-img {
       width: 100%;
-      max-width: 100%; /* FIX: prevent image overflow */
+      max-width: 100%;
       max-height: 900px;
       border-radius: 60% 40% 50% 50% / 40% 50% 60% 50%;
       overflow: hidden;
@@ -289,7 +407,7 @@
     .masked-img img {
       width: 100%;
       height: 100%;
-      max-width: 100%; /* FIX: image containment */
+      max-width: 100%;
       object-fit: cover;
       display: block;
     }
@@ -301,8 +419,6 @@
       margin-bottom: 1rem;
       max-width: 100%;
     }
-
-    /* 🔧 FIX: Switch to single column earlier (around 900px) to prevent cramped layout */
     @media (max-width: 900px) {
       .split-grid {
         grid-template-columns: 1fr;
@@ -321,8 +437,8 @@
       }
     }
     .btn-gold {
-      background: var(--gold);
-      color: #0a0705;
+      background: linear-gradient(135deg, #F4C542, #D89E1F);
+      color: #0B1F3A;
       padding: 0.9rem 2rem;
       border-radius: 40px;
       font-weight: 600;
@@ -332,76 +448,36 @@
       border: none;
       font-size: 0.9rem;
       white-space: nowrap;
-      max-width: 100%; /* FIX: button containment */
+      max-width: 100%;
     }
     .btn-gold:hover {
-      background: #e2b46a;
+      background: linear-gradient(135deg, #FFD95A, #F4C542);
       transform: translateY(-3px);
     }
 
-    /* 🔧 FIX: Hero about — responsive typography with clamp() */
-    .about-hero {
-      min-height: 70vh;
-      background: linear-gradient(125deg, rgba(10,7,5,0.7) 0%, rgba(31,22,16,0.7) 100%), url('./img/chocolate.jpg');
-      background-blend-mode: overlay;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      scroll-margin-top: 80px;
-      max-width: 100vw; /* FIX: hero containment */
-      overflow: hidden;
-    }
-    .about-hero-content {
-      max-width: 850px;
-      padding: 2rem;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .about-hero-content h1 {
-      font-size: clamp(2.8rem, 10vw, 5rem);
-      font-weight: 600;
-      background: linear-gradient(135deg, #f2ede8 0%, #d9b48b 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
-      word-break: break-word;
-      max-width: 100%;
-    }
-    .about-hero-content p {
-      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-      color: #e0d6cd;
-      letter-spacing: 1px;
-      max-width: 100%;
-    }
-
-    /* Value cards (reused service-card style) */
+    /* VALUES GRID */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
       max-width: 1280px;
       margin: 2rem auto;
-      width: 100%; /* FIX: grid containment */
+      width: 100%;
     }
     .value-card {
-      background: #14100c;
+      background: #0A1A30;
       border-radius: 28px;
       overflow: hidden;
       transition: 0.4s;
-      border: 1px solid rgba(200, 169, 110, 0.15);
+      border: 1px solid rgba(244, 197, 66, 0.2);
       padding: clamp(1.5rem, 4vw, 2rem) clamp(1.2rem, 3vw, 1.8rem);
       text-align: center;
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-      max-width: 100%; /* FIX: card containment */
+      max-width: 100%;
     }
     .value-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(200, 169, 110, 0.5);
+      border-color: rgba(244, 197, 66, 0.5);
     }
     .value-card i {
       font-size: clamp(2rem, 5vw, 2.5rem);
@@ -416,14 +492,14 @@
       max-width: 100%;
     }
     .value-card p {
-      color: #cdc0b2;
+      color: #C5D0E0;
       font-size: clamp(0.8rem, 2vw, 0.9rem);
       line-height: 1.5;
       max-width: 100%;
       word-wrap: break-word;
     }
 
-    /* 🔧 FIX: Timeline — improved wrapping with flex/grid for clean mobile alignment */
+    /* TIMELINE */
     .timeline-container {
       max-width: 1000px;
       margin: 3rem auto 0;
@@ -431,17 +507,17 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
-      width: 100%; /* FIX: container containment */
+      width: 100%;
     }
     .timeline-item {
       flex: 1 1 200px;
       min-width: 180px;
       max-width: 240px;
-      background: rgba(20, 16, 12, 0.6);
+      background: rgba(11, 31, 58, 0.6);
       backdrop-filter: blur(4px);
       padding: 1.5rem 1rem;
       border-radius: 28px;
-      border: 1px solid rgba(200, 169, 110, 0.2);
+      border: 1px solid rgba(244, 197, 66, 0.2);
       text-align: center;
       transition: 0.3s;
     }
@@ -459,7 +535,7 @@
     }
     .timeline-desc {
       font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: #d9cdc0;
+      color: #C5D0E0;
       line-height: 1.4;
       max-width: 100%;
     }
@@ -474,12 +550,12 @@
       }
     }
 
-    /* Skills section with elegant labels (progress-like minimal) */
+    /* SKILLS */
     .skills-wrapper {
       max-width: 800px;
       margin: 2rem auto;
       padding: 0 1rem;
-      width: 100%; /* FIX: wrapper containment */
+      width: 100%;
     }
     .skill-item {
       margin-bottom: 1.8rem;
@@ -491,7 +567,7 @@
       margin-bottom: 0.5rem;
       font-size: clamp(0.8rem, 2vw, 0.9rem);
       letter-spacing: 1px;
-      color: #e2d4c8;
+      color: #E6ECF2;
       flex-wrap: wrap;
       gap: 0.5rem;
       max-width: 100%;
@@ -499,7 +575,7 @@
     .skill-bar-bg {
       width: 100%;
       height: 2px;
-      background: rgba(200, 169, 110, 0.2);
+      background: rgba(244, 197, 66, 0.2);
       border-radius: 2px;
       overflow: hidden;
     }
@@ -510,23 +586,23 @@
       transition: width 1.2s cubic-bezier(0.2, 0.9, 0.4, 1);
     }
 
-    /* testimonial preview (exactly same as homepage style) */
+    /* TESTIMONIAL */
     .testimonial-preview {
-      background: radial-gradient(ellipse at 30% 40%, #18110b, #030201);
+      background: radial-gradient(ellipse at 30% 40%, #123D7A, #081526);
       padding: 5rem 5%;
-      max-width: 100vw; /* FIX: section containment */
+      max-width: 100vw;
       overflow: hidden;
     }
     .testimonial-preview .testimonial-glass-card {
-      background: rgba(15, 12, 10, 0.75);
+      background: rgba(11, 31, 58, 0.8);
       backdrop-filter: blur(16px);
       border-radius: clamp(32px, 8vw, 56px);
-      border: 1px solid rgba(200, 169, 110, 0.45);
+      border: 1px solid rgba(244, 197, 66, 0.5);
       padding: clamp(1.8rem, 5vw, 2.8rem) clamp(1.5rem, 4vw, 2rem);
       text-align: center;
       max-width: 750px;
       margin: 0 auto;
-      width: 100%; /* FIX: card containment */
+      width: 100%;
     }
     .quote-icon {
       font-size: clamp(1.5rem, 5vw, 2rem);
@@ -537,7 +613,7 @@
     .testimonial-quote {
       font-size: clamp(1.2rem, 3.5vw, 1.5rem);
       font-style: italic;
-      color: #f2e8de;
+      color: #F8F8F6;
       line-height: 1.4;
       font-family: "Cormorant Garamond", serif;
       max-width: 100%;
@@ -552,34 +628,35 @@
       font-family: "Inter", sans-serif;
       font-weight: 400;
       letter-spacing: 1.5px;
-      color: #c9b28b;
+      color: #D89E1F;
       font-size: 0.8rem;
       text-transform: uppercase;
       max-width: 100%;
     }
 
-    /* CTA block */
+    /* CTA */
     .cta-block {
-      background: linear-gradient(135deg, #1f1712, #0c0805);
+      background: linear-gradient(135deg, #123D7A, #0B1F3A);
       margin: 3rem 5%;
       padding: clamp(2.5rem, 8vw, 4rem) clamp(1.5rem, 4vw, 2rem);
       border-radius: 48px;
       text-align: center;
-      border: 1px solid rgba(200, 169, 110, 0.3);
-      max-width: 90vw; /* FIX: cta block containment */
+      border: 1px solid rgba(244, 197, 66, 0.4);
+      max-width: 90vw;
       box-sizing: border-box;
+      overflow-x: hidden;
     }
     .cta-block h2 {
       font-size: clamp(1.8rem, 6vw, 2.6rem);
       max-width: 100%;
     }
 
-    /* Footer (exact same) */
+    /* FOOTER */
     .footer-luxury {
-      background: #050302;
+      background: linear-gradient(180deg, #081526, #0B1F3A);
       padding: 4rem 5% 2rem;
-      border-top: 1px solid rgba(200, 169, 110, 0.2);
-      max-width: 100vw; /* FIX: footer containment */
+      border-top: 1px solid rgba(244, 197, 66, 0.25);
+      max-width: 100vw;
       overflow: hidden;
     }
     .footer-grid-lux {
@@ -604,20 +681,27 @@
     }
     .footer-nav-lux { text-align: right; }
     .footer-contact-lux { text-align: right; }
-    .footer-brand-lux .logo-icon-large {
-      font-size: 2rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-      display: inline-block;
+    .footer-logo {
+      display: block;
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 0.7rem;
+      filter: drop-shadow(0 2px 6px rgba(244, 197, 66, 0.3));
+      transition: opacity 0.3s ease;
     }
-    .brand-name-lux {
+    .footer-brand-text {
       font-size: 1.2rem;
       letter-spacing: 2px;
       font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.7rem;
+      font-family: "Inter", sans-serif;
+      display: block;
     }
     .tagline {
       font-size: 0.7rem;
-      color: #b8aa99;
+      color: #AAB8C8;
       margin-top: 0.5rem;
       max-width: 220px;
     }
@@ -632,20 +716,20 @@
     .social-icon-circle {
       width: 34px;
       height: 34px;
-      background: rgba(200, 169, 110, 0.1);
+      background: rgba(244, 197, 66, 0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: 0.25s;
-      color: #e2cbaa;
+      color: #F4C542;
       text-decoration: none;
-      border: 1px solid rgba(200, 169, 110, 0.3);
+      border: 1px solid rgba(244, 197, 66, 0.4);
       flex-shrink: 0;
     }
     .social-icon-circle:hover {
       background: var(--gold);
-      color: #0a0705;
+      color: #0B1F3A;
       transform: translateY(-2px);
     }
     .footer-nav-lux h4, .footer-contact-lux h4 {
@@ -662,7 +746,7 @@
     }
     .footer-nav-lux a {
       text-decoration: none;
-      color: #d6cdc2;
+      color: #C5D0E0;
       font-size: 0.8rem;
       transition: 0.2s;
     }
@@ -675,7 +759,7 @@
       align-items: center;
       justify-content: flex-end;
       gap: 0.7rem;
-      color: #cdc0b2;
+      color: #C5D0E0;
       font-size: 0.8rem;
       flex-wrap: wrap;
       max-width: 100%;
@@ -684,22 +768,23 @@
       max-width: 1280px;
       margin: 2rem auto 1rem;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(200, 169, 110, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(244, 197, 66, 0.5), transparent);
     }
     .copyright-text {
       text-align: center;
       font-size: 0.7rem;
-      color: #7f6e5d;
+      color: #8A9BB0;
       max-width: 100%;
     }
 
-    /* 🔧 FIX: Footer mobile — 2-column grid with contact full width below */
+    /* FOOTER MOBILE */
     @media (max-width: 768px) {
       .footer-grid-lux {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem 1.5rem;
+        gap: 2rem 1.8rem;
         align-items: start;
+        padding: 0 0.8rem;
         width: 100%;
       }
       .footer-brand-lux {
@@ -707,18 +792,24 @@
         text-align: left;
         min-width: 0;
         max-width: 100%;
+        padding-left: 0.3rem;
       }
       .footer-nav-lux {
         grid-column: 2;
-        text-align: right;
+        text-align: left;
         min-width: 0;
         max-width: 100%;
+        padding-right: 0.3rem;
+      }
+      .footer-nav-lux ul {
+        padding-left: 0;
       }
       .footer-contact-lux {
         grid-column: span 2;
         text-align: left;
         min-width: 0;
         max-width: 100%;
+        padding: 0 0.3rem;
       }
       .footer-contact-lux p {
         justify-content: flex-start;
@@ -726,10 +817,20 @@
       .tagline {
         max-width: 100%;
       }
+      .footer-logo {
+        height: 42px;
+      }
     }
     @media (max-width: 480px) {
       .footer-grid-lux {
-        gap: 1.8rem 1rem;
+        gap: 1.8rem 1.4rem;
+        padding: 0 0.5rem;
+      }
+      .footer-brand-lux, .footer-nav-lux, .footer-contact-lux {
+        padding: 0 0.2rem;
+      }
+      .footer-logo {
+        height: 38px;
       }
       .footer-luxury {
         padding: 2rem 1rem 1rem;
@@ -739,7 +840,7 @@
     [data-aos] { opacity: 0; transition: opacity 0.8s ease, transform 0.8s ease; }
     .aos-animate { opacity: 1 !important; }
 
-    /* whatsapp widget */
+    /* WHATSAPP */
     .whatsapp-float {
       position: fixed;
       bottom: 30px;
@@ -755,14 +856,15 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
       text-decoration: none;
-      max-width: 100vw; /* FIX: widget containment */
+      max-width: 56px;
+      max-height: 56px;
     }
     .whatsapp-float:hover { transform: scale(1.08); }
     .whatsapp-float i { font-size: 2rem; color: white; }
     .whatsapp-tooltip {
       position: absolute;
       right: 70px;
-      background: rgba(10,7,5,0.9);
+      background: rgba(11,31,58,0.95);
       backdrop-filter: blur(8px);
       color: var(--gold-light);
       padding: 0.4rem 1rem;
@@ -772,123 +874,199 @@
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
-      border: 1px solid rgba(200, 169, 110, 0.3);
+      border: 1px solid rgba(244, 197, 66, 0.4);
     }
     .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
     @media (max-width: 600px) {
-      .whatsapp-float { width: 48px; height: 48px; bottom: 20px; right: 20px; }
+      .whatsapp-float { width: 48px; height: 48px; bottom: 20px; right: 20px; max-width: 48px; max-height: 48px; }
       .whatsapp-float i { font-size: 1.6rem; }
       .whatsapp-tooltip { display: none; }
     }
 
-    /* 🔧 FIX: Modal — flexbox centering instead of large margins */
-    .modal {
+    /* MODAL */
+    .contact-modal {
       display: none;
       position: fixed;
-      z-index: 1003;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-      display: none;
+      z-index: 2000;
       align-items: center;
       justify-content: center;
       padding: 1rem;
-      max-width: 100vw; /* FIX: modal containment */
-      overflow: hidden;
+      box-sizing: border-box;
     }
-    /* Override inline display when active via JS — keep flex centering */
-    .modal[style*="display: block"] {
-      display: flex !important;
+    .contact-modal.active {
+      display: flex;
+    }
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 21, 38, 0.75);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
     }
     .modal-content {
-      background: rgba(15, 12, 10, 0.95);
-      backdrop-filter: blur(16px);
-      margin: 0;
-      padding: clamp(1.5rem, 5vw, 2rem);
-      border: 1px solid var(--gold);
+      position: relative;
+      z-index: 2001;
+      background: linear-gradient(135deg, #0B1F3A 0%, #123D7A 100%);
+      border: 1px solid rgba(244, 197, 66, 0.5);
+      border-radius: clamp(24px, 6vw, 40px);
+      padding: clamp(1.8rem, 5vw, 3rem);
+      max-width: 450px;
       width: 90%;
-      max-width: 400px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: var(--shadow-dark);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 1px rgba(244, 197, 66, 0.1) inset;
+      animation: modalSlideIn 0.4s cubic-bezier(0.2, 0.95, 0.4, 1);
       max-height: 90vh;
       overflow-y: auto;
-      position: relative;
+      box-sizing: border-box;
     }
-    .modal-content h2 {
-      color: var(--gold);
-      margin-bottom: 1rem;
-      font-size: clamp(1.4rem, 5vw, 1.8rem);
-      max-width: 100%;
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: scale(0.95) translateY(-20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
-    .modal-content p {
-      color: #e2d4c8;
-      margin-bottom: 0.5rem;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      word-break: break-word;
-      max-width: 100%;
-    }
-    .close {
-      color: var(--gold);
+    .modal-close {
       position: absolute;
-      top: 1rem;
-      right: 1.2rem;
-      font-size: 28px;
-      font-weight: bold;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
       cursor: pointer;
       transition: 0.2s;
-      line-height: 1;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .close:hover,
-    .close:focus {
-      color: #e2c28b;
+    .modal-close:hover {
+      color: #FFD95A;
+      transform: rotate(90deg);
+    }
+    .modal-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .modal-header h2 {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      color: #F8F8F6;
+      margin: 0;
+    }
+    .modal-body {
+      margin-bottom: 2rem;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: clamp(0.8rem, 3vw, 1rem);
+      background: rgba(244, 197, 66, 0.08);
+      border-radius: 20px;
+      border: 1px solid rgba(244, 197, 66, 0.2);
+      transition: all 0.3s;
+    }
+    .info-item:hover {
+      background: rgba(244, 197, 66, 0.15);
+      border-color: rgba(244, 197, 66, 0.4);
+    }
+    .info-item i {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-top: 0.25rem;
+      min-width: 24px;
+    }
+    .info-item strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    .info-item p {
+      color: #E6ECF2;
+      font-size: 0.95rem;
+      margin: 0;
+      word-break: break-word;
+    }
+    .modal-footer {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-modal {
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(244, 197, 66, 0.5);
+      background: transparent;
+      color: var(--gold);
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .btn-modal:hover {
+      background: rgba(244, 197, 66, 0.2);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .btn-gold-modal {
+      background: linear-gradient(135deg, #F4C542, #D89E1F);
+      color: #0B1F3A;
+      border: 1px solid var(--gold);
+    }
+    .btn-gold-modal:hover {
+      background: linear-gradient(135deg, #FFD95A, #F4C542);
+      border-color: #FFD95A;
+    }
+    @media (max-width: 600px) {
+      .modal-close { top: 1rem; right: 1rem; }
     }
 
-    /* General mobile padding refinements */
-    @media (max-width: 480px) {
-      .split-section {
-        padding: 2rem 1rem;
-      }
-      .testimonial-preview {
-        padding: 3rem 1rem;
-      }
-      .cta-block {
-        margin: 2rem 1rem;
-        padding: 2.5rem 1.2rem;
-      }
-      .skills-wrapper {
-        padding: 0 0.5rem;
-      }
-    }
-
-    /* FIX: Ensure all images never overflow */
     img {
       max-width: 100%;
       height: auto;
     }
-
-    /* FIX: General container safety */
     section, div, header, footer, nav {
       max-width: 100vw;
+    }
+    @media (max-width: 480px) {
+      .split-section { padding: 2rem 1rem; }
+      .testimonial-preview { padding: 3rem 1rem; }
+      .cta-block { margin: 2rem 1rem; padding: 2.5rem 1.2rem; }
+      .skills-wrapper { padding: 0 0.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- TOP BANNER (reuse from homepage, consistency) -->
+  <!-- TOP BANNER -->
   <div class="top-banner" id="topBanner">
     <div class="banner-content">
       <span class="banner-text">✦ Now taking custom orders for weddings & events — limited availability this season ✦</span>
-      <a href="#contact" class="banner-link">Book Now</a>
+      <a href="./contact.html" class="banner-link">Book Now</a>
       <button class="banner-close" id="closeBannerBtn">✕</button>
     </div>
   </div>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-container">
-      <div class="brand"><i class="fas fa-crown logo-icon"></i><span class="brand-name">PRESH CAKES</span></div>
+      <div class="brand">
+        <img src="./img/logo-1.png" alt="Tessy's Bakery Bliss Logo" class="brand-logo">
+        <span class="brand-text">TESSY'S BAKERY BLISS</span>
+      </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="./index.html">Home</a></li>
         <li><a href="./about.html" class="active-nav">About</a></li>
@@ -901,7 +1079,7 @@
     </div>
   </nav>
 
-  <!-- 1. HERO SECTION (ABOUT INTRO) - custom text -->
+  <!-- HERO -->
   <section class="about-hero" id="about-hero">
     <div class="about-hero-content" data-aos="fade-up">
       <h1>Our Story</h1>
@@ -909,24 +1087,24 @@
     </div>
   </section>
 
-  <!-- 2. BRAND STORY SECTION (split layout) - custom narrative -->
+  <!-- BRAND STORY -->
   <section class="split-section" id="brand-story">
     <div class="split-grid">
       <div class="masked-img" data-aos="fade-up">
-        <img src="./img/ssstik.io_1776860865407.webp" alt="Presh Cakes artisan bakery">
+        <img src="./img/logo-1.png" alt="Tessy's Bakery Bliss artisan bakery">
       </div>
       <div data-aos="fade-left">
         <div class="section-label">Our Journey</div>
         <h2 style="font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1rem;">Where passion became a signature</h2>
-        <p style="margin-bottom: 1rem; color: #d9cdc0;">Presh Cakes began with a simple intention — to create desserts that feel as exceptional as the moments they are made for.</p>
-        <p style="margin-bottom: 1rem; color: #d9cdc0;">What started as a quiet pursuit of perfecting recipes has grown into a refined atelier of cake design and event indulgence. Every creation is approached with patience, precision, and a deep respect for both flavor and form.</p>
-        <p style="color: #d9cdc0;">We do not believe in excess. We believe in balance — where texture, taste, and presentation meet effortlessly. From intimate celebrations to large-scale events, each piece is crafted to leave a lasting impression, not just visually, but in experience.</p>
+        <p style="margin-bottom: 1rem; color: #C5D0E0;">Tessy's Bakery Bliss began with a simple intention — to create desserts that feel as exceptional as the moments they are made for.</p>
+        <p style="margin-bottom: 1rem; color: #C5D0E0;">What started as a quiet pursuit of perfecting recipes has grown into a refined atelier of cake design and event indulgence. Every creation is approached with patience, precision, and a deep respect for both flavor and form.</p>
+        <p style="color: #C5D0E0;">We do not believe in excess. We believe in balance — where texture, taste, and presentation meet effortlessly. From intimate celebrations to large-scale events, each piece is crafted to leave a lasting impression, not just visually, but in experience.</p>
       </div>
     </div>
   </section>
 
-  <!-- 3. PHILOSOPHY / VALUES SECTION (4 cards) - exact text -->
-  <section class="split-section" style="background: #0c0907;">
+  <!-- PHILOSOPHY / VALUES -->
+  <section class="split-section" style="background: #081526;">
     <div class="section-label" style="text-align: center;">Philosophy</div>
     <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">The pillars of our artistry</h2>
     <div class="values-grid">
@@ -937,63 +1115,52 @@
     </div>
   </section>
 
-  <!-- 4. TIMELINE / EXPERIENCE SECTION - custom milestones -->
+  <!-- TIMELINE -->
   <section class="split-section">
     <div class="section-label" style="text-align: center;">Milestones</div>
-    <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">The Presh chronicle</h2>
+    <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">The Tessy's Bakery Bliss chronicle</h2>
     <div class="timeline-container">
       <div class="timeline-item" data-aos="zoom-in"><div class="timeline-year">The Beginning</div><div class="timeline-desc">A foundation built on experimentation, patience, and a desire to do things differently.</div></div>
       <div class="timeline-item" data-aos="zoom-in" data-aos-delay="100"><div class="timeline-year">Growth</div><div class="timeline-desc">Expanding into bespoke orders, gaining recognition through consistency and detail.</div></div>
       <div class="timeline-item" data-aos="zoom-in" data-aos-delay="200"><div class="timeline-year">Refinement</div><div class="timeline-desc">Developing a signature style defined by elegance, restraint, and quality.</div></div>
-      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="300"><div class="timeline-year">Today</div><div class="timeline-desc">Presh Cakes stands as a trusted name for those who value thoughtful design and exceptional taste.</div></div>
+      <div class="timeline-item" data-aos="zoom-in" data-aos-delay="300"><div class="timeline-year">Today</div><div class="timeline-desc">Tessy's Bakery Bliss stands as a trusted name for those who value thoughtful design and exceptional taste.</div></div>
     </div>
   </section>
 
-  <!-- 5. SKILLS / EXPERTISE SECTION - custom expertise labels -->
-  <section class="split-section" style="background: #0c0907;">
+  <!-- SKILLS / EXPERTISE -->
+  <section class="split-section" style="background: #081526;">
     <div class="section-label" style="text-align: center;">Expertise</div>
     <h2 style="text-align: center; font-size: clamp(2rem, 6vw, 2.8rem);">Mastery in every discipline</h2>
     <div class="skills-wrapper" data-aos="fade-up">
-      <div class="skill-item"><div class="skill-header"><span>Bespoke Cake Design</span><span>Tailored creations</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">Designed to match the tone and significance of each occasion</div></div>
-      <div class="skill-item"><div class="skill-header"><span>Event Catering</span><span>Curated selection</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">Desserts and small chops crafted to complement any event setting</div></div>
-      <div class="skill-item"><div class="skill-header"><span>Celebration Cakes</span><span>Personal & memorable</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100"></div></div><div style="font-size:0.7rem; color:#b8aa99; margin-top:0.3rem;">From birthdays to private gatherings, each cake designed to feel personal</div></div>
+      <div class="skill-item"><div class="skill-header"><span>Bespoke Cake Design</span><span>Tailored creations</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="98"></div></div><div style="font-size:0.7rem; color:#AAB8C8; margin-top:0.3rem;">Designed to match the tone and significance of each occasion</div></div>
+      <div class="skill-item"><div class="skill-header"><span>Event Catering</span><span>Curated selection</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div><div style="font-size:0.7rem; color:#AAB8C8; margin-top:0.3rem;">Desserts and small chops crafted to complement any event setting</div></div>
+      <div class="skill-item"><div class="skill-header"><span>Celebration Cakes</span><span>Personal & memorable</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100"></div></div><div style="font-size:0.7rem; color:#AAB8C8; margin-top:0.3rem;">From birthdays to private gatherings, each cake designed to feel personal</div></div>
     </div>
   </section>
 
-  <!-- 6. TESTIMONIAL PREVIEW (refined style) - exact client quote -->
+  <!-- TESTIMONIAL -->
   <div class="testimonial-preview">
     <div class="testimonial-glass-card" data-aos="fade-up">
       <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-      <div class="testimonial-quote">“An exceptional balance of design and flavor. Every detail felt deliberate, and the final result exceeded expectations in the most understated way.”</div>
+      <div class="testimonial-quote">"An exceptional balance of design and flavor. Every detail felt deliberate, and the final result exceeded expectations in the most understated way."</div>
       <div class="stars-gold">★★★★★</div>
       <div class="client-name">— Private Client</div>
     </div>
   </div>
 
-  <!-- 7. CALL TO ACTION - exact text -->
+  <!-- CTA -->
   <section class="cta-block" id="contact">
     <h2>Let's create something truly memorable</h2>
     <p style="margin: 1rem 0;">Whether it's an intimate celebration or a grand event, we approach every order with the same level of care and precision.</p>
-    <a href="./contact.html" class="btn-gold" onclick="showModal(event)">Contact Us</a>
+    <a href="javascript:void(0)" class="btn-gold" onclick="showContactModal(event)">Contact Us</a>
   </section>
 
-  <!-- 🔧 FIX: Modal stays in HTML, CSS updated for flex centering -->
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Contact Information</h2>
-      <p>📞 +2347075849051</p>
-      <p>hello@preshcakes.com</p>
-      <button class="btn-gold" onclick="window.location.href='./contact.html'">Go to Contact Page</button>
-    </div>
-  </div>
-
-  <!-- 8. FOOTER (identical to homepage) -->
+  <!-- FOOTER -->
   <footer class="footer-luxury">
     <div class="footer-grid-lux">
       <div class="footer-brand-lux">
-        <i class="fas fa-crown logo-icon-large"></i>
-        <div class="brand-name-lux">PRESH CAKES</div>
+        <img src="./img/logo-1.png" alt="Tessy's Bakery Bliss Logo" class="footer-logo">
+        <span class="footer-brand-text">TESSY'S BAKERY BLISS</span>
         <div class="tagline">Artisanal patisserie • Bespoke creations</div>
         <div class="social-icons-lux">
           <a href="#" class="social-icon-circle"><i class="fab fa-instagram"></i></a>
@@ -1003,24 +1170,56 @@
       </div>
       <div class="footer-nav-lux">
         <h4>Navigation</h4>
-        <ul><li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./index.html#gallery">Gallery</a></li><li><a href="./index.html#services">Services</a></li><li><a href="./contact.html">Contact</a></li></ul>
+        <ul><li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./gallery.html">Gallery</a></li><li><a href="./service.html">Services</a></li><li><a href="./contact.html">Contact</a></li></ul>
       </div>
       <div class="footer-contact-lux">
         <h4>Atelier</h4>
-        <p><i class="fas fa-map-marker-alt"></i> Ihiala, Anambra State, Nigeria</p>
+        <p><i class="fas fa-map-marker-alt"></i> Amansea, Awka North L.G.A, Anambra State, Nigeria.</p>
         <p><i class="fas fa-phone-alt"></i> +2347075849051</p>
-        <p><i class="fas fa-envelope"></i> hello@preshcakes.com</p>
+        <p><i class="fas fa-envelope"></i> bluries2000@gmail.com</p>
       </div>
     </div>
     <div class="footer-divider"></div>
-    <div class="copyright-text">© 2025 Presh Cakes — Where Every Crumb Tells a Story of Elegance|Built by DevDes</div>
+    <div class="copyright-text">© 2025 Tessy's Bakery Bliss — Where Every Crumb Tells a Story of Elegance | Built by DevDes</div>
   </footer>
 
+  <!-- WHATSAPP -->
   <a href="https://wa.me/2347075849051?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20luxury%20cakes" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us</span></a>
+
+  <!-- CONTACT MODAL -->
+  <div class="contact-modal" id="contactModal">
+    <div class="modal-overlay" onclick="closeContactModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeContactModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-header">
+        <i class="fas fa-phone-alt" style="color: var(--gold); font-size: 2rem; margin-bottom: 1rem;"></i>
+        <h2>Get in Touch</h2>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.95rem; margin-bottom: 2rem; color: #C5D0E0;">Reach out to us for inquiries, bookings, or consultations:</p>
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div><strong>Phone</strong><p>+234 707 584 9051</p></div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div><strong>Email</strong><p>bluries2000@gmail.com</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal" onclick="closeContactModal()">Close</button>
+        <a href="./contact.html" class="btn-modal btn-gold-modal">Continue to Contact</a>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // banner & localStorage
+    // Banner
     const topBanner = document.getElementById("topBanner");
     const closeBannerBtn = document.getElementById("closeBannerBtn");
     if (localStorage.getItem("bannerClosed") === "true") {
@@ -1032,12 +1231,28 @@
       document.body.classList.remove("banner-active");
       localStorage.setItem("bannerClosed", "true");
     });
+
     AOS.init({ duration: 700, once: true, offset: 80 });
-    // mobile menu
-    const hamburger = document.getElementById("hamburger"), navLinks = document.getElementById("navLinks");
-    hamburger.addEventListener("click", () => navLinks.classList.toggle("active"));
-    document.querySelectorAll(".nav-links a").forEach(l => l.addEventListener("click", () => navLinks.classList.remove("active")));
-    // skills bars animation on scroll
+
+    // Mobile menu
+    const hamburger = document.getElementById("hamburger");
+    const navLinksEl = document.getElementById("navLinks");
+    if (hamburger && navLinksEl) {
+      hamburger.addEventListener("click", function(e) {
+        e.stopPropagation();
+        navLinksEl.classList.toggle("active");
+      });
+      document.querySelectorAll(".nav-links a").forEach((l) =>
+        l.addEventListener("click", () => navLinksEl.classList.remove("active"))
+      );
+      document.addEventListener("click", function(e) {
+        if (!navLinksEl.contains(e.target) && !hamburger.contains(e.target)) {
+          navLinksEl.classList.remove("active");
+        }
+      });
+    }
+
+    // Skills animation
     const skillBars = document.querySelectorAll(".skill-bar-fill");
     const animateSkills = () => {
       skillBars.forEach(bar => {
@@ -1050,28 +1265,24 @@
     };
     window.addEventListener("scroll", animateSkills);
     setTimeout(animateSkills, 300);
-    if (!topBanner.classList.contains("closed")) document.body.classList.add("banner-active");
 
-    // 🔧 FIX: Modal functionality — updated to use flex display properly
-    function showModal(event) {
+    // Contact Modal
+    function showContactModal(event) {
       event.preventDefault();
-      const modal = document.getElementById('contactModal');
-      modal.style.display = 'flex';
+      const modal = document.getElementById("contactModal");
+      if (modal) modal.classList.add("active");
     }
-    document.querySelector('.close').onclick = function() {
-      document.getElementById('contactModal').style.display = 'none';
+    function closeContactModal() {
+      const modal = document.getElementById("contactModal");
+      if (modal) modal.classList.remove("active");
     }
-    window.onclick = function(event) {
-      if (event.target == document.getElementById('contactModal')) {
-        document.getElementById('contactModal').style.display = 'none';
-      }
-    }
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.getElementById('contactModal').style.display = 'none';
-      }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeContactModal();
     });
+
+    if (window.location.hash === "" || window.location.hash === "#about-hero") {
+      window.scrollTo(0, 0);
+    }
   </script>
 </body>
 </html>
